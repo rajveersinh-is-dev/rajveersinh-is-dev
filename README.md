@@ -1,7 +1,7 @@
 <!--
-  Profile README for Rajveersinh Pardeshi (@daveaddams91-dev)
+  Profile README for Rajveersinh Pardeshi (@rajveersinh-is-dev)
 
-  To publish: create a PUBLIC repo named exactly  daveaddams91-dev  and put this
+  To publish: create a PUBLIC repo named exactly  rajveersinh-is-dev  and put this
   file at its root. A private repo will not show up on your profile.
 
   Notes for future edits:
@@ -24,7 +24,7 @@
 
 <p align="center">
   <a href="mailto:daveaddams91@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-daveaddams91@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white"></a>
-  <a href="https://github.com/daveaddams91-dev"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-daveaddams91--dev-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+  <a href="https://github.com/rajveersinh-is-dev"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-rajveersinh--is--dev-181717?style=for-the-badge&logo=github&logoColor=white"></a>
   <img alt="Location" src="https://img.shields.io/badge/Location-India-7c3aed?style=for-the-badge">
   <img alt="Open to collaboration" src="https://img.shields.io/badge/Open%20to%20collaboration-f97316?style=for-the-badge">
 </p>
@@ -75,37 +75,37 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 
 | Project | Result |
 |:--|:--|
-| **[convex-thrackle-census](https://github.com/daveaddams91-dev/convex-thrackle-census)** | Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma |
-| **[triple-cover-convex-polygon](https://github.com/daveaddams91-dev/triple-cover-convex-polygon)** | Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14` |
-| **[polygon-triangulation-packing](https://github.com/daveaddams91-dev/polygon-triangulation-packing)** | Exact extremal theory for `tau(n)` and `kappa(n)`, with constructive proofs |
-| **[maximal-convex-position-subsets](https://github.com/daveaddams91-dev/maximal-convex-position-subsets)** | Exact `f(n)` through `n = 9`, plus a point line duality theorem |
-| **[edge-disjoint-triangle-packings](https://github.com/daveaddams91-dev/edge-disjoint-triangle-packings)** | Convex barrier, then a reduction to subcubic trees |
-| **[cycle-spectra-connectivity](https://github.com/daveaddams91-dev/cycle-spectra-connectivity)** | Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9 |
-| **[connected-labeled-parity](https://github.com/daveaddams91-dev/connected-labeled-parity)** | Exact 2-adic valuations of connected labeled graphs and digraphs |
-| **[adic-diversity](https://github.com/daveaddams91-dev/adic-diversity)** | Largest number of distinct 2-adic valuations across the subset sums of `k` integers |
+| **[convex-thrackle-census](https://github.com/rajveersinh-is-dev/convex-thrackle-census)** | Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma |
+| **[triple-cover-convex-polygon](https://github.com/rajveersinh-is-dev/triple-cover-convex-polygon)** | Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14` |
+| **[polygon-triangulation-packing](https://github.com/rajveersinh-is-dev/polygon-triangulation-packing)** | Exact extremal theory for `tau(n)` and `kappa(n)`, with constructive proofs |
+| **[maximal-convex-position-subsets](https://github.com/rajveersinh-is-dev/maximal-convex-position-subsets)** | Exact `f(n)` through `n = 9`, plus a point line duality theorem |
+| **[edge-disjoint-triangle-packings](https://github.com/rajveersinh-is-dev/edge-disjoint-triangle-packings)** | Convex barrier, then a reduction to subcubic trees |
+| **[cycle-spectra-connectivity](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity)** | Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9 |
+| **[connected-labeled-parity](https://github.com/rajveersinh-is-dev/connected-labeled-parity)** | Exact 2-adic valuations of connected labeled graphs and digraphs |
+| **[adic-diversity](https://github.com/rajveersinh-is-dev/adic-diversity)** | Largest number of distinct 2-adic valuations across the subset sums of `k` integers |
 
 ### Statistics and complex systems
 
 | Project | Description |
 |:--|:--|
-| **[umbra](https://github.com/daveaddams91-dev/umbra)** | Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random. |
-| **[early-warning-complex-systems](https://github.com/daveaddams91-dev/early-warning-complex-systems)** | Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse. |
+| **[umbra](https://github.com/rajveersinh-is-dev/umbra)** | Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random. |
+| **[early-warning-complex-systems](https://github.com/rajveersinh-is-dev/early-warning-complex-systems)** | Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse. |
 
 ### Simulation and formal methods
 
 | Project | Description |
 |:--|:--|
-| **[Tokamak-Py](https://github.com/daveaddams91-dev/Tokamak-Py)** | Numba accelerated N body electromagnetic plasma confinement engine, using Boris integration for stable particle pushing, with a PyQt6 interface. |
-| **[terrain-erosion-engine](https://github.com/daveaddams91-dev/terrain-erosion-engine)** | Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js. |
-| **[certified-dose](https://github.com/daveaddams91-dev/certified-dose)** | Package, CLI and dashboard that put automated process control dosing inside a formal reachability analysis safety layer. |
+| **[Tokamak-Py](https://github.com/rajveersinh-is-dev/Tokamak-Py)** | Numba accelerated N body electromagnetic plasma confinement engine, using Boris integration for stable particle pushing, with a PyQt6 interface. |
+| **[terrain-erosion-engine](https://github.com/rajveersinh-is-dev/terrain-erosion-engine)** | Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js. |
+| **[certified-dose](https://github.com/rajveersinh-is-dev/certified-dose)** | Package, CLI and dashboard that put automated process control dosing inside a formal reachability analysis safety layer. |
 
 ### Trust and autonomous agents
 
 | Project | Description |
 |:--|:--|
-| **[docutrust](https://github.com/daveaddams91-dev/docutrust)** | Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines. |
-| **[autod](https://github.com/daveaddams91-dev/autod)** | Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours. |
-| **[repo-improver-bot](https://github.com/daveaddams91-dev/repo-improver-bot)** | Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests. |
+| **[docutrust](https://github.com/rajveersinh-is-dev/docutrust)** | Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines. |
+| **[autod](https://github.com/rajveersinh-is-dev/autod)** | Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours. |
+| **[repo-improver-bot](https://github.com/rajveersinh-is-dev/repo-improver-bot)** | Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests. |
 
 ---
 
@@ -140,7 +140,7 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 ## Reach me
 
 - Email: [daveaddams91@gmail.com](mailto:daveaddams91@gmail.com)
-- GitHub: [@daveaddams91-dev](https://github.com/daveaddams91-dev)
+- GitHub: [@rajveersinh-is-dev](https://github.com/rajveersinh-is-dev)
 - Issues and pull requests are open on all the repositories above.
 
 <p align="center">
