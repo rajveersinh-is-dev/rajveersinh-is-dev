@@ -73,15 +73,20 @@ field, so it has to be done through the settings page.
 ### Adding or replacing a project
 
 Each project is one row in a table under `## Projects`. Copy an existing row, change
-the link and the text. Keep the description to one or two sentences.
-
-If you publish a new repository, add it to the table that fits best:
+the link and the text. Pick the table that fits:
 
 | Table | Goes here |
 |:--|:--|
-| Research | Mathematics, proofs, statistics, anything with a theorem attached |
-| Simulation | Physics, numerics, GPU work, performance |
-| Trust and agents | Identity, credentials, cryptography, automation |
+| Combinatorics and geometry | Graph theory, discrete geometry, exact counts, anything with a theorem attached |
+| Statistics and complex systems | Statistics, missing data, time series, network science |
+| Simulation and formal methods | Physics, numerics, GPU work, formal verification |
+| Trust and autonomous agents | Identity, credentials, cryptography, automation |
+
+**Keeping it uncluttered.** The first table is written as results, one short line each,
+because it holds most of the work. The other three describe software, so they get
+ordinary sentences. If you add a lot more combinatorics repos, keep writing them as
+results rather than growing that table into paragraphs. If a cluster passes about a
+dozen entries, consider giving it its own subsection instead of widening the page.
 
 ### Changing colours
 

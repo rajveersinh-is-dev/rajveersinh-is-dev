@@ -19,7 +19,7 @@
 <h1 align="center">Rajveersinh Pardeshi</h1>
 
 <p align="center">
-  Computational mathematics · Scientific simulation · Verifiable systems
+  Computational mathematics Â· Scientific simulation Â· Verifiable systems
 </p>
 
 <p align="center">
@@ -33,9 +33,9 @@
 
 ## About
 
-I work on problems where theory gets expensive. Exact counts for convex position subsets, missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
+Most of my work is in extremal graph theory and combinatorial geometry, where the aim is to settle small cases exactly rather than bound them loosely. Alongside that: missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
 
-I like results I can reproduce from scratch, and proofs that survive someone trying to break them. Most of my repositories ship a script that reruns the whole thing.
+I like results I can reproduce from scratch, and proofs that survive someone trying to break them. Most repositories ship a script that reruns the whole thing.
 
 <table>
 <tr>
@@ -43,7 +43,7 @@ I like results I can reproduce from scratch, and proofs that survive someone try
 
 **What I work on**
 
-- Exact and exhaustive computation. Enumerating all order types to settle a count that theory alone would not close.
+- Extremal graph theory and combinatorial geometry. Small cases settled by enumeration, then a proof of why the enumeration stopped where it did.
 - Missing data under MNAR. Honest imputation is a hard problem when the mechanism is unobserved.
 - Formal safety layers. Reachability analysis wrapped around a control loop, so compliance holds in the worst case and not only on average.
 - Confidential verification. Credentials, mixnets and proof systems for agent identity and retrieval provenance.
@@ -71,15 +71,27 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 
 ## Projects
 
-### Research
+### Combinatorics and geometry
+
+| Project | Result |
+|:--|:--|
+| **[convex-thrackle-census](https://github.com/daveaddams91-dev/convex-thrackle-census)** | Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma |
+| **[triple-cover-convex-polygon](https://github.com/daveaddams91-dev/triple-cover-convex-polygon)** | Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14` |
+| **[polygon-triangulation-packing](https://github.com/daveaddams91-dev/polygon-triangulation-packing)** | Exact extremal theory for `τ(n)` and `κ(n)`, with constructive proofs |
+| **[maximal-convex-position-subsets](https://github.com/daveaddams91-dev/maximal-convex-position-subsets)** | Exact `f(n)` through `n = 9`, plus a point line duality theorem |
+| **[edge-disjoint-triangle-packings](https://github.com/daveaddams91-dev/edge-disjoint-triangle-packings)** | Convex barrier, then a reduction to subcubic trees |
+| **[cycle-spectra-connectivity](https://github.com/daveaddams91-dev/cycle-spectra-connectivity)** | Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9 |
+| **[connected-labeled-parity](https://github.com/daveaddams91-dev/connected-labeled-parity)** | Exact 2-adic valuations of connected labeled graphs and digraphs |
+| **[adic-diversity](https://github.com/daveaddams91-dev/adic-diversity)** | Largest number of distinct 2-adic valuations across the subset sums of `k` integers |
+
+### Statistics and complex systems
 
 | Project | Description |
 |:--|:--|
-| **[maximal-convex-position-subsets](https://github.com/daveaddams91-dev/maximal-convex-position-subsets)** | Extremal number of maximal convex position subsets of a planar point set. Exact values of f(n) for n up to 9, a duality theorem, and reproducible computation over all order types. |
 | **[umbra](https://github.com/daveaddams91-dev/umbra)** | Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random. |
 | **[early-warning-complex-systems](https://github.com/daveaddams91-dev/early-warning-complex-systems)** | Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse. |
 
-### Simulation
+### Simulation and formal methods
 
 | Project | Description |
 |:--|:--|
@@ -87,7 +99,7 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 | **[terrain-erosion-engine](https://github.com/daveaddams91-dev/terrain-erosion-engine)** | Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js. |
 | **[certified-dose](https://github.com/daveaddams91-dev/certified-dose)** | Package, CLI and dashboard that put automated process control dosing inside a formal reachability analysis safety layer. |
 
-### Trust and agents
+### Trust and autonomous agents
 
 | Project | Description |
 |:--|:--|
@@ -121,7 +133,7 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 
 **Also working with**
 
-`Numba` · `NumPy` · `SciPy` · `Jupyter` · `WebGPU` · `PyQt6` · `LLM agents` · `Zero knowledge proofs` · `Verifiable credentials`
+`Numba` Â· `NumPy` Â· `SciPy` Â· `Jupyter` Â· `WebGPU` Â· `PyQt6` Â· `LLM agents` Â· `Zero knowledge proofs` Â· `Verifiable credentials`
 
 ---
 
