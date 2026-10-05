@@ -1,0 +1,24 @@
+# Encoding guard. Git has no lever for this: .gitattributes controls line
+# endings only. charset below is what stops a file being read as Windows-1252
+# and turning "·" into "Â·", which is what happened here once already.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+[*.md]
+# Two trailing spaces are a hard line break in markdown, so leave them alone.
+trim_trailing_whitespace = false
+
+[*.{yml,yaml,json,js,ts,html,css}]
+indent_size = 2
+
+[*.py]
+indent_size = 4
+
+[Makefile]
+indent_style = tab

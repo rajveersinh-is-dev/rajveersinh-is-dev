@@ -1,0 +1,15 @@
+# Normalise line endings so markdown diffs stay clean on any machine.
+# This overrides core.autocrlf=true, which was rewriting LF to CRLF in the
+# working tree and producing noisy "LF will be replaced by CRLF" warnings.
+
+* text=auto eol=lf
+
+# Binary assets must never be touched by line-ending conversion.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.woff binary
+*.woff2 binary
