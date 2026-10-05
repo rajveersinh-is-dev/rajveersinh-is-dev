@@ -19,7 +19,7 @@
 <h1 align="center">Rajveersinh Pardeshi</h1>
 
 <p align="center">
-  Computational mathematics Â· Scientific simulation Â· Verifiable systems
+  Computational mathematics / Scientific simulation / Verifiable systems
 </p>
 
 <p align="center">
@@ -77,7 +77,7 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 |:--|:--|
 | **[convex-thrackle-census](https://github.com/daveaddams91-dev/convex-thrackle-census)** | Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma |
 | **[triple-cover-convex-polygon](https://github.com/daveaddams91-dev/triple-cover-convex-polygon)** | Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14` |
-| **[polygon-triangulation-packing](https://github.com/daveaddams91-dev/polygon-triangulation-packing)** | Exact extremal theory for `τ(n)` and `κ(n)`, with constructive proofs |
+| **[polygon-triangulation-packing](https://github.com/daveaddams91-dev/polygon-triangulation-packing)** | Exact extremal theory for `tau(n)` and `kappa(n)`, with constructive proofs |
 | **[maximal-convex-position-subsets](https://github.com/daveaddams91-dev/maximal-convex-position-subsets)** | Exact `f(n)` through `n = 9`, plus a point line duality theorem |
 | **[edge-disjoint-triangle-packings](https://github.com/daveaddams91-dev/edge-disjoint-triangle-packings)** | Convex barrier, then a reduction to subcubic trees |
 | **[cycle-spectra-connectivity](https://github.com/daveaddams91-dev/cycle-spectra-connectivity)** | Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9 |
@@ -133,7 +133,7 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 
 **Also working with**
 
-`Numba` Â· `NumPy` Â· `SciPy` Â· `Jupyter` Â· `WebGPU` Â· `PyQt6` Â· `LLM agents` Â· `Zero knowledge proofs` Â· `Verifiable credentials`
+`Numba` / `NumPy` / `SciPy` / `Jupyter` / `WebGPU` / `PyQt6` / `LLM agents` / `Zero knowledge proofs` / `Verifiable credentials`
 
 ---
 

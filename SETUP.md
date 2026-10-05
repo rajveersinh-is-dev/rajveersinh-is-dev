@@ -134,6 +134,6 @@ the image URLs at your own deployment. The query parameters stay exactly the sam
 
 ```
 profile-readme/
-├── README.md     the profile README
-└── SETUP.md      this file, never shown on your profile
+|-- README.md     the profile README
+`-- SETUP.md      this file, never shown on your profile
 ```
