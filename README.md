@@ -33,7 +33,7 @@
 
 ## About
 
-Most of my work is in extremal graph theory and combinatorial geometry, where the aim is to settle small cases exactly rather than bound them loosely. Alongside that: missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
+Most of my work is in extremal graph theory and combinatorial geometry, where the aim is to settle small cases exactly rather than bound them loosely. A good share of it starts from somebody else's conjecture and ends in a negative result, which I publish rather than quietly drop. Alongside that: missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
 
 I like results I can reproduce from scratch, and proofs that survive someone trying to break them. Most repositories ship a script that reruns the whole thing.
 
@@ -83,6 +83,24 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 | **[cycle-spectra-connectivity](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity)** | Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9 |
 | **[connected-labeled-parity](https://github.com/rajveersinh-is-dev/connected-labeled-parity)** | Exact 2-adic valuations of connected labeled graphs and digraphs |
 | **[adic-diversity](https://github.com/rajveersinh-is-dev/adic-diversity)** | Largest number of distinct 2-adic valuations across the subset sums of `k` integers |
+| **[edge-disjoint-triangulations](https://github.com/rajveersinh-is-dev/edge-disjoint-triangulations)** | Packing number `floor(n/2)` and a full classification of `P_2m`, which has `2^(m-2)` resolutions |
+| **[inertia-admissible-polynomials](https://github.com/rajveersinh-is-dev/inertia-admissible-polynomials)** | Exact linearisation for the `q/s` ceiling of graph positive inertia, the `s = 1` case, and a conjectured barrier at 3 |
+| **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** | Resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions |
+| **[threshold-preference-arrangements](https://github.com/rajveersinh-is-dev/threshold-preference-arrangements)** | Exact chamber counts for tolerance-based distance orderings of point sets |
+
+### Conjectures under investigation
+
+Full writeups, including the ones that do not work out.
+
+| Project | Where it stands |
+|:--|:--|
+| **[erdos-straus-conjecture-investigation](https://github.com/rajveersinh-is-dev/erdos-straus-conjecture-investigation)** | Exact criterion, a hard-core reduction, a Type I and Type II dichotomy, plus new parametric families |
+| **[erdos-problem-536-lcm-sets](https://github.com/rajveersinh-is-dev/erdos-problem-536-lcm-sets)** | Problem #536: sets with no three distinct elements sharing a pairwise LCM |
+| **[unit-distances-in-convex-position](https://github.com/rajveersinh-is-dev/unit-distances-in-convex-position)** | Erdos-Moser structural investigation of unit distances among convex polygon vertices |
+| **[ramanujan-signing-cut-vertex-obstruction](https://github.com/rajveersinh-is-dev/ramanujan-signing-cut-vertex-obstruction)** | A cut-vertex obstruction for cubic graphs in the Xu 2026 Ramanujan signing problem |
+| **[erdos-powerful-triples](https://github.com/rajveersinh-is-dev/erdos-powerful-triples)** | Erdos-Mollin-Walsh on three consecutive powerful numbers, closed with an honest negative report |
+| **[bollobas-leader-subsequence-sums](https://github.com/rajveersinh-is-dev/bollobas-leader-subsequence-sums)** | Proves the `t = 0` case of Bollobas-Leader on few subsequence sums in `Z_n x Z_n` |
+
 
 ### Statistics and complex systems
 
@@ -106,6 +124,13 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 | **[docutrust](https://github.com/rajveersinh-is-dev/docutrust)** | Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines. |
 | **[autod](https://github.com/rajveersinh-is-dev/autod)** | Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours. |
 | **[repo-improver-bot](https://github.com/rajveersinh-is-dev/repo-improver-bot)** | Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests. |
+
+### Tools, languages and experiments
+
+| Project | Description |
+|:--|:--|
+| **[numlang](https://github.com/rajveersinh-is-dev/numlang)** | Research programming language with a higher-order supercompiler, a polyhedral recurrence solver, and Lean 4 mechanized correctness proofs. |
+| **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)** | Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh. |
 
 ---
 
