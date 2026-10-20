@@ -5,41 +5,45 @@
   file at its root. A private repo will not show up on your profile.
 
   Notes for future edits:
-  - The top wave is decoration only. capsule-render draws its own text with a
-    CSS fade-in that many renderers never play, which leaves the words invisible.
-    So there is no text in it, and the name below is a normal Markdown heading.
-  - Every badge is plain shields.io. Dynamic GitHub badges (repo count) and
-    multi-icon sets like skillicons have both proven unreliable here.
+  - The banner and footer are hand-built SVGs in assets/, not a hosted service,
+    so nothing can silently fail to render. Each has a light and a dark twin,
+    and the README picks the right one with the #gh-light-mode-only /
+    #gh-dark-mode-only URL fragments. The name is drawn inside the banner, so
+    there is no Markdown heading for it.
+  - The tagline under the banner is an animated typing SVG from
+    readme-typing-svg (DenverCoder1). If it ever stops loading, swap that <img>
+    for a plain centred line of text.
+  - Every badge is flat-square and shares one accent (violet 7c3aed) plus a
+    neutral grey (6e7681), so the palette matches the banner.
+  - Section headings carry no --- rules: GitHub already draws a border under
+    every h2, and doubling it looked heavy.
   - The 3D contribution graph is generated once a day by
-    .github/workflows/profile-3d.yml into profile-3d-contrib/.
-    The action renders one combined canvas per theme; split-3d-svg.py
-    then cuts it into three images (calendar, radar, language donut),
-    strips the white background and drops the empty-day tiles. The
-    calendar is shown big, the other two side by side beneath it.
-    Every image has a light and a dark twin, and the README picks
-    whichever matches the viewer's theme via the #gh-light-mode-only
-    / #gh-dark-mode-only URL fragments. Do not hand-edit the SVGs;
-    change .github/profile-3d-settings.json instead.
+    .github/workflows/profile-3d.yml into profile-3d-contrib/. The action
+    renders one combined canvas per theme; split-3d-svg.py then cuts it into
+    three images (calendar, radar, language donut), strips the white background
+    and drops the empty-day tiles. Do not hand-edit the SVGs; change
+    .github/profile-3d-settings.json instead.
 -->
 
 <p align="center">
-  <img alt="gradient banner" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=4c1d95,7c3aed,c026d3,2563eb&height=120&section=header&animation=fadeIn">
-</p>
-
-<h1 align="center">Rajveersinh Pardeshi</h1>
-
-<p align="center">
-  Computational mathematics / Scientific simulation / Verifiable systems
+  <img alt="Rajveersinh Pardeshi" src="./assets/banner-light.svg#gh-light-mode-only" width="100%">
+  <img alt="Rajveersinh Pardeshi" src="./assets/banner-dark.svg#gh-dark-mode-only" width="100%">
 </p>
 
 <p align="center">
-  <a href="mailto:daveaddams91@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-daveaddams91@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white"></a>
-  <a href="https://github.com/rajveersinh-is-dev"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-rajveersinh--is--dev-181717?style=for-the-badge&logo=github&logoColor=white"></a>
-  <img alt="Location" src="https://img.shields.io/badge/Location-India-7c3aed?style=for-the-badge">
-  <img alt="Open to collaboration" src="https://img.shields.io/badge/Open%20to%20collaboration-f97316?style=for-the-badge">
+  <img alt="Computational mathematics, scientific simulation, verifiable systems" src="https://readme-typing-svg.demolab.com?font=Ubuntu&weight=500&size=22&duration=3200&pause=900&color=7C3AED&center=true&vCenter=true&width=440&height=44&lines=Computational+mathematics;Scientific+simulation;Verifiable+systems">
 </p>
 
----
+<p align="center">
+  <a href="mailto:daveaddams91@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-daveaddams91@gmail.com-7c3aed?style=flat-square&logo=gmail&logoColor=white"></a>
+  <a href="https://github.com/rajveersinh-is-dev"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-rajveersinh--is--dev-7c3aed?style=flat-square&logo=github&logoColor=white"></a>
+  <img alt="Location" src="https://img.shields.io/badge/Location-India-6e7681?style=flat-square">
+  <img alt="Open to collaboration" src="https://img.shields.io/badge/Open%20to%20collaboration-7c3aed?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="#about">About</a> · <a href="#projects">Projects</a> · <a href="#toolbox">Toolbox</a> · <a href="#contribution-activity">Contribution activity</a> · <a href="#reach-me">Reach me</a>
+</p>
 
 ## About
 
@@ -47,11 +51,7 @@ Most of my work is in extremal graph theory and combinatorial geometry, where th
 
 I like results I can reproduce from scratch, and proofs that survive someone trying to break them. Most repositories ship a script that reruns the whole thing.
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-**What I work on**
+### What I work on
 
 - Extremal graph theory and combinatorial geometry. Small cases settled by enumeration, then a proof of why the enumeration stopped where it did.
 - Missing data under MNAR. Honest imputation is a hard problem when the mechanism is unobserved.
@@ -59,27 +59,24 @@ I like results I can reproduce from scratch, and proofs that survive someone try
 - Confidential verification. Credentials, mixnets and proof systems for agent identity and retrieval provenance.
 - GPU first simulation. Compute shaders and JIT compiled kernels, because the physics deserves better than a slow interpreted loop.
 
-</td>
-<td width="50%" valign="top">
+### Currently
 
-**Currently**
+> [!NOTE]
+> - Plasma confinement stability, drift orbits and energetic particle losses.
+> - Whether critical transitions can be signaled early in complex systems, rather than explained after the fact.
+> - Automation that improves itself: agents generating, verifying and publishing successors.
+> - Making heavy mathematics legible and reproducible in public.
 
-- Plasma confinement stability, drift orbits and energetic particle losses.
-- Whether critical transitions can be signaled early in complex systems, rather than explained after the fact.
-- Automation that improves itself: agents generating, verifying and publishing successors.
-- Making heavy mathematics legible and reproducible in public.
-
-**Contact**
+### Contact
 
 Open to research collaboration, reproducibility bugs, and PRs. Based in India, happy to work across time zones.
 
-</td>
-</tr>
-</table>
-
----
-
 ## Projects
+
+### Featured
+
+> [!IMPORTANT]
+> **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions.
 
 ### Combinatorics and geometry
 
@@ -102,7 +99,7 @@ Open to research collaboration, reproducibility bugs, and PRs. Based in India, h
 
 Full writeups, including the ones that do not work out.
 
-| Project | Where it stands |
+| Project | Result |
 |:--|:--|
 | **[erdos-straus-conjecture-investigation](https://github.com/rajveersinh-is-dev/erdos-straus-conjecture-investigation)** | Exact criterion, a hard-core reduction, a Type I and Type II dichotomy, plus new parametric families |
 | **[erdos-problem-536-lcm-sets](https://github.com/rajveersinh-is-dev/erdos-problem-536-lcm-sets)** | Problem #536: sets with no three distinct elements sharing a pairwise LCM |
@@ -110,7 +107,6 @@ Full writeups, including the ones that do not work out.
 | **[ramanujan-signing-cut-vertex-obstruction](https://github.com/rajveersinh-is-dev/ramanujan-signing-cut-vertex-obstruction)** | A cut-vertex obstruction for cubic graphs in the Xu 2026 Ramanujan signing problem |
 | **[erdos-powerful-triples](https://github.com/rajveersinh-is-dev/erdos-powerful-triples)** | Erdos-Mollin-Walsh on three consecutive powerful numbers, closed with an honest negative report |
 | **[bollobas-leader-subsequence-sums](https://github.com/rajveersinh-is-dev/bollobas-leader-subsequence-sums)** | Proves the `t = 0` case of Bollobas-Leader on few subsequence sums in `Z_n x Z_n` |
-
 
 ### Statistics and complex systems
 
@@ -142,35 +138,31 @@ Full writeups, including the ones that do not work out.
 | **[numlang](https://github.com/rajveersinh-is-dev/numlang)** | Research programming language with a higher-order supercompiler, a polyhedral recurrence solver, and Lean 4 mechanized correctness proofs. |
 | **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)** | Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh. |
 
----
-
 ## Toolbox
 
 **Languages**
 
 <p>
-  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
-  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-008080?style=for-the-badge&logo=latex&logoColor=white">
-  <img alt="WGSL" src="https://img.shields.io/badge/WGSL-1B6AC9?style=for-the-badge&logo=google&logoColor=white">
+  <img alt="Python" src="https://img.shields.io/badge/Python-7c3aed?style=flat-square&logo=python&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-7c3aed?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-7c3aed?style=flat-square&logo=javascript&logoColor=white">
+  <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-7c3aed?style=flat-square&logo=latex&logoColor=white">
+  <img alt="WGSL" src="https://img.shields.io/badge/WGSL-7c3aed?style=flat-square&logo=google&logoColor=white">
 </p>
 
 **Tools and frameworks**
 
 <p>
-  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white">
-  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
-  <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
-  <img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=black">
-  <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-6e7681?style=flat-square&logo=threedotjs&logoColor=white">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-6e7681?style=flat-square&logo=nodedotjs&logoColor=white">
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-6e7681?style=flat-square&logo=docker&logoColor=white">
+  <img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-6e7681?style=flat-square&logo=githubactions&logoColor=white">
+  <img alt="Git" src="https://img.shields.io/badge/Git-6e7681?style=flat-square&logo=git&logoColor=white">
 </p>
 
 **Also working with**
 
-`Numba` / `NumPy` / `SciPy` / `Jupyter` / `WebGPU` / `PyQt6` / `LLM agents` / `Zero knowledge proofs` / `Verifiable credentials`
-
----
+Numba · NumPy · SciPy · Jupyter · WebGPU · PyQt6 · LLM agents · Zero knowledge proofs · Verifiable credentials
 
 ## Contribution activity
 
@@ -186,8 +178,6 @@ Full writeups, including the ones that do not work out.
   <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-dark.svg#gh-dark-mode-only" width="46%">
 </p>
 
----
-
 ## Reach me
 
 - Email: [daveaddams91@gmail.com](mailto:daveaddams91@gmail.com)
@@ -195,5 +185,6 @@ Full writeups, including the ones that do not work out.
 - Issues and pull requests are open on all the repositories above.
 
 <p align="center">
-  <img alt="gradient footer" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=c026d3,7c3aed,2563eb&height=80&section=footer&animation=fadeIn&reversal=true">
+  <img alt="gradient footer" src="./assets/footer-light.svg#gh-light-mode-only" width="100%">
+  <img alt="gradient footer" src="./assets/footer-dark.svg#gh-dark-mode-only" width="100%">
 </p>
