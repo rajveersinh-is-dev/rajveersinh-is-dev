@@ -10,6 +10,9 @@
     So there is no text in it, and the name below is a normal Markdown heading.
   - Every badge is plain shields.io. Dynamic GitHub badges (repo count) and
     multi-icon sets like skillicons have both proven unreliable here.
+  - The 3D contribution graph is generated once a day by
+    .github/workflows/profile-3d.yml into profile-3d-contrib/.
+    Do not hand-edit those SVGs; change the workflow instead.
 -->
 
 <p align="center">
@@ -159,6 +162,14 @@ Full writeups, including the ones that do not work out.
 **Also working with**
 
 `Numba` / `NumPy` / `SciPy` / `Jupyter` / `WebGPU` / `PyQt6` / `LLM agents` / `Zero knowledge proofs` / `Verifiable credentials`
+
+---
+
+## Contribution activity
+
+<p align="center">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-season-animate.svg">
+</p>
 
 ---
 
