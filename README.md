@@ -15,8 +15,13 @@
     for a plain centred line of text.
   - Every badge is flat-square and shares one accent (violet 7c3aed) plus a
     neutral grey (6e7681), so the palette matches the banner.
-  - Section headings carry no --- rules: GitHub already draws a border under
-    every h2, and doubling it looked heavy.
+  - Projects are bullet lists, not tables. GitHub gives no control over table
+    column widths, so on a phone the repo names broke across three lines and
+    the descriptions were squeezed into a narrow strip.
+  - No GitHub alert callouts: GitHub indents a blockquote, and a list inside one
+    gets indented twice, which pushed the text into a narrow column.
+  - Major sections are separated by --- rules. GitHub also draws a border under
+    every h2, so each heading sits between two lines; that is deliberate.
   - The 3D contribution graph is generated once a day by
     .github/workflows/profile-3d.yml into profile-3d-contrib/. The action
     renders one combined canvas per theme; split-3d-svg.py then cuts it into
@@ -45,6 +50,8 @@
   <a href="#about">About</a> · <a href="#projects">Projects</a> · <a href="#toolbox">Toolbox</a> · <a href="#contribution-activity">Contribution activity</a> · <a href="#reach-me">Reach me</a>
 </p>
 
+---
+
 ## About
 
 Most of my work is in extremal graph theory and combinatorial geometry, where the aim is to settle small cases exactly rather than bound them loosely. A good share of it starts from somebody else's conjecture and ends in a negative result, which I publish rather than quietly drop. Alongside that: missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
@@ -61,82 +68,72 @@ I like results I can reproduce from scratch, and proofs that survive someone try
 
 ### Currently
 
-> [!NOTE]
-> - Plasma confinement stability, drift orbits and energetic particle losses.
-> - Whether critical transitions can be signaled early in complex systems, rather than explained after the fact.
-> - Automation that improves itself: agents generating, verifying and publishing successors.
-> - Making heavy mathematics legible and reproducible in public.
+- Plasma confinement stability, drift orbits and energetic particle losses.
+- Whether critical transitions can be signaled early in complex systems, rather than explained after the fact.
+- Automation that improves itself: agents generating, verifying and publishing successors.
+- Making heavy mathematics legible and reproducible in public.
 
 ### Contact
 
 Open to research collaboration, reproducibility bugs, and PRs. Based in India, happy to work across time zones.
 
+---
+
 ## Projects
 
 ### Featured
 
-> [!IMPORTANT]
-> **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions.
+**[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions.
 
 ### Combinatorics and geometry
 
-| Project | Result |
-|:--|:--|
-| **[convex-thrackle-census](https://github.com/rajveersinh-is-dev/convex-thrackle-census)** | Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma |
-| **[triple-cover-convex-polygon](https://github.com/rajveersinh-is-dev/triple-cover-convex-polygon)** | Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14` |
-| **[polygon-triangulation-packing](https://github.com/rajveersinh-is-dev/polygon-triangulation-packing)** | Exact extremal theory for `tau(n)` and `kappa(n)`, with constructive proofs |
-| **[maximal-convex-position-subsets](https://github.com/rajveersinh-is-dev/maximal-convex-position-subsets)** | Exact `f(n)` through `n = 9`, plus a point line duality theorem |
-| **[edge-disjoint-triangle-packings](https://github.com/rajveersinh-is-dev/edge-disjoint-triangle-packings)** | Convex barrier, then a reduction to subcubic trees |
-| **[cycle-spectra-connectivity](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity)** | Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9 |
-| **[connected-labeled-parity](https://github.com/rajveersinh-is-dev/connected-labeled-parity)** | Exact 2-adic valuations of connected labeled graphs and digraphs |
-| **[adic-diversity](https://github.com/rajveersinh-is-dev/adic-diversity)** | Largest number of distinct 2-adic valuations across the subset sums of `k` integers |
-| **[edge-disjoint-triangulations](https://github.com/rajveersinh-is-dev/edge-disjoint-triangulations)** | Packing number `floor(n/2)` and a full classification of `P_2m`, which has `2^(m-2)` resolutions |
-| **[inertia-admissible-polynomials](https://github.com/rajveersinh-is-dev/inertia-admissible-polynomials)** | Exact linearisation for the `q/s` ceiling of graph positive inertia, the `s = 1` case, and a conjectured barrier at 3 |
-| **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** | Resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions |
-| **[threshold-preference-arrangements](https://github.com/rajveersinh-is-dev/threshold-preference-arrangements)** | Exact chamber counts for tolerance-based distance orderings of point sets |
+- **[convex-thrackle-census](https://github.com/rajveersinh-is-dev/convex-thrackle-census)** — Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma
+- **[triple-cover-convex-polygon](https://github.com/rajveersinh-is-dev/triple-cover-convex-polygon)** — Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14`
+- **[polygon-triangulation-packing](https://github.com/rajveersinh-is-dev/polygon-triangulation-packing)** — Exact extremal theory for `tau(n)` and `kappa(n)`, with constructive proofs
+- **[maximal-convex-position-subsets](https://github.com/rajveersinh-is-dev/maximal-convex-position-subsets)** — Exact `f(n)` through `n = 9`, plus a point line duality theorem
+- **[edge-disjoint-triangle-packings](https://github.com/rajveersinh-is-dev/edge-disjoint-triangle-packings)** — Convex barrier, then a reduction to subcubic trees
+- **[cycle-spectra-connectivity](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity)** — Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9
+- **[connected-labeled-parity](https://github.com/rajveersinh-is-dev/connected-labeled-parity)** — Exact 2-adic valuations of connected labeled graphs and digraphs
+- **[adic-diversity](https://github.com/rajveersinh-is-dev/adic-diversity)** — Largest number of distinct 2-adic valuations across the subset sums of `k` integers
+- **[edge-disjoint-triangulations](https://github.com/rajveersinh-is-dev/edge-disjoint-triangulations)** — Packing number `floor(n/2)` and a full classification of `P_2m`, which has `2^(m-2)` resolutions
+- **[inertia-admissible-polynomials](https://github.com/rajveersinh-is-dev/inertia-admissible-polynomials)** — Exact linearisation for the `q/s` ceiling of graph positive inertia, the `s = 1` case, and a conjectured barrier at 3
+- **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** — Resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions
+- **[threshold-preference-arrangements](https://github.com/rajveersinh-is-dev/threshold-preference-arrangements)** — Exact chamber counts for tolerance-based distance orderings of point sets
 
 ### Conjectures under investigation
 
 Full writeups, including the ones that do not work out.
 
-| Project | Result |
-|:--|:--|
-| **[erdos-straus-conjecture-investigation](https://github.com/rajveersinh-is-dev/erdos-straus-conjecture-investigation)** | Exact criterion, a hard-core reduction, a Type I and Type II dichotomy, plus new parametric families |
-| **[erdos-problem-536-lcm-sets](https://github.com/rajveersinh-is-dev/erdos-problem-536-lcm-sets)** | Problem #536: sets with no three distinct elements sharing a pairwise LCM |
-| **[unit-distances-in-convex-position](https://github.com/rajveersinh-is-dev/unit-distances-in-convex-position)** | Erdos-Moser structural investigation of unit distances among convex polygon vertices |
-| **[ramanujan-signing-cut-vertex-obstruction](https://github.com/rajveersinh-is-dev/ramanujan-signing-cut-vertex-obstruction)** | A cut-vertex obstruction for cubic graphs in the Xu 2026 Ramanujan signing problem |
-| **[erdos-powerful-triples](https://github.com/rajveersinh-is-dev/erdos-powerful-triples)** | Erdos-Mollin-Walsh on three consecutive powerful numbers, closed with an honest negative report |
-| **[bollobas-leader-subsequence-sums](https://github.com/rajveersinh-is-dev/bollobas-leader-subsequence-sums)** | Proves the `t = 0` case of Bollobas-Leader on few subsequence sums in `Z_n x Z_n` |
+- **[erdos-straus-conjecture-investigation](https://github.com/rajveersinh-is-dev/erdos-straus-conjecture-investigation)** — Exact criterion, a hard-core reduction, a Type I and Type II dichotomy, plus new parametric families
+- **[erdos-problem-536-lcm-sets](https://github.com/rajveersinh-is-dev/erdos-problem-536-lcm-sets)** — Problem #536: sets with no three distinct elements sharing a pairwise LCM
+- **[unit-distances-in-convex-position](https://github.com/rajveersinh-is-dev/unit-distances-in-convex-position)** — Erdos-Moser structural investigation of unit distances among convex polygon vertices
+- **[ramanujan-signing-cut-vertex-obstruction](https://github.com/rajveersinh-is-dev/ramanujan-signing-cut-vertex-obstruction)** — A cut-vertex obstruction for cubic graphs in the Xu 2026 Ramanujan signing problem
+- **[erdos-powerful-triples](https://github.com/rajveersinh-is-dev/erdos-powerful-triples)** — Erdos-Mollin-Walsh on three consecutive powerful numbers, closed with an honest negative report
+- **[bollobas-leader-subsequence-sums](https://github.com/rajveersinh-is-dev/bollobas-leader-subsequence-sums)** — Proves the `t = 0` case of Bollobas-Leader on few subsequence sums in `Z_n x Z_n`
 
 ### Statistics and complex systems
 
-| Project | Description |
-|:--|:--|
-| **[umbra](https://github.com/rajveersinh-is-dev/umbra)** | Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random. |
-| **[early-warning-complex-systems](https://github.com/rajveersinh-is-dev/early-warning-complex-systems)** | Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse. |
+- **[umbra](https://github.com/rajveersinh-is-dev/umbra)** — Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random.
+- **[early-warning-complex-systems](https://github.com/rajveersinh-is-dev/early-warning-complex-systems)** — Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse.
 
 ### Simulation and formal methods
 
-| Project | Description |
-|:--|:--|
-| **[Tokamak-Py](https://github.com/rajveersinh-is-dev/Tokamak-Py)** | Numba accelerated N body electromagnetic plasma confinement engine, using Boris integration for stable particle pushing, with a PyQt6 interface. |
-| **[terrain-erosion-engine](https://github.com/rajveersinh-is-dev/terrain-erosion-engine)** | Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js. |
-| **[certified-dose](https://github.com/rajveersinh-is-dev/certified-dose)** | Package, CLI and dashboard that put automated process control dosing inside a formal reachability analysis safety layer. |
+- **[Tokamak-Py](https://github.com/rajveersinh-is-dev/Tokamak-Py)** — Numba accelerated N body electromagnetic plasma confinement engine, using Boris integration for stable particle pushing, with a PyQt6 interface.
+- **[terrain-erosion-engine](https://github.com/rajveersinh-is-dev/terrain-erosion-engine)** — Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js.
+- **[certified-dose](https://github.com/rajveersinh-is-dev/certified-dose)** — Package, CLI and dashboard that put automated process control dosing inside a formal reachability analysis safety layer.
 
 ### Trust and autonomous agents
 
-| Project | Description |
-|:--|:--|
-| **[docutrust](https://github.com/rajveersinh-is-dev/docutrust)** | Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines. |
-| **[autod](https://github.com/rajveersinh-is-dev/autod)** | Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours. |
-| **[repo-improver-bot](https://github.com/rajveersinh-is-dev/repo-improver-bot)** | Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests. |
+- **[docutrust](https://github.com/rajveersinh-is-dev/docutrust)** — Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines.
+- **[autod](https://github.com/rajveersinh-is-dev/autod)** — Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours.
+- **[repo-improver-bot](https://github.com/rajveersinh-is-dev/repo-improver-bot)** — Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests.
 
 ### Tools, languages and experiments
 
-| Project | Description |
-|:--|:--|
-| **[numlang](https://github.com/rajveersinh-is-dev/numlang)** | Research programming language with a higher-order supercompiler, a polyhedral recurrence solver, and Lean 4 mechanized correctness proofs. |
-| **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)** | Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh. |
+- **[numlang](https://github.com/rajveersinh-is-dev/numlang)** — Research programming language with a higher-order supercompiler, a polyhedral recurrence solver, and Lean 4 mechanized correctness proofs.
+- **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)** — Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh.
+
+---
 
 ## Toolbox
 
@@ -164,6 +161,8 @@ Full writeups, including the ones that do not work out.
 
 Numba · NumPy · SciPy · Jupyter · WebGPU · PyQt6 · LLM agents · Zero knowledge proofs · Verifiable credentials
 
+---
+
 ## Contribution activity
 
 <p align="center">
@@ -177,6 +176,8 @@ Numba · NumPy · SciPy · Jupyter · WebGPU · PyQt6 · LLM agents · Zero know
   <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-dark.svg#gh-dark-mode-only" width="46%">
   <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-dark.svg#gh-dark-mode-only" width="46%">
 </p>
+
+---
 
 ## Reach me
 
