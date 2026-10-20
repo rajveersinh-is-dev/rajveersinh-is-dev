@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="507" height="390" viewBox="727.50 75.00 507.00 390.00"><style>* { font-family: "Ubuntu", "Helvetica", "Arial", sans-serif; }
+.fill-fg { fill: #e6edf3; }
+.stroke-fg { stroke: #e6edf3; }
+.fill-bg { fill: transparent; }
+.stroke-bg { stroke: transparent; }
+.fill-strong { fill: #ffffff; }
+.fill-weak { fill: #8b949e; }
+.stroke-weak { stroke: #8b949e; }
+.radar {
+stroke-width: 4px;
+stroke: #3fb950;
+fill: #3fb950;
+fill-opacity: 0.5;
+}
+.cont-top-p0-0 { fill: transparent; }
+.cont-left-p0-0 { fill: transparent; }
+.cont-right-p0-0 { fill: transparent; }
+.cont-top-p0-1 { fill: rgb(255, 237, 74); }
+.cont-left-p0-1 { fill: rgb(213, 198, 62); }
+.cont-right-p0-1 { fill: rgb(179, 166, 52); }
+.cont-top-p0-2 { fill: rgb(255, 196, 2); }
+.cont-left-p0-2 { fill: rgb(213, 164, 2); }
+.cont-right-p0-2 { fill: rgb(179, 137, 1); }
+.cont-top-p0-3 { fill: rgb(254, 148, 0); }
+.cont-left-p0-3 { fill: rgb(213, 124, 0); }
+.cont-right-p0-3 { fill: rgb(178, 104, 0); }
+.cont-top-p0-4 { fill: rgb(250, 97, 0); }
+.cont-left-p0-4 { fill: rgb(209, 81, 0); }
+.cont-right-p0-4 { fill: rgb(175, 68, 0); }
+.cont-top-p1-0 { fill: transparent; }
+.cont-left-p1-0 { fill: transparent; }
+.cont-right-p1-0 { fill: transparent; }
+.cont-top-p1-1 { fill: rgb(255, 237, 74); }
+.cont-left-p1-1 { fill: rgb(213, 198, 62); }
+.cont-right-p1-1 { fill: rgb(179, 166, 52); }
+.cont-top-p1-2 { fill: rgb(255, 196, 2); }
+.cont-left-p1-2 { fill: rgb(213, 164, 2); }
+.cont-right-p1-2 { fill: rgb(179, 137, 1); }
+.cont-top-p1-3 { fill: rgb(254, 148, 0); }
+.cont-left-p1-3 { fill: rgb(213, 124, 0); }
+.cont-right-p1-3 { fill: rgb(178, 104, 0); }
+.cont-top-p1-4 { fill: rgb(250, 97, 0); }
+.cont-left-p1-4 { fill: rgb(209, 81, 0); }
+.cont-right-p1-4 { fill: rgb(175, 68, 0); }
+.cont-top-p2-0 { fill: transparent; }
+.cont-left-p2-0 { fill: transparent; }
+.cont-right-p2-0 { fill: transparent; }
+.cont-top-p2-1 { fill: rgb(255, 237, 74); }
+.cont-left-p2-1 { fill: rgb(213, 198, 62); }
+.cont-right-p2-1 { fill: rgb(179, 166, 52); }
+.cont-top-p2-2 { fill: rgb(255, 196, 2); }
+.cont-left-p2-2 { fill: rgb(213, 164, 2); }
+.cont-right-p2-2 { fill: rgb(179, 137, 1); }
+.cont-top-p2-3 { fill: rgb(254, 148, 0); }
+.cont-left-p2-3 { fill: rgb(213, 124, 0); }
+.cont-right-p2-3 { fill: rgb(178, 104, 0); }
+.cont-top-p2-4 { fill: rgb(250, 97, 0); }
+.cont-left-p2-4 { fill: rgb(209, 81, 0); }
+.cont-right-p2-4 { fill: rgb(175, 68, 0); }
+.cont-top-p3-0 { fill: transparent; }
+.cont-left-p3-0 { fill: transparent; }
+.cont-right-p3-0 { fill: transparent; }
+.cont-top-p3-1 { fill: rgb(255, 237, 74); }
+.cont-left-p3-1 { fill: rgb(213, 198, 62); }
+.cont-right-p3-1 { fill: rgb(179, 166, 52); }
+.cont-top-p3-2 { fill: rgb(255, 196, 2); }
+.cont-left-p3-2 { fill: rgb(213, 164, 2); }
+.cont-right-p3-2 { fill: rgb(179, 137, 1); }
+.cont-top-p3-3 { fill: rgb(254, 148, 0); }
+.cont-left-p3-3 { fill: rgb(213, 124, 0); }
+.cont-right-p3-3 { fill: rgb(178, 104, 0); }
+.cont-top-p3-4 { fill: rgb(250, 97, 0); }
+.cont-left-p3-4 { fill: rgb(209, 81, 0); }
+.cont-right-p3-4 { fill: rgb(175, 68, 0); }
+.cont-top-p4-0 { fill: transparent; }
+.cont-left-p4-0 { fill: transparent; }
+.cont-right-p4-0 { fill: transparent; }
+.cont-top-p4-1 { fill: rgb(255, 237, 74); }
+.cont-left-p4-1 { fill: rgb(213, 198, 62); }
+.cont-right-p4-1 { fill: rgb(179, 166, 52); }
+.cont-top-p4-2 { fill: rgb(255, 196, 2); }
+.cont-left-p4-2 { fill: rgb(213, 164, 2); }
+.cont-right-p4-2 { fill: rgb(179, 137, 1); }
+.cont-top-p4-3 { fill: rgb(254, 148, 0); }
+.cont-left-p4-3 { fill: rgb(213, 124, 0); }
+.cont-right-p4-3 { fill: rgb(178, 104, 0); }
+.cont-top-p4-4 { fill: rgb(250, 97, 0); }
+.cont-left-p4-4 { fill: rgb(209, 81, 0); }
+.cont-right-p4-4 { fill: rgb(175, 68, 0); }
+.cont-top-p5-0 { fill: transparent; }
+.cont-left-p5-0 { fill: transparent; }
+.cont-right-p5-0 { fill: transparent; }
+.cont-top-p5-1 { fill: rgb(153, 153, 153); }
+.cont-left-p5-1 { fill: rgb(128, 128, 128); }
+.cont-right-p5-1 { fill: rgb(107, 107, 107); }
+.cont-top-p5-2 { fill: rgb(204, 204, 204); }
+.cont-left-p5-2 { fill: rgb(171, 171, 171); }
+.cont-right-p5-2 { fill: rgb(143, 143, 143); }
+.cont-top-p5-3 { fill: rgb(221, 221, 221); }
+.cont-left-p5-3 { fill: rgb(185, 185, 185); }
+.cont-right-p5-3 { fill: rgb(155, 155, 155); }
+.cont-top-p5-4 { fill: rgb(238, 238, 238); }
+.cont-left-p5-4 { fill: rgb(199, 199, 199); }
+.cont-right-p5-4 { fill: rgb(167, 167, 167); }
+.cont-top-p6-0 { fill: transparent; }
+.cont-left-p6-0 { fill: transparent; }
+.cont-right-p6-0 { fill: transparent; }
+.cont-top-p6-1 { fill: rgb(153, 153, 153); }
+.cont-left-p6-1 { fill: rgb(128, 128, 128); }
+.cont-right-p6-1 { fill: rgb(107, 107, 107); }
+.cont-top-p6-2 { fill: rgb(204, 204, 204); }
+.cont-left-p6-2 { fill: rgb(171, 171, 171); }
+.cont-right-p6-2 { fill: rgb(143, 143, 143); }
+.cont-top-p6-3 { fill: rgb(221, 221, 221); }
+.cont-left-p6-3 { fill: rgb(185, 185, 185); }
+.cont-right-p6-3 { fill: rgb(155, 155, 155); }
+.cont-top-p6-4 { fill: rgb(238, 238, 238); }
+.cont-left-p6-4 { fill: rgb(199, 199, 199); }
+.cont-right-p6-4 { fill: rgb(167, 167, 167); }
+.cont-top-p7-0 { fill: transparent; }
+.cont-left-p7-0 { fill: transparent; }
+.cont-right-p7-0 { fill: transparent; }
+.cont-top-p7-1 { fill: rgb(153, 153, 153); }
+.cont-left-p7-1 { fill: rgb(128, 128, 128); }
+.cont-right-p7-1 { fill: rgb(107, 107, 107); }
+.cont-top-p7-2 { fill: rgb(204, 204, 204); }
+.cont-left-p7-2 { fill: rgb(171, 171, 171); }
+.cont-right-p7-2 { fill: rgb(143, 143, 143); }
+.cont-top-p7-3 { fill: rgb(221, 221, 221); }
+.cont-left-p7-3 { fill: rgb(185, 185, 185); }
+.cont-right-p7-3 { fill: rgb(155, 155, 155); }
+.cont-top-p7-4 { fill: rgb(238, 238, 238); }
+.cont-left-p7-4 { fill: rgb(199, 199, 199); }
+.cont-right-p7-4 { fill: rgb(167, 167, 167); }
+.cont-top-p8-0 { fill: transparent; }
+.cont-left-p8-0 { fill: transparent; }
+.cont-right-p8-0 { fill: transparent; }
+.cont-top-p8-1 { fill: rgb(153, 153, 153); }
+.cont-left-p8-1 { fill: rgb(128, 128, 128); }
+.cont-right-p8-1 { fill: rgb(107, 107, 107); }
+.cont-top-p8-2 { fill: rgb(204, 204, 204); }
+.cont-left-p8-2 { fill: rgb(171, 171, 171); }
+.cont-right-p8-2 { fill: rgb(143, 143, 143); }
+.cont-top-p8-3 { fill: rgb(221, 221, 221); }
+.cont-left-p8-3 { fill: rgb(185, 185, 185); }
+.cont-right-p8-3 { fill: rgb(155, 155, 155); }
+.cont-top-p8-4 { fill: rgb(238, 238, 238); }
+.cont-left-p8-4 { fill: rgb(199, 199, 199); }
+.cont-right-p8-4 { fill: rgb(167, 167, 167); }
+.cont-top-p9-0 { fill: transparent; }
+.cont-left-p9-0 { fill: transparent; }
+.cont-right-p9-0 { fill: transparent; }
+.cont-top-p9-1 { fill: rgb(153, 153, 153); }
+.cont-left-p9-1 { fill: rgb(128, 128, 128); }
+.cont-right-p9-1 { fill: rgb(107, 107, 107); }
+.cont-top-p9-2 { fill: rgb(204, 204, 204); }
+.cont-left-p9-2 { fill: rgb(171, 171, 171); }
+.cont-right-p9-2 { fill: rgb(143, 143, 143); }
+.cont-top-p9-3 { fill: rgb(221, 221, 221); }
+.cont-left-p9-3 { fill: rgb(185, 185, 185); }
+.cont-right-p9-3 { fill: rgb(155, 155, 155); }
+.cont-top-p9-4 { fill: rgb(238, 238, 238); }
+.cont-left-p9-4 { fill: rgb(199, 199, 199); }
+.cont-right-p9-4 { fill: rgb(167, 167, 167); }
+.cont-top-p10-0 { fill: transparent; }
+.cont-left-p10-0 { fill: transparent; }
+.cont-right-p10-0 { fill: transparent; }
+.cont-top-p10-1 { fill: rgb(255, 231, 255); }
+.cont-left-p10-1 { fill: rgb(213, 193, 213); }
+.cont-right-p10-1 { fill: rgb(179, 162, 179); }
+.cont-top-p10-2 { fill: rgb(237, 174, 218); }
+.cont-left-p10-2 { fill: rgb(198, 146, 182); }
+.cont-right-p10-2 { fill: rgb(166, 122, 153); }
+.cont-top-p10-3 { fill: rgb(228, 146, 202); }
+.cont-left-p10-3 { fill: rgb(191, 122, 169); }
+.cont-right-p10-3 { fill: rgb(160, 102, 141); }
+.cont-top-p10-4 { fill: rgb(186, 122, 173); }
+.cont-left-p10-4 { fill: rgb(156, 102, 145); }
+.cont-right-p10-4 { fill: rgb(130, 85, 121); }
+.cont-top-p11-0 { fill: transparent; }
+.cont-left-p11-0 { fill: transparent; }
+.cont-right-p11-0 { fill: transparent; }
+.cont-top-p11-1 { fill: rgb(255, 231, 255); }
+.cont-left-p11-1 { fill: rgb(213, 193, 213); }
+.cont-right-p11-1 { fill: rgb(179, 162, 179); }
+.cont-top-p11-2 { fill: rgb(237, 174, 218); }
+.cont-left-p11-2 { fill: rgb(198, 146, 182); }
+.cont-right-p11-2 { fill: rgb(166, 122, 153); }
+.cont-top-p11-3 { fill: rgb(228, 146, 202); }
+.cont-left-p11-3 { fill: rgb(191, 122, 169); }
+.cont-right-p11-3 { fill: rgb(160, 102, 141); }
+.cont-top-p11-4 { fill: rgb(186, 122, 173); }
+.cont-left-p11-4 { fill: rgb(156, 102, 145); }
+.cont-right-p11-4 { fill: rgb(130, 85, 121); }
+.cont-top-p12-0 { fill: transparent; }
+.cont-left-p12-0 { fill: transparent; }
+.cont-right-p12-0 { fill: transparent; }
+.cont-top-p12-1 { fill: rgb(255, 231, 255); }
+.cont-left-p12-1 { fill: rgb(213, 193, 213); }
+.cont-right-p12-1 { fill: rgb(179, 162, 179); }
+.cont-top-p12-2 { fill: rgb(237, 174, 218); }
+.cont-left-p12-2 { fill: rgb(198, 146, 182); }
+.cont-right-p12-2 { fill: rgb(166, 122, 153); }
+.cont-top-p12-3 { fill: rgb(228, 146, 202); }
+.cont-left-p12-3 { fill: rgb(191, 122, 169); }
+.cont-right-p12-3 { fill: rgb(160, 102, 141); }
+.cont-top-p12-4 { fill: rgb(186, 122, 173); }
+.cont-left-p12-4 { fill: rgb(156, 102, 145); }
+.cont-right-p12-4 { fill: rgb(130, 85, 121); }
+.cont-top-p13-0 { fill: transparent; }
+.cont-left-p13-0 { fill: transparent; }
+.cont-right-p13-0 { fill: transparent; }
+.cont-top-p13-1 { fill: rgb(255, 231, 255); }
+.cont-left-p13-1 { fill: rgb(213, 193, 213); }
+.cont-right-p13-1 { fill: rgb(179, 162, 179); }
+.cont-top-p13-2 { fill: rgb(237, 174, 218); }
+.cont-left-p13-2 { fill: rgb(198, 146, 182); }
+.cont-right-p13-2 { fill: rgb(166, 122, 153); }
+.cont-top-p13-3 { fill: rgb(228, 146, 202); }
+.cont-left-p13-3 { fill: rgb(191, 122, 169); }
+.cont-right-p13-3 { fill: rgb(160, 102, 141); }
+.cont-top-p13-4 { fill: rgb(186, 122, 173); }
+.cont-left-p13-4 { fill: rgb(156, 102, 145); }
+.cont-right-p13-4 { fill: rgb(130, 85, 121); }
+.cont-top-p14-0 { fill: transparent; }
+.cont-left-p14-0 { fill: transparent; }
+.cont-right-p14-0 { fill: transparent; }
+.cont-top-p14-1 { fill: rgb(255, 231, 255); }
+.cont-left-p14-1 { fill: rgb(213, 193, 213); }
+.cont-right-p14-1 { fill: rgb(179, 162, 179); }
+.cont-top-p14-2 { fill: rgb(237, 174, 218); }
+.cont-left-p14-2 { fill: rgb(198, 146, 182); }
+.cont-right-p14-2 { fill: rgb(166, 122, 153); }
+.cont-top-p14-3 { fill: rgb(228, 146, 202); }
+.cont-left-p14-3 { fill: rgb(191, 122, 169); }
+.cont-right-p14-3 { fill: rgb(160, 102, 141); }
+.cont-top-p14-4 { fill: rgb(186, 122, 173); }
+.cont-left-p14-4 { fill: rgb(156, 102, 145); }
+.cont-right-p14-4 { fill: rgb(130, 85, 121); }
+.cont-top-p15-0 { fill: transparent; }
+.cont-left-p15-0 { fill: transparent; }
+.cont-right-p15-0 { fill: transparent; }
+.cont-top-p15-1 { fill: rgb(216, 232, 135); }
+.cont-left-p15-1 { fill: rgb(181, 194, 113); }
+.cont-right-p15-1 { fill: rgb(151, 162, 95); }
+.cont-top-p15-2 { fill: rgb(140, 197, 105); }
+.cont-left-p15-2 { fill: rgb(117, 165, 88); }
+.cont-right-p15-2 { fill: rgb(98, 138, 74); }
+.cont-top-p15-3 { fill: rgb(71, 160, 66); }
+.cont-left-p15-3 { fill: rgb(59, 134, 55); }
+.cont-right-p15-3 { fill: rgb(50, 112, 46); }
+.cont-top-p15-4 { fill: rgb(29, 106, 35); }
+.cont-left-p15-4 { fill: rgb(24, 89, 29); }
+.cont-right-p15-4 { fill: rgb(20, 74, 25); }
+.cont-top-p16-0 { fill: transparent; }
+.cont-left-p16-0 { fill: transparent; }
+.cont-right-p16-0 { fill: transparent; }
+.cont-top-p16-1 { fill: rgb(216, 232, 135); }
+.cont-left-p16-1 { fill: rgb(181, 194, 113); }
+.cont-right-p16-1 { fill: rgb(151, 162, 95); }
+.cont-top-p16-2 { fill: rgb(140, 197, 105); }
+.cont-left-p16-2 { fill: rgb(117, 165, 88); }
+.cont-right-p16-2 { fill: rgb(98, 138, 74); }
+.cont-top-p16-3 { fill: rgb(71, 160, 66); }
+.cont-left-p16-3 { fill: rgb(59, 134, 55); }
+.cont-right-p16-3 { fill: rgb(50, 112, 46); }
+.cont-top-p16-4 { fill: rgb(29, 106, 35); }
+.cont-left-p16-4 { fill: rgb(24, 89, 29); }
+.cont-right-p16-4 { fill: rgb(20, 74, 25); }
+.cont-top-p17-0 { fill: transparent; }
+.cont-left-p17-0 { fill: transparent; }
+.cont-right-p17-0 { fill: transparent; }
+.cont-top-p17-1 { fill: rgb(216, 232, 135); }
+.cont-left-p17-1 { fill: rgb(181, 194, 113); }
+.cont-right-p17-1 { fill: rgb(151, 162, 95); }
+.cont-top-p17-2 { fill: rgb(140, 197, 105); }
+.cont-left-p17-2 { fill: rgb(117, 165, 88); }
+.cont-right-p17-2 { fill: rgb(98, 138, 74); }
+.cont-top-p17-3 { fill: rgb(71, 160, 66); }
+.cont-left-p17-3 { fill: rgb(59, 134, 55); }
+.cont-right-p17-3 { fill: rgb(50, 112, 46); }
+.cont-top-p17-4 { fill: rgb(29, 106, 35); }
+.cont-left-p17-4 { fill: rgb(24, 89, 29); }
+.cont-right-p17-4 { fill: rgb(20, 74, 25); }
+.cont-top-p18-0 { fill: transparent; }
+.cont-left-p18-0 { fill: transparent; }
+.cont-right-p18-0 { fill: transparent; }
+.cont-top-p18-1 { fill: rgb(216, 232, 135); }
+.cont-left-p18-1 { fill: rgb(181, 194, 113); }
+.cont-right-p18-1 { fill: rgb(151, 162, 95); }
+.cont-top-p18-2 { fill: rgb(140, 197, 105); }
+.cont-left-p18-2 { fill: rgb(117, 165, 88); }
+.cont-right-p18-2 { fill: rgb(98, 138, 74); }
+.cont-top-p18-3 { fill: rgb(71, 160, 66); }
+.cont-left-p18-3 { fill: rgb(59, 134, 55); }
+.cont-right-p18-3 { fill: rgb(50, 112, 46); }
+.cont-top-p18-4 { fill: rgb(29, 106, 35); }
+.cont-left-p18-4 { fill: rgb(24, 89, 29); }
+.cont-right-p18-4 { fill: rgb(20, 74, 25); }
+.cont-top-p19-0 { fill: transparent; }
+.cont-left-p19-0 { fill: transparent; }
+.cont-right-p19-0 { fill: transparent; }
+.cont-top-p19-1 { fill: rgb(216, 232, 135); }
+.cont-left-p19-1 { fill: rgb(181, 194, 113); }
+.cont-right-p19-1 { fill: rgb(151, 162, 95); }
+.cont-top-p19-2 { fill: rgb(140, 197, 105); }
+.cont-left-p19-2 { fill: rgb(117, 165, 88); }
+.cont-right-p19-2 { fill: rgb(98, 138, 74); }
+.cont-top-p19-3 { fill: rgb(71, 160, 66); }
+.cont-left-p19-3 { fill: rgb(59, 134, 55); }
+.cont-right-p19-3 { fill: rgb(50, 112, 46); }
+.cont-top-p19-4 { fill: rgb(29, 106, 35); }
+.cont-left-p19-4 { fill: rgb(24, 89, 29); }
+.cont-right-p19-4 { fill: rgb(20, 74, 25); }</style><g transform="translate(980, 284.5)"><line x1="0" y1="-31.2" x2="29.67" y2="-9.64" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="29.67" y1="-9.64" x2="18.34" y2="25.24" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="18.34" y1="25.24" x2="-18.34" y2="25.24" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-18.34" y1="25.24" x2="-29.67" y2="-9.64" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-29.67" y1="-9.64" x2="0" y2="-31.2" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="0" y1="-62.4" x2="59.35" y2="-19.28" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="59.35" y1="-19.28" x2="36.68" y2="50.48" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="36.68" y1="50.48" x2="-36.68" y2="50.48" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-36.68" y1="50.48" x2="-59.35" y2="-19.28" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-59.35" y1="-19.28" x2="0" y2="-62.4" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="0" y1="-93.6" x2="89.02" y2="-28.92" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="89.02" y1="-28.92" x2="55.02" y2="75.72" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="55.02" y1="75.72" x2="-55.02" y2="75.72" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-55.02" y1="75.72" x2="-89.02" y2="-28.92" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-89.02" y1="-28.92" x2="0" y2="-93.6" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="0" y1="-124.8" x2="118.69" y2="-38.57" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="118.69" y1="-38.57" x2="73.36" y2="100.97" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="73.36" y1="100.97" x2="-73.36" y2="100.97" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-73.36" y1="100.97" x2="-118.69" y2="-38.57" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-118.69" y1="-38.57" x2="0" y2="-124.8" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="0" y1="-156" x2="148.36" y2="-48.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="148.36" y1="-48.21" x2="91.69" y2="126.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="91.69" y1="126.21" x2="-91.69" y2="126.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-91.69" y1="126.21" x2="-148.36" y2="-48.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><line x1="-148.36" y1="-48.21" x2="0" y2="-156" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><text style="font-size: 13px;" text-anchor="start" dominant-baseline="auto" x="3.12" y="-31.2" class="fill-weak">1</text><text style="font-size: 13px;" text-anchor="start" dominant-baseline="auto" x="3.12" y="-62.4" class="fill-weak">10</text><text style="font-size: 13px;" text-anchor="start" dominant-baseline="auto" x="3.12" y="-93.6" class="fill-weak">100</text><text style="font-size: 13px;" text-anchor="start" dominant-baseline="auto" x="3.12" y="-124.8" class="fill-weak">1K</text><text style="font-size: 13px;" text-anchor="start" dominant-baseline="auto" x="3.12" y="-156" class="fill-weak">10K</text><g class="axis"><line x1="0" y1="-31.2" x2="0" y2="-156" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><text style="font-size: 20.8px;" text-anchor="middle" dominant-baseline="middle" x="0" y="-182.52" class="fill-fg">Commit<title>1973</title></text></g><g class="axis"><line x1="29.67" y1="-9.64" x2="148.36" y2="-48.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><text style="font-size: 20.8px;" text-anchor="middle" dominant-baseline="middle" x="185.46" y="-56.4" class="fill-fg">Issue<title>1</title></text></g><g class="axis"><line x1="18.34" y1="25.24" x2="91.69" y2="126.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><text style="font-size: 20.8px;" text-anchor="middle" dominant-baseline="middle" x="114.62" y="147.66" class="fill-fg">PullReq<title>77</title></text></g><g class="axis"><line x1="-18.34" y1="25.24" x2="-91.69" y2="126.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><text style="font-size: 20.8px;" text-anchor="middle" dominant-baseline="middle" x="-114.62" y="147.66" class="fill-fg">Review<title>0</title></text></g><g class="axis"><line x1="-29.67" y1="-9.64" x2="-148.36" y2="-48.21" class="stroke-weak" style="stroke-dasharray: 4 4; stroke-width: 1px;" /><text style="font-size: 20.8px;" text-anchor="middle" dominant-baseline="middle" x="-185.46" y="-56.4" class="fill-fg">Repo<title>46</title></text></g><polygon class="radar" points="0,-134.01 29.67,-9.64 52.94,72.86 -14.67,20.19 -79.01,-25.67"><animate attributeName="points" values="0,-24.96 23.74,-7.71 14.67,20.19 -14.67,20.19 -23.74,-7.71;0,-134.01 29.67,-9.64 52.94,72.86 -14.67,20.19 -79.01,-25.67" dur="3s" repeatCount="1" /></polygon></g></svg>

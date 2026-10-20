@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="332" viewBox="33.00 483.85 432.00 332.31"><style>* { font-family: "Ubuntu", "Helvetica", "Arial", sans-serif; }
+.fill-fg { fill: #e6edf3; }
+.stroke-fg { stroke: #e6edf3; }
+.fill-bg { fill: transparent; }
+.stroke-bg { stroke: transparent; }
+.fill-strong { fill: #ffffff; }
+.fill-weak { fill: #8b949e; }
+.stroke-weak { stroke: #8b949e; }
+.radar {
+stroke-width: 4px;
+stroke: #3fb950;
+fill: #3fb950;
+fill-opacity: 0.5;
+}
+.cont-top-p0-0 { fill: transparent; }
+.cont-left-p0-0 { fill: transparent; }
+.cont-right-p0-0 { fill: transparent; }
+.cont-top-p0-1 { fill: rgb(255, 237, 74); }
+.cont-left-p0-1 { fill: rgb(213, 198, 62); }
+.cont-right-p0-1 { fill: rgb(179, 166, 52); }
+.cont-top-p0-2 { fill: rgb(255, 196, 2); }
+.cont-left-p0-2 { fill: rgb(213, 164, 2); }
+.cont-right-p0-2 { fill: rgb(179, 137, 1); }
+.cont-top-p0-3 { fill: rgb(254, 148, 0); }
+.cont-left-p0-3 { fill: rgb(213, 124, 0); }
+.cont-right-p0-3 { fill: rgb(178, 104, 0); }
+.cont-top-p0-4 { fill: rgb(250, 97, 0); }
+.cont-left-p0-4 { fill: rgb(209, 81, 0); }
+.cont-right-p0-4 { fill: rgb(175, 68, 0); }
+.cont-top-p1-0 { fill: transparent; }
+.cont-left-p1-0 { fill: transparent; }
+.cont-right-p1-0 { fill: transparent; }
+.cont-top-p1-1 { fill: rgb(255, 237, 74); }
+.cont-left-p1-1 { fill: rgb(213, 198, 62); }
+.cont-right-p1-1 { fill: rgb(179, 166, 52); }
+.cont-top-p1-2 { fill: rgb(255, 196, 2); }
+.cont-left-p1-2 { fill: rgb(213, 164, 2); }
+.cont-right-p1-2 { fill: rgb(179, 137, 1); }
+.cont-top-p1-3 { fill: rgb(254, 148, 0); }
+.cont-left-p1-3 { fill: rgb(213, 124, 0); }
+.cont-right-p1-3 { fill: rgb(178, 104, 0); }
+.cont-top-p1-4 { fill: rgb(250, 97, 0); }
+.cont-left-p1-4 { fill: rgb(209, 81, 0); }
+.cont-right-p1-4 { fill: rgb(175, 68, 0); }
+.cont-top-p2-0 { fill: transparent; }
+.cont-left-p2-0 { fill: transparent; }
+.cont-right-p2-0 { fill: transparent; }
+.cont-top-p2-1 { fill: rgb(255, 237, 74); }
+.cont-left-p2-1 { fill: rgb(213, 198, 62); }
+.cont-right-p2-1 { fill: rgb(179, 166, 52); }
+.cont-top-p2-2 { fill: rgb(255, 196, 2); }
+.cont-left-p2-2 { fill: rgb(213, 164, 2); }
+.cont-right-p2-2 { fill: rgb(179, 137, 1); }
+.cont-top-p2-3 { fill: rgb(254, 148, 0); }
+.cont-left-p2-3 { fill: rgb(213, 124, 0); }
+.cont-right-p2-3 { fill: rgb(178, 104, 0); }
+.cont-top-p2-4 { fill: rgb(250, 97, 0); }
+.cont-left-p2-4 { fill: rgb(209, 81, 0); }
+.cont-right-p2-4 { fill: rgb(175, 68, 0); }
+.cont-top-p3-0 { fill: transparent; }
+.cont-left-p3-0 { fill: transparent; }
+.cont-right-p3-0 { fill: transparent; }
+.cont-top-p3-1 { fill: rgb(255, 237, 74); }
+.cont-left-p3-1 { fill: rgb(213, 198, 62); }
+.cont-right-p3-1 { fill: rgb(179, 166, 52); }
+.cont-top-p3-2 { fill: rgb(255, 196, 2); }
+.cont-left-p3-2 { fill: rgb(213, 164, 2); }
+.cont-right-p3-2 { fill: rgb(179, 137, 1); }
+.cont-top-p3-3 { fill: rgb(254, 148, 0); }
+.cont-left-p3-3 { fill: rgb(213, 124, 0); }
+.cont-right-p3-3 { fill: rgb(178, 104, 0); }
+.cont-top-p3-4 { fill: rgb(250, 97, 0); }
+.cont-left-p3-4 { fill: rgb(209, 81, 0); }
+.cont-right-p3-4 { fill: rgb(175, 68, 0); }
+.cont-top-p4-0 { fill: transparent; }
+.cont-left-p4-0 { fill: transparent; }
+.cont-right-p4-0 { fill: transparent; }
+.cont-top-p4-1 { fill: rgb(255, 237, 74); }
+.cont-left-p4-1 { fill: rgb(213, 198, 62); }
+.cont-right-p4-1 { fill: rgb(179, 166, 52); }
+.cont-top-p4-2 { fill: rgb(255, 196, 2); }
+.cont-left-p4-2 { fill: rgb(213, 164, 2); }
+.cont-right-p4-2 { fill: rgb(179, 137, 1); }
+.cont-top-p4-3 { fill: rgb(254, 148, 0); }
+.cont-left-p4-3 { fill: rgb(213, 124, 0); }
+.cont-right-p4-3 { fill: rgb(178, 104, 0); }
+.cont-top-p4-4 { fill: rgb(250, 97, 0); }
+.cont-left-p4-4 { fill: rgb(209, 81, 0); }
+.cont-right-p4-4 { fill: rgb(175, 68, 0); }
+.cont-top-p5-0 { fill: transparent; }
+.cont-left-p5-0 { fill: transparent; }
+.cont-right-p5-0 { fill: transparent; }
+.cont-top-p5-1 { fill: rgb(153, 153, 153); }
+.cont-left-p5-1 { fill: rgb(128, 128, 128); }
+.cont-right-p5-1 { fill: rgb(107, 107, 107); }
+.cont-top-p5-2 { fill: rgb(204, 204, 204); }
+.cont-left-p5-2 { fill: rgb(171, 171, 171); }
+.cont-right-p5-2 { fill: rgb(143, 143, 143); }
+.cont-top-p5-3 { fill: rgb(221, 221, 221); }
+.cont-left-p5-3 { fill: rgb(185, 185, 185); }
+.cont-right-p5-3 { fill: rgb(155, 155, 155); }
+.cont-top-p5-4 { fill: rgb(238, 238, 238); }
+.cont-left-p5-4 { fill: rgb(199, 199, 199); }
+.cont-right-p5-4 { fill: rgb(167, 167, 167); }
+.cont-top-p6-0 { fill: transparent; }
+.cont-left-p6-0 { fill: transparent; }
+.cont-right-p6-0 { fill: transparent; }
+.cont-top-p6-1 { fill: rgb(153, 153, 153); }
+.cont-left-p6-1 { fill: rgb(128, 128, 128); }
+.cont-right-p6-1 { fill: rgb(107, 107, 107); }
+.cont-top-p6-2 { fill: rgb(204, 204, 204); }
+.cont-left-p6-2 { fill: rgb(171, 171, 171); }
+.cont-right-p6-2 { fill: rgb(143, 143, 143); }
+.cont-top-p6-3 { fill: rgb(221, 221, 221); }
+.cont-left-p6-3 { fill: rgb(185, 185, 185); }
+.cont-right-p6-3 { fill: rgb(155, 155, 155); }
+.cont-top-p6-4 { fill: rgb(238, 238, 238); }
+.cont-left-p6-4 { fill: rgb(199, 199, 199); }
+.cont-right-p6-4 { fill: rgb(167, 167, 167); }
+.cont-top-p7-0 { fill: transparent; }
+.cont-left-p7-0 { fill: transparent; }
+.cont-right-p7-0 { fill: transparent; }
+.cont-top-p7-1 { fill: rgb(153, 153, 153); }
+.cont-left-p7-1 { fill: rgb(128, 128, 128); }
+.cont-right-p7-1 { fill: rgb(107, 107, 107); }
+.cont-top-p7-2 { fill: rgb(204, 204, 204); }
+.cont-left-p7-2 { fill: rgb(171, 171, 171); }
+.cont-right-p7-2 { fill: rgb(143, 143, 143); }
+.cont-top-p7-3 { fill: rgb(221, 221, 221); }
+.cont-left-p7-3 { fill: rgb(185, 185, 185); }
+.cont-right-p7-3 { fill: rgb(155, 155, 155); }
+.cont-top-p7-4 { fill: rgb(238, 238, 238); }
+.cont-left-p7-4 { fill: rgb(199, 199, 199); }
+.cont-right-p7-4 { fill: rgb(167, 167, 167); }
+.cont-top-p8-0 { fill: transparent; }
+.cont-left-p8-0 { fill: transparent; }
+.cont-right-p8-0 { fill: transparent; }
+.cont-top-p8-1 { fill: rgb(153, 153, 153); }
+.cont-left-p8-1 { fill: rgb(128, 128, 128); }
+.cont-right-p8-1 { fill: rgb(107, 107, 107); }
+.cont-top-p8-2 { fill: rgb(204, 204, 204); }
+.cont-left-p8-2 { fill: rgb(171, 171, 171); }
+.cont-right-p8-2 { fill: rgb(143, 143, 143); }
+.cont-top-p8-3 { fill: rgb(221, 221, 221); }
+.cont-left-p8-3 { fill: rgb(185, 185, 185); }
+.cont-right-p8-3 { fill: rgb(155, 155, 155); }
+.cont-top-p8-4 { fill: rgb(238, 238, 238); }
+.cont-left-p8-4 { fill: rgb(199, 199, 199); }
+.cont-right-p8-4 { fill: rgb(167, 167, 167); }
+.cont-top-p9-0 { fill: transparent; }
+.cont-left-p9-0 { fill: transparent; }
+.cont-right-p9-0 { fill: transparent; }
+.cont-top-p9-1 { fill: rgb(153, 153, 153); }
+.cont-left-p9-1 { fill: rgb(128, 128, 128); }
+.cont-right-p9-1 { fill: rgb(107, 107, 107); }
+.cont-top-p9-2 { fill: rgb(204, 204, 204); }
+.cont-left-p9-2 { fill: rgb(171, 171, 171); }
+.cont-right-p9-2 { fill: rgb(143, 143, 143); }
+.cont-top-p9-3 { fill: rgb(221, 221, 221); }
+.cont-left-p9-3 { fill: rgb(185, 185, 185); }
+.cont-right-p9-3 { fill: rgb(155, 155, 155); }
+.cont-top-p9-4 { fill: rgb(238, 238, 238); }
+.cont-left-p9-4 { fill: rgb(199, 199, 199); }
+.cont-right-p9-4 { fill: rgb(167, 167, 167); }
+.cont-top-p10-0 { fill: transparent; }
+.cont-left-p10-0 { fill: transparent; }
+.cont-right-p10-0 { fill: transparent; }
+.cont-top-p10-1 { fill: rgb(255, 231, 255); }
+.cont-left-p10-1 { fill: rgb(213, 193, 213); }
+.cont-right-p10-1 { fill: rgb(179, 162, 179); }
+.cont-top-p10-2 { fill: rgb(237, 174, 218); }
+.cont-left-p10-2 { fill: rgb(198, 146, 182); }
+.cont-right-p10-2 { fill: rgb(166, 122, 153); }
+.cont-top-p10-3 { fill: rgb(228, 146, 202); }
+.cont-left-p10-3 { fill: rgb(191, 122, 169); }
+.cont-right-p10-3 { fill: rgb(160, 102, 141); }
+.cont-top-p10-4 { fill: rgb(186, 122, 173); }
+.cont-left-p10-4 { fill: rgb(156, 102, 145); }
+.cont-right-p10-4 { fill: rgb(130, 85, 121); }
+.cont-top-p11-0 { fill: transparent; }
+.cont-left-p11-0 { fill: transparent; }
+.cont-right-p11-0 { fill: transparent; }
+.cont-top-p11-1 { fill: rgb(255, 231, 255); }
+.cont-left-p11-1 { fill: rgb(213, 193, 213); }
+.cont-right-p11-1 { fill: rgb(179, 162, 179); }
+.cont-top-p11-2 { fill: rgb(237, 174, 218); }
+.cont-left-p11-2 { fill: rgb(198, 146, 182); }
+.cont-right-p11-2 { fill: rgb(166, 122, 153); }
+.cont-top-p11-3 { fill: rgb(228, 146, 202); }
+.cont-left-p11-3 { fill: rgb(191, 122, 169); }
+.cont-right-p11-3 { fill: rgb(160, 102, 141); }
+.cont-top-p11-4 { fill: rgb(186, 122, 173); }
+.cont-left-p11-4 { fill: rgb(156, 102, 145); }
+.cont-right-p11-4 { fill: rgb(130, 85, 121); }
+.cont-top-p12-0 { fill: transparent; }
+.cont-left-p12-0 { fill: transparent; }
+.cont-right-p12-0 { fill: transparent; }
+.cont-top-p12-1 { fill: rgb(255, 231, 255); }
+.cont-left-p12-1 { fill: rgb(213, 193, 213); }
+.cont-right-p12-1 { fill: rgb(179, 162, 179); }
+.cont-top-p12-2 { fill: rgb(237, 174, 218); }
+.cont-left-p12-2 { fill: rgb(198, 146, 182); }
+.cont-right-p12-2 { fill: rgb(166, 122, 153); }
+.cont-top-p12-3 { fill: rgb(228, 146, 202); }
+.cont-left-p12-3 { fill: rgb(191, 122, 169); }
+.cont-right-p12-3 { fill: rgb(160, 102, 141); }
+.cont-top-p12-4 { fill: rgb(186, 122, 173); }
+.cont-left-p12-4 { fill: rgb(156, 102, 145); }
+.cont-right-p12-4 { fill: rgb(130, 85, 121); }
+.cont-top-p13-0 { fill: transparent; }
+.cont-left-p13-0 { fill: transparent; }
+.cont-right-p13-0 { fill: transparent; }
+.cont-top-p13-1 { fill: rgb(255, 231, 255); }
+.cont-left-p13-1 { fill: rgb(213, 193, 213); }
+.cont-right-p13-1 { fill: rgb(179, 162, 179); }
+.cont-top-p13-2 { fill: rgb(237, 174, 218); }
+.cont-left-p13-2 { fill: rgb(198, 146, 182); }
+.cont-right-p13-2 { fill: rgb(166, 122, 153); }
+.cont-top-p13-3 { fill: rgb(228, 146, 202); }
+.cont-left-p13-3 { fill: rgb(191, 122, 169); }
+.cont-right-p13-3 { fill: rgb(160, 102, 141); }
+.cont-top-p13-4 { fill: rgb(186, 122, 173); }
+.cont-left-p13-4 { fill: rgb(156, 102, 145); }
+.cont-right-p13-4 { fill: rgb(130, 85, 121); }
+.cont-top-p14-0 { fill: transparent; }
+.cont-left-p14-0 { fill: transparent; }
+.cont-right-p14-0 { fill: transparent; }
+.cont-top-p14-1 { fill: rgb(255, 231, 255); }
+.cont-left-p14-1 { fill: rgb(213, 193, 213); }
+.cont-right-p14-1 { fill: rgb(179, 162, 179); }
+.cont-top-p14-2 { fill: rgb(237, 174, 218); }
+.cont-left-p14-2 { fill: rgb(198, 146, 182); }
+.cont-right-p14-2 { fill: rgb(166, 122, 153); }
+.cont-top-p14-3 { fill: rgb(228, 146, 202); }
+.cont-left-p14-3 { fill: rgb(191, 122, 169); }
+.cont-right-p14-3 { fill: rgb(160, 102, 141); }
+.cont-top-p14-4 { fill: rgb(186, 122, 173); }
+.cont-left-p14-4 { fill: rgb(156, 102, 145); }
+.cont-right-p14-4 { fill: rgb(130, 85, 121); }
+.cont-top-p15-0 { fill: transparent; }
+.cont-left-p15-0 { fill: transparent; }
+.cont-right-p15-0 { fill: transparent; }
+.cont-top-p15-1 { fill: rgb(216, 232, 135); }
+.cont-left-p15-1 { fill: rgb(181, 194, 113); }
+.cont-right-p15-1 { fill: rgb(151, 162, 95); }
+.cont-top-p15-2 { fill: rgb(140, 197, 105); }
+.cont-left-p15-2 { fill: rgb(117, 165, 88); }
+.cont-right-p15-2 { fill: rgb(98, 138, 74); }
+.cont-top-p15-3 { fill: rgb(71, 160, 66); }
+.cont-left-p15-3 { fill: rgb(59, 134, 55); }
+.cont-right-p15-3 { fill: rgb(50, 112, 46); }
+.cont-top-p15-4 { fill: rgb(29, 106, 35); }
+.cont-left-p15-4 { fill: rgb(24, 89, 29); }
+.cont-right-p15-4 { fill: rgb(20, 74, 25); }
+.cont-top-p16-0 { fill: transparent; }
+.cont-left-p16-0 { fill: transparent; }
+.cont-right-p16-0 { fill: transparent; }
+.cont-top-p16-1 { fill: rgb(216, 232, 135); }
+.cont-left-p16-1 { fill: rgb(181, 194, 113); }
+.cont-right-p16-1 { fill: rgb(151, 162, 95); }
+.cont-top-p16-2 { fill: rgb(140, 197, 105); }
+.cont-left-p16-2 { fill: rgb(117, 165, 88); }
+.cont-right-p16-2 { fill: rgb(98, 138, 74); }
+.cont-top-p16-3 { fill: rgb(71, 160, 66); }
+.cont-left-p16-3 { fill: rgb(59, 134, 55); }
+.cont-right-p16-3 { fill: rgb(50, 112, 46); }
+.cont-top-p16-4 { fill: rgb(29, 106, 35); }
+.cont-left-p16-4 { fill: rgb(24, 89, 29); }
+.cont-right-p16-4 { fill: rgb(20, 74, 25); }
+.cont-top-p17-0 { fill: transparent; }
+.cont-left-p17-0 { fill: transparent; }
+.cont-right-p17-0 { fill: transparent; }
+.cont-top-p17-1 { fill: rgb(216, 232, 135); }
+.cont-left-p17-1 { fill: rgb(181, 194, 113); }
+.cont-right-p17-1 { fill: rgb(151, 162, 95); }
+.cont-top-p17-2 { fill: rgb(140, 197, 105); }
+.cont-left-p17-2 { fill: rgb(117, 165, 88); }
+.cont-right-p17-2 { fill: rgb(98, 138, 74); }
+.cont-top-p17-3 { fill: rgb(71, 160, 66); }
+.cont-left-p17-3 { fill: rgb(59, 134, 55); }
+.cont-right-p17-3 { fill: rgb(50, 112, 46); }
+.cont-top-p17-4 { fill: rgb(29, 106, 35); }
+.cont-left-p17-4 { fill: rgb(24, 89, 29); }
+.cont-right-p17-4 { fill: rgb(20, 74, 25); }
+.cont-top-p18-0 { fill: transparent; }
+.cont-left-p18-0 { fill: transparent; }
+.cont-right-p18-0 { fill: transparent; }
+.cont-top-p18-1 { fill: rgb(216, 232, 135); }
+.cont-left-p18-1 { fill: rgb(181, 194, 113); }
+.cont-right-p18-1 { fill: rgb(151, 162, 95); }
+.cont-top-p18-2 { fill: rgb(140, 197, 105); }
+.cont-left-p18-2 { fill: rgb(117, 165, 88); }
+.cont-right-p18-2 { fill: rgb(98, 138, 74); }
+.cont-top-p18-3 { fill: rgb(71, 160, 66); }
+.cont-left-p18-3 { fill: rgb(59, 134, 55); }
+.cont-right-p18-3 { fill: rgb(50, 112, 46); }
+.cont-top-p18-4 { fill: rgb(29, 106, 35); }
+.cont-left-p18-4 { fill: rgb(24, 89, 29); }
+.cont-right-p18-4 { fill: rgb(20, 74, 25); }
+.cont-top-p19-0 { fill: transparent; }
+.cont-left-p19-0 { fill: transparent; }
+.cont-right-p19-0 { fill: transparent; }
+.cont-top-p19-1 { fill: rgb(216, 232, 135); }
+.cont-left-p19-1 { fill: rgb(181, 194, 113); }
+.cont-right-p19-1 { fill: rgb(151, 162, 95); }
+.cont-top-p19-2 { fill: rgb(140, 197, 105); }
+.cont-left-p19-2 { fill: rgb(117, 165, 88); }
+.cont-right-p19-2 { fill: rgb(98, 138, 74); }
+.cont-top-p19-3 { fill: rgb(71, 160, 66); }
+.cont-left-p19-3 { fill: rgb(59, 134, 55); }
+.cont-right-p19-3 { fill: rgb(50, 112, 46); }
+.cont-top-p19-4 { fill: rgb(29, 106, 35); }
+.cont-left-p19-4 { fill: rgb(24, 89, 29); }
+.cont-right-p19-4 { fill: rgb(20, 74, 25); }</style><g transform="translate(40, 520)"><g transform="translate(273, 0)"><rect x="0" y="37.916666666666664" width="21.666666666666668" height="21.666666666666668" fill="#3572A5" class="stroke-bg" stroke-width="1px"><animate attributeName="fill-opacity" values="0;0.2;0.4;0.6;0.8;1;1;1;1;1;1" dur="3s" repeatCount="1" /></rect><rect x="0" y="70.41666666666667" width="21.666666666666668" height="21.666666666666668" fill="#dea584" class="stroke-bg" stroke-width="1px"><animate attributeName="fill-opacity" values="0;0;0.2;0.4;0.6;0.8;1;1;1;1;1" dur="3s" repeatCount="1" /></rect><rect x="0" y="102.91666666666667" width="21.666666666666668" height="21.666666666666668" fill="#f1e05a" class="stroke-bg" stroke-width="1px"><animate attributeName="fill-opacity" values="0;0;0;0.2;0.4;0.6;0.8;1;1;1;1" dur="3s" repeatCount="1" /></rect><rect x="0" y="135.41666666666666" width="21.666666666666668" height="21.666666666666668" fill="#3D6117" class="stroke-bg" stroke-width="1px"><animate attributeName="fill-opacity" values="0;0;0;0;0.2;0.4;0.6;0.8;1;1;1" dur="3s" repeatCount="1" /></rect><rect x="0" y="167.91666666666666" width="21.666666666666668" height="21.666666666666668" fill="#3178c6" class="stroke-bg" stroke-width="1px"><animate attributeName="fill-opacity" values="0;0;0;0;0;0.2;0.4;0.6;0.8;1;1" dur="3s" repeatCount="1" /></rect><rect x="0" y="200.41666666666666" width="21.666666666666668" height="21.666666666666668" fill="#444444" class="stroke-bg" stroke-width="1px"><animate attributeName="fill-opacity" values="0;0;0;0;0;0;0.2;0.4;0.6;0.8;1" dur="3s" repeatCount="1" /></rect><text dominant-baseline="middle" x="26" y="48.75" class="fill-fg" font-size="21.666666666666668px">Python<animate attributeName="fill-opacity" values="0;0.2;0.4;0.6;0.8;1;1;1;1;1;1" dur="3s" repeatCount="1" /></text><text dominant-baseline="middle" x="26" y="81.25" class="fill-fg" font-size="21.666666666666668px">Rust<animate attributeName="fill-opacity" values="0;0;0.2;0.4;0.6;0.8;1;1;1;1;1" dur="3s" repeatCount="1" /></text><text dominant-baseline="middle" x="26" y="113.75" class="fill-fg" font-size="21.666666666666668px">JavaScript<animate attributeName="fill-opacity" values="0;0;0;0.2;0.4;0.6;0.8;1;1;1;1" dur="3s" repeatCount="1" /></text><text dominant-baseline="middle" x="26" y="146.25" class="fill-fg" font-size="21.666666666666668px">TeX<animate attributeName="fill-opacity" values="0;0;0;0;0.2;0.4;0.6;0.8;1;1;1" dur="3s" repeatCount="1" /></text><text dominant-baseline="middle" x="26" y="178.75" class="fill-fg" font-size="21.666666666666668px">TypeScript<animate attributeName="fill-opacity" values="0;0;0;0;0;0.2;0.4;0.6;0.8;1;1" dur="3s" repeatCount="1" /></text><text dominant-baseline="middle" x="26" y="211.25" class="fill-fg" font-size="21.666666666666668px">other<animate attributeName="fill-opacity" values="0;0;0;0;0;0;0.2;0.4;0.6;0.8;1" dur="3s" repeatCount="1" /></text></g><g transform="translate(130, 130)"><path d="M0,-117A117,117,0,1,1,-82.962,82.501L-46.09,45.834A65,65,0,1,0,0,-65Z" style="fill: #3572A5;" class="stroke-bg" stroke-width="2px"><title>Python 1234</title><animate attributeName="fill-opacity" values="0;0.2;0.4;0.6;0.8;1;1;1;1;1;1" dur="3s" repeatCount="1" /></path><path d="M-82.962,82.501A117,117,0,0,1,-71.662,-92.486L-39.812,-51.381A65,65,0,0,0,-46.09,45.834Z" style="fill: #dea584;" class="stroke-bg" stroke-width="2px"><title>Rust 532</title><animate attributeName="fill-opacity" values="0;0;0.2;0.4;0.6;0.8;1;1;1;1;1" dur="3s" repeatCount="1" /></path><path d="M-71.662,-92.486A117,117,0,0,1,-36.987,-111L-20.548,-61.667A65,65,0,0,0,-39.812,-51.381Z" style="fill: #f1e05a;" class="stroke-bg" stroke-width="2px"><title>JavaScript 106</title><animate attributeName="fill-opacity" values="0;0;0;0.2;0.4;0.6;0.8;1;1;1;1" dur="3s" repeatCount="1" /></path><path d="M-36.987,-111A117,117,0,0,1,-18.183,-115.578L-10.102,-64.21A65,65,0,0,0,-20.548,-61.667Z" style="fill: #3D6117;" class="stroke-bg" stroke-width="2px"><title>TeX 52</title><animate attributeName="fill-opacity" values="0;0;0;0;0.2;0.4;0.6;0.8;1;1;1" dur="3s" repeatCount="1" /></path><path d="M-18.183,-115.578A117,117,0,0,1,-9.305,-116.629L-5.169,-64.794A65,65,0,0,0,-10.102,-64.21Z" style="fill: #3178c6;" class="stroke-bg" stroke-width="2px"><title>TypeScript 24</title><animate attributeName="fill-opacity" values="0;0;0;0;0;0.2;0.4;0.6;0.8;1;1" dur="3s" repeatCount="1" /></path><path d="M-9.305,-116.629A117,117,0,0,1,0,-117L0,-65A65,65,0,0,0,-5.169,-64.794Z" style="fill: #444444;" class="stroke-bg" stroke-width="2px"><title>other 25</title><animate attributeName="fill-opacity" values="0;0;0;0;0;0;0.2;0.4;0.6;0.8;1" dur="3s" repeatCount="1" /></path></g></g></svg>
