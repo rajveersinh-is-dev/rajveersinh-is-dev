@@ -12,12 +12,14 @@
     multi-icon sets like skillicons have both proven unreliable here.
   - The 3D contribution graph is generated once a day by
     .github/workflows/profile-3d.yml into profile-3d-contrib/.
-    It emits two variants, profile-3d-light.svg and
-    profile-3d-dark.svg, and the README shows whichever matches the
-    viewer's theme via the #gh-light-mode-only / #gh-dark-mode-only
-    URL fragments. .github/scripts/tidy-3d-svg.py then strips the
-    white background and the empty-day tiles. Do not hand-edit those
-    SVGs; change .github/profile-3d-settings.json instead.
+    The action renders one combined canvas per theme; split-3d-svg.py
+    then cuts it into three images (calendar, radar, language donut),
+    strips the white background and drops the empty-day tiles. The
+    calendar is shown big, the other two side by side beneath it.
+    Every image has a light and a dark twin, and the README picks
+    whichever matches the viewer's theme via the #gh-light-mode-only
+    / #gh-dark-mode-only URL fragments. Do not hand-edit the SVGs;
+    change .github/profile-3d-settings.json instead.
 -->
 
 <p align="center">
@@ -173,8 +175,15 @@ Full writeups, including the ones that do not work out.
 ## Contribution activity
 
 <p align="center">
-  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-light.svg#gh-light-mode-only">
-  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-dark.svg#gh-dark-mode-only">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-light.svg#gh-light-mode-only" width="100%">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-dark.svg#gh-dark-mode-only" width="100%">
+</p>
+
+<p align="center">
+  <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-light.svg#gh-light-mode-only" width="46%">
+  <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-light.svg#gh-light-mode-only" width="46%">
+  <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-dark.svg#gh-dark-mode-only" width="46%">
+  <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-dark.svg#gh-dark-mode-only" width="46%">
 </p>
 
 ---
