@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="220" viewBox="0 0 1280 220">
+<defs><linearGradient id="bgB" x1="0" y1="0" x2="1" y2="1"><stop offset="0.0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#f3f0ff"/><stop offset="1.0" stop-color="#ddd6fe"/></linearGradient><linearGradient id="ruleB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#c026d3"/></linearGradient></defs>
+<rect width="1280" height="220" fill="url(#bgB)"/>
+<g id="motifB" fill="none">
+  <polygon points="1279.5,227.3 1218.1,282.6 1024.3,326.4 742.5,348.5 437.2,343.9 178.3,313.7 25.2,264.8 13.0,208.4 144.4,157.3 389.3,123.4 691.7,114.4 982.2,132.3 1194.3,173.0" stroke="#7c3aed" stroke-width="1.6" opacity="0.45"/>
+  <g stroke="#7c3aed" stroke-width="1" opacity="0.22">
+    <line x1="1279.5" y1="227.3" x2="1024.3" y2="326.4"/>
+    <line x1="1279.5" y1="227.3" x2="742.5" y2="348.5"/>
+    <line x1="1279.5" y1="227.3" x2="437.2" y2="343.9"/>
+    <line x1="1279.5" y1="227.3" x2="178.3" y2="313.7"/>
+    <line x1="1279.5" y1="227.3" x2="25.2" y2="264.8"/>
+    <line x1="1279.5" y1="227.3" x2="13.0" y2="208.4"/>
+    <line x1="1279.5" y1="227.3" x2="144.4" y2="157.3"/>
+    <line x1="1279.5" y1="227.3" x2="389.3" y2="123.4"/>
+    <line x1="1279.5" y1="227.3" x2="691.7" y2="114.4"/>
+    <line x1="1279.5" y1="227.3" x2="982.2" y2="132.3"/>
+  </g>
+  <g fill="#8b5cf6" opacity="0.65">
+    <circle cx="1279.5" cy="227.3" r="4"/>
+    <circle cx="1218.1" cy="282.6" r="4"/>
+    <circle cx="1024.3" cy="326.4" r="4"/>
+    <circle cx="742.5" cy="348.5" r="4"/>
+    <circle cx="437.2" cy="343.9" r="4"/>
+    <circle cx="178.3" cy="313.7" r="4"/>
+    <circle cx="25.2" cy="264.8" r="4"/>
+    <circle cx="13.0" cy="208.4" r="4"/>
+    <circle cx="144.4" cy="157.3" r="4"/>
+    <circle cx="389.3" cy="123.4" r="4"/>
+    <circle cx="691.7" cy="114.4" r="4"/>
+    <circle cx="982.2" cy="132.3" r="4"/>
+    <circle cx="1194.3" cy="173.0" r="4"/>
+  </g>
+</g>
+<text x="640" y="104" text-anchor="middle" font-family="Ubuntu, Helvetica, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="1.5" fill="#2e1065">Rajveersinh Pardeshi</text>
+<rect x="470" y="128" width="340" height="4" rx="2" fill="url(#ruleB)" opacity="0.9"/>
+</svg>
