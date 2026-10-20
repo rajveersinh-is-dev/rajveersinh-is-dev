@@ -14,10 +14,18 @@ jobs:
     name: generate-github-profile-3d-contrib
     steps:
       - uses: actions/checkout@v5
-      - uses: yoshi389111/github-profile-3d-contrib@latest
+      - uses: yoshi389111/github-profile-3d-contrib@v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+          # two seasonal variants: dark text for light mode, light text for
+          # dark mode. Both are generated with a transparent background.
+          SETTING_JSON: .github/profile-3d-settings.json
+      - name: Drop empty days and keep the background transparent
+        run: |
+          python3 .github/scripts/tidy-3d-svg.py \
+            profile-3d-contrib/profile-3d-light.svg \
+            profile-3d-contrib/profile-3d-dark.svg
       - name: Commit & Push
         run: |
           git config user.name github-actions
