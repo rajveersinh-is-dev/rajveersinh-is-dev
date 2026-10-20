@@ -12,7 +12,12 @@
     multi-icon sets like skillicons have both proven unreliable here.
   - The 3D contribution graph is generated once a day by
     .github/workflows/profile-3d.yml into profile-3d-contrib/.
-    Do not hand-edit those SVGs; change the workflow instead.
+    It emits two variants, profile-3d-light.svg and
+    profile-3d-dark.svg, and the README shows whichever matches the
+    viewer's theme via the #gh-light-mode-only / #gh-dark-mode-only
+    URL fragments. .github/scripts/tidy-3d-svg.py then strips the
+    white background and the empty-day tiles. Do not hand-edit those
+    SVGs; change .github/profile-3d-settings.json instead.
 -->
 
 <p align="center">
@@ -168,7 +173,8 @@ Full writeups, including the ones that do not work out.
 ## Contribution activity
 
 <p align="center">
-  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-season-animate.svg">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-light.svg#gh-light-mode-only">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-dark.svg#gh-dark-mode-only">
 </p>
 
 ---
