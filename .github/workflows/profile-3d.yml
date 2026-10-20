@@ -21,11 +21,12 @@ jobs:
           # two seasonal variants: dark text for light mode, light text for
           # dark mode. Both are generated with a transparent background.
           SETTING_JSON: .github/profile-3d-settings.json
-      - name: Drop empty days and keep the background transparent
+      - name: Split into calendar, radar and language images
         run: |
-          python3 .github/scripts/tidy-3d-svg.py \
-            profile-3d-contrib/profile-3d-light.svg \
-            profile-3d-contrib/profile-3d-dark.svg
+          python3 .github/scripts/split-3d-svg.py profile-3d-contrib/profile-3d-light.svg light
+          python3 .github/scripts/split-3d-svg.py profile-3d-contrib/profile-3d-dark.svg dark
+          rm -f profile-3d-contrib/profile-3d-light.svg \
+                profile-3d-contrib/profile-3d-dark.svg
       - name: Commit & Push
         run: |
           git config user.name github-actions
