@@ -1,33 +1,31 @@
 <!--
   Profile README for Rajveersinh Pardeshi (@rajveersinh-is-dev)
 
-  To publish: create a PUBLIC repo named exactly  rajveersinh-is-dev  and put this
-  file at its root. A private repo will not show up on your profile.
+  To publish: the repository must be PUBLIC and its name must exactly match the
+  username, otherwise GitHub renders nothing here.
 
   Notes for future edits:
-  - The banner and footer are hand-built SVGs in assets/, not a hosted service,
-    so nothing can silently fail to render. Each has a light and a dark twin,
-    and the README picks the right one with the #gh-light-mode-only /
-    #gh-dark-mode-only URL fragments. The name is drawn inside the banner, so
-    there is no Markdown heading for it.
-  - The tagline under the banner is an animated typing SVG from
-    readme-typing-svg (DenverCoder1). If it ever stops loading, swap that <img>
-    for a plain centred line of text.
-  - Every badge is flat-square and shares one accent (violet 7c3aed) plus a
-    neutral grey (6e7681), so the palette matches the banner.
+  - Every image is committed under assets/ rather than fetched from a hosted
+    service. The stats cards, streak, summary cards, activity graph, trophy
+    case, contribution snake and skill icons that were tried earlier all
+    failed; see SETUP.md for what each one did when it broke.
+  - Each image has a light and a dark twin, and the README picks the right one
+    with the #gh-light-mode-only / #gh-dark-mode-only URL fragments. Those
+    fragments only work when the two files share a base name.
+  - The artwork is generated, not hand drawn. Run
+    python .github/scripts/make-profile-assets.py to rebuild it, and
+    python .github/scripts/make-facts-svg.py to refresh the numbers and the
+    date in the footer. The daily workflow does the latter.
+  - Motion is SMIL animation inside the SVG files. GitHub strips CSS and style
+    attributes out of README markdown, so an animated image is the only way to
+    have any movement. Every animation is written so that a browser without
+    SMIL still shows the finished artwork.
   - Projects are bullet lists, not tables. GitHub gives no control over table
-    column widths, so on a phone the repo names broke across three lines and
-    the descriptions were squeezed into a narrow strip.
-  - No GitHub alert callouts: GitHub indents a blockquote, and a list inside one
-    gets indented twice, which pushed the text into a narrow column.
-  - Major sections are separated by --- rules. GitHub also draws a border under
-    every h2, so each heading sits between two lines; that is deliberate.
-  - The 3D contribution graph is generated once a day by
-    .github/workflows/profile-3d.yml into profile-3d-contrib/. The action
-    renders one combined canvas per theme; split-3d-svg.py then cuts it into
-    three images (calendar, radar, language donut), strips the white background
-    and drops the empty-day tiles. Do not hand-edit the SVGs; change
-    .github/profile-3d-settings.json instead.
+    column widths, so on a phone the repo names broke across three lines.
+  - No GitHub alert callouts: GitHub indents a blockquote, and a list inside
+    one gets indented twice, which pushed the text into a narrow column.
+  - The file is pure ASCII, so it survives being edited by tools that mangle
+    UTF-8. Separators are written as / and the Greek letters are spelled out.
 -->
 
 <p align="center">
@@ -36,7 +34,8 @@
 </p>
 
 <p align="center">
-  <img alt="Computational mathematics, scientific simulation, verifiable systems" src="https://readme-typing-svg.demolab.com?font=Ubuntu&weight=500&size=22&duration=3200&pause=900&color=7C3AED&center=true&vCenter=true&width=440&height=44&lines=Computational+mathematics;Scientific+simulation;Verifiable+systems">
+  <img alt="Computational mathematics, scientific simulation, verifiable systems" src="./assets/tagline-light.svg#gh-light-mode-only" width="500">
+  <img alt="Computational mathematics, scientific simulation, verifiable systems" src="./assets/tagline-dark.svg#gh-dark-mode-only" width="500">
 </p>
 
 <p align="center">
@@ -47,18 +46,33 @@
 </p>
 
 <p align="center">
-  <a href="#about">About</a> · <a href="#projects">Projects</a> · <a href="#toolbox">Toolbox</a> · <a href="#contribution-activity">Contribution activity</a> · <a href="#reach-me">Reach me</a>
+  <img alt="Repositories, commits, manuscripts and languages" src="./assets/facts-light.svg#gh-light-mode-only" width="100%">
+  <img alt="Repositories, commits, manuscripts and languages" src="./assets/facts-dark.svg#gh-dark-mode-only" width="100%">
+</p>
+
+<p align="center">
+  <a href="#about">About</a> / <a href="#results">Results</a> / <a href="#papers">Papers</a> / <a href="#research-map">Research map</a> / <a href="#projects">Projects</a> / <a href="#toolbox">Toolbox</a> / <a href="#contribution-activity">Activity</a> / <a href="#reach-me">Reach me</a>
+</p>
+
+<p align="center">
+  <a href="#extremal-combinatorics">Combinatorics</a> / <a href="#graph-counting-and-spectra">Counting and spectra</a> / <a href="#conjectures-under-investigation">Conjectures</a> / <a href="#statistics-and-complex-systems">Statistics</a> / <a href="#simulation-and-formal-methods">Simulation</a> / <a href="#trust-and-autonomous-agents">Trust and agents</a>
 </p>
 
 ---
 
-## About
+## <img alt="" src="./assets/icons/about.svg" width="18" height="18" align="absmiddle"> About
 
 Most of my work is in extremal graph theory and combinatorial geometry, where the aim is to settle small cases exactly rather than bound them loosely. A good share of it starts from somebody else's conjecture and ends in a negative result, which I publish rather than quietly drop. Alongside that: missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
 
-I like results I can reproduce from scratch, and proofs that survive someone trying to break them. Most repositories ship a script that reruns the whole thing.
+<p align="center">
+  <img alt="Reproducible by default: every published result reruns from a single command" src="./assets/seal-light.svg#gh-light-mode-only" width="430">
+  <img alt="Reproducible by default: every published result reruns from a single command" src="./assets/seal-dark.svg#gh-dark-mode-only" width="430">
+</p>
 
-### What I work on
+<details>
+<summary><b>What I work on, and what I am doing now</b></summary>
+
+**What I work on**
 
 - Extremal graph theory and combinatorial geometry. Small cases settled by enumeration, then a proof of why the enumeration stopped where it did.
 - Missing data under MNAR. Honest imputation is a hard problem when the mechanism is unobserved.
@@ -66,76 +80,133 @@ I like results I can reproduce from scratch, and proofs that survive someone try
 - Confidential verification. Credentials, mixnets and proof systems for agent identity and retrieval provenance.
 - GPU first simulation. Compute shaders and JIT compiled kernels, because the physics deserves better than a slow interpreted loop.
 
-### Currently
+**Currently**
 
 - Plasma confinement stability, drift orbits and energetic particle losses.
 - Whether critical transitions can be signaled early in complex systems, rather than explained after the fact.
 - Automation that improves itself: agents generating, verifying and publishing successors.
 - Making heavy mathematics legible and reproducible in public.
 
-### Contact
+</details>
 
-Open to research collaboration, reproducibility bugs, and PRs. Based in India, happy to work across time zones.
+I like results I can reproduce from scratch, and proofs that survive someone trying to break them. Most repositories ship a script that reruns the whole thing.
 
 ---
 
-## Projects
+## <img alt="" src="./assets/icons/results.svg" width="18" height="18" align="absmiddle"> Results
 
-### Featured
+Three results I would defend in a hostile review. Each card opens the repository it came from.
 
-**[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions.
+<p align="center">
+  <a href="https://github.com/rajveersinh-is-dev/convex-thrackle-census"><img alt="Convex thrackles: every maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges" src="./assets/card-thrackle-light.svg#gh-light-mode-only" width="31%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity"><img alt="k-regular partitions: the log-concavity threshold stabilises at 26 for every k at least 30" src="./assets/card-logconcavity-light.svg#gh-light-mode-only" width="31%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/polygon-triangulation-packing"><img alt="Polygon triangulations: exact packing and covering numbers" src="./assets/card-packing-light.svg#gh-light-mode-only" width="31%"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/rajveersinh-is-dev/convex-thrackle-census"><img alt="Convex thrackles: every maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges" src="./assets/card-thrackle-dark.svg#gh-dark-mode-only" width="31%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity"><img alt="k-regular partitions: the log-concavity threshold stabilises at 26 for every k at least 30" src="./assets/card-logconcavity-dark.svg#gh-dark-mode-only" width="31%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/polygon-triangulation-packing"><img alt="Polygon triangulations: exact packing and covering numbers" src="./assets/card-packing-dark.svg#gh-dark-mode-only" width="31%"></a>
+</p>
+
+---
+
+## <img alt="" src="./assets/icons/papers.svg" width="18" height="18" align="absmiddle"> Papers
+
+Manuscripts with a published PDF. The title opens the PDF, the name opens the repository with the proofs, the code and the tests.
+
+### Extremal combinatorics
+
+- **[Convex thrackles: a residue bound, a wedge lemma, and the census 2^(n-1) - n](https://github.com/rajveersinh-is-dev/convex-thrackle-census/blob/HEAD/paper/main.pdf)** in [convex-thrackle-census](https://github.com/rajveersinh-is-dev/convex-thrackle-census)
+- **[The extremal number of maximal convex-position subsets of a planar point set](https://github.com/rajveersinh-is-dev/maximal-convex-position-subsets/blob/HEAD/paper/main.pdf)** in [maximal-convex-position-subsets](https://github.com/rajveersinh-is-dev/maximal-convex-position-subsets)
+- **[Edge-disjoint non-crossing triangle packings of planar point sets](https://github.com/rajveersinh-is-dev/edge-disjoint-triangle-packings/blob/HEAD/paper/main.pdf)** in [edge-disjoint-triangle-packings](https://github.com/rajveersinh-is-dev/edge-disjoint-triangle-packings)
+- **[Edge-disjoint triangulations of convex polygons: packing numbers and resolutions](https://github.com/rajveersinh-is-dev/edge-disjoint-triangulations/blob/HEAD/paper/main.pdf)** in [edge-disjoint-triangulations](https://github.com/rajveersinh-is-dev/edge-disjoint-triangulations)
+- **[Exact packing and covering numbers for polygon triangulations](https://github.com/rajveersinh-is-dev/polygon-triangulation-packing/blob/HEAD/paper/main.pdf)** in [polygon-triangulation-packing](https://github.com/rajveersinh-is-dev/polygon-triangulation-packing)
+- **[The triple-covering number of a convex polygon: a gap-weight certificate](https://github.com/rajveersinh-is-dev/triple-cover-convex-polygon/blob/HEAD/paper/main.pdf)** in [triple-cover-convex-polygon](https://github.com/rajveersinh-is-dev/triple-cover-convex-polygon)
+- **[Tolerance-based distance orderings of point sets: exact chamber counts](https://github.com/rajveersinh-is-dev/threshold-preference-arrangements/blob/HEAD/paper/main.pdf)** in [threshold-preference-arrangements](https://github.com/rajveersinh-is-dev/threshold-preference-arrangements)
+- **[Unit distances among the vertices of a convex polygon](https://github.com/rajveersinh-is-dev/unit-distances-in-convex-position/blob/HEAD/paper/main.pdf)** in [unit-distances-in-convex-position](https://github.com/rajveersinh-is-dev/unit-distances-in-convex-position)
+
+### Graph counting and spectra
+
+- **[Cycle counts of k-connected graphs: a sharp minimum and a decidability theorem](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity/blob/HEAD/paper/main.pdf)** in [cycle-spectra-connectivity](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity)
+- **[The 2-adic valuation of connected labeled graphs and digraphs](https://github.com/rajveersinh-is-dev/connected-labeled-parity/blob/HEAD/paper/main.pdf)** in [connected-labeled-parity](https://github.com/rajveersinh-is-dev/connected-labeled-parity)
+- **[Maximizing the number of distinct 2-adic valuations of subset sums](https://github.com/rajveersinh-is-dev/adic-diversity/blob/HEAD/paper/main.pdf)** in [adic-diversity](https://github.com/rajveersinh-is-dev/adic-diversity)
+- **[Inertia exponents of graphs: Boolean admissibility and the q/s ceiling](https://github.com/rajveersinh-is-dev/inertia-admissible-polynomials/blob/HEAD/paper/main.pdf)** in [inertia-admissible-polynomials](https://github.com/rajveersinh-is-dev/inertia-admissible-polynomials)
+- **[The total domination number of 4 x n grid graphs](https://github.com/rajveersinh-is-dev/total-domination-4xn-grids/blob/HEAD/paper/main.pdf)** in [total-domination-4xn-grids](https://github.com/rajveersinh-is-dev/total-domination-4xn-grids)
+
+### Probability, statistics and computation
+
+- **[Exact expected subgraph counts in the random k-out graph](https://github.com/rajveersinh-is-dev/kout-local-structure/blob/HEAD/paper/main.pdf)** in [kout-local-structure](https://github.com/rajveersinh-is-dev/kout-local-structure)
+- **[The sharp two-sided Cheeger-Buser bound for finite weighted graphs](https://github.com/rajveersinh-is-dev/sharp-cheeger-buser-certification/blob/HEAD/paper/main.pdf)** in [sharp-cheeger-buser-certification](https://github.com/rajveersinh-is-dev/sharp-cheeger-buser-certification)
+- **[Exact rational perturbation theory for Kemeny's constant](https://github.com/rajveersinh-is-dev/kemeny-perturbation-theory/blob/HEAD/paper/main.pdf)** in [kemeny-perturbation-theory](https://github.com/rajveersinh-is-dev/kemeny-perturbation-theory)
+- **[A fourth-order iterative method for scalar nonlinear equations](https://github.com/rajveersinh-is-dev/verified-iterative-root-finding/blob/HEAD/paper/main.pdf)** in [verified-iterative-root-finding](https://github.com/rajveersinh-is-dev/verified-iterative-root-finding)
+
+### Formal methods, systems and languages
+
+- **[Adaptive dual hull pruning: an exact algorithm for the weight-constrained shortest path problem](https://github.com/rajveersinh-is-dev/adhp-cspp/blob/HEAD/paper/main.pdf)** in [adhp-cspp](https://github.com/rajveersinh-is-dev/adhp-cspp)
+- **[Certified-Dose: a formally verified reachability wrapper for process control dosing](https://github.com/rajveersinh-is-dev/certified-dose/blob/HEAD/paper/certified_dose_paper.pdf)** in [certified-dose](https://github.com/rajveersinh-is-dev/certified-dose)
+- **[NumLang: a formally verified, self-applicable supercompiler for systems languages](https://github.com/rajveersinh-is-dev/numlang/blob/HEAD/paper/book/main_book.pdf)** in [numlang](https://github.com/rajveersinh-is-dev/numlang)
+
+---
+
+## <img alt="" src="./assets/icons/map.svg" width="18" height="18" align="absmiddle"> Research map
+
+The three strands of the work, and how they feed each other. Enumeration produces a number, a proof turns the number into a theorem, and the verification layer checks the theorem and then writes its successor.
+
+<p align="center">
+  <img alt="Research map: extremal combinatorics, inference and simulation, verification and agents" src="./assets/map-light.svg#gh-light-mode-only" width="100%">
+  <img alt="Research map: extremal combinatorics, inference and simulation, verification and agents" src="./assets/map-dark.svg#gh-dark-mode-only" width="100%">
+</p>
+
+---
+
+## <img alt="" src="./assets/icons/projects.svg" width="18" height="18" align="absmiddle"> Projects
+
+The repositories behind the papers, the investigations that have not concluded, and the software.
 
 ### Combinatorics and geometry
 
-- **[convex-thrackle-census](https://github.com/rajveersinh-is-dev/convex-thrackle-census)** — Exact census of `2^(n-1) - n` maximal convex thrackles, with a residue bound and wedge lemma
-- **[triple-cover-convex-polygon](https://github.com/rajveersinh-is-dev/triple-cover-convex-polygon)** — Gap weight certificate giving a lower bound for all `n`, certified exact values through `n = 14`
-- **[polygon-triangulation-packing](https://github.com/rajveersinh-is-dev/polygon-triangulation-packing)** — Exact extremal theory for `tau(n)` and `kappa(n)`, with constructive proofs
-- **[maximal-convex-position-subsets](https://github.com/rajveersinh-is-dev/maximal-convex-position-subsets)** — Exact `f(n)` through `n = 9`, plus a point line duality theorem
-- **[edge-disjoint-triangle-packings](https://github.com/rajveersinh-is-dev/edge-disjoint-triangle-packings)** — Convex barrier, then a reduction to subcubic trees
-- **[cycle-spectra-connectivity](https://github.com/rajveersinh-is-dev/cycle-spectra-connectivity)** — Sharp minimum cycle count for `k` connected graphs, exact 3 connected spectrum to order 9
-- **[connected-labeled-parity](https://github.com/rajveersinh-is-dev/connected-labeled-parity)** — Exact 2-adic valuations of connected labeled graphs and digraphs
-- **[adic-diversity](https://github.com/rajveersinh-is-dev/adic-diversity)** — Largest number of distinct 2-adic valuations across the subset sums of `k` integers
-- **[edge-disjoint-triangulations](https://github.com/rajveersinh-is-dev/edge-disjoint-triangulations)** — Packing number `floor(n/2)` and a full classification of `P_2m`, which has `2^(m-2)` resolutions
-- **[inertia-admissible-polynomials](https://github.com/rajveersinh-is-dev/inertia-admissible-polynomials)** — Exact linearisation for the `q/s` ceiling of graph positive inertia, the `s = 1` case, and a conjectured barrier at 3
-- **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)** — Resolves the Heim-Neuhauser conjecture on the log-concavity threshold of `k`-regular partitions
-- **[threshold-preference-arrangements](https://github.com/rajveersinh-is-dev/threshold-preference-arrangements)** — Exact chamber counts for tolerance-based distance orderings of point sets
+- **[bishops-graph-metric-dimension](https://github.com/rajveersinh-is-dev/bishops-graph-metric-dimension)**: Exact metric dimension of bishop colour components, via a diamond rook-board reformulation, integer programming, and closed form conjectures
+- **[k-regular-partition-log-concavity](https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity)**: Resolves the Heim-Neuhauser conjecture on the log-concavity threshold of k-regular partitions, with a Lean 4 formalization
 
 ### Conjectures under investigation
 
 Full writeups, including the ones that do not work out.
 
-- **[erdos-straus-conjecture-investigation](https://github.com/rajveersinh-is-dev/erdos-straus-conjecture-investigation)** — Exact criterion, a hard-core reduction, a Type I and Type II dichotomy, plus new parametric families
-- **[erdos-problem-536-lcm-sets](https://github.com/rajveersinh-is-dev/erdos-problem-536-lcm-sets)** — Problem #536: sets with no three distinct elements sharing a pairwise LCM
-- **[unit-distances-in-convex-position](https://github.com/rajveersinh-is-dev/unit-distances-in-convex-position)** — Erdos-Moser structural investigation of unit distances among convex polygon vertices
-- **[ramanujan-signing-cut-vertex-obstruction](https://github.com/rajveersinh-is-dev/ramanujan-signing-cut-vertex-obstruction)** — A cut-vertex obstruction for cubic graphs in the Xu 2026 Ramanujan signing problem
-- **[erdos-powerful-triples](https://github.com/rajveersinh-is-dev/erdos-powerful-triples)** — Erdos-Mollin-Walsh on three consecutive powerful numbers, closed with an honest negative report
-- **[bollobas-leader-subsequence-sums](https://github.com/rajveersinh-is-dev/bollobas-leader-subsequence-sums)** — Proves the `t = 0` case of Bollobas-Leader on few subsequence sums in `Z_n x Z_n`
+- **[anti-ramsey-disjoint-copies-investigation](https://github.com/rajveersinh-is-dev/anti-ramsey-disjoint-copies-investigation)**: Autonomous investigation of the Gorgol-Gorlich conjecture on anti-Ramsey numbers, with exact CP-SAT experiments and a hostile audit of each claim
+- **[binomial-coprime-105](https://github.com/rajveersinh-is-dev/binomial-coprime-105)**: Erdos problem 376: binomial coefficients coprime to 105
+- **[bollobas-leader-subsequence-sums](https://github.com/rajveersinh-is-dev/bollobas-leader-subsequence-sums)**: Proves the t = 0 case of Bollobas-Leader on few subsequence sums in Z_n x Z_n
+- **[degree-sensitivity-boolean](https://github.com/rajveersinh-is-dev/degree-sensitivity-boolean)**: Exact reductions, Farkas certificates, a machine verified refutation of the (10,4) case, and an obstruction analysis at (14,5)
+- **[erdos-powerful-triples](https://github.com/rajveersinh-is-dev/erdos-powerful-triples)**: Erdos-Mollin-Walsh on three consecutive powerful numbers, closed with an honest negative report
+- **[erdos-problem-536-lcm-sets](https://github.com/rajveersinh-is-dev/erdos-problem-536-lcm-sets)**: Problem #536: sets with no three distinct elements sharing a pairwise LCM
+- **[erdos-straus-conjecture-investigation](https://github.com/rajveersinh-is-dev/erdos-straus-conjecture-investigation)**: Exact criterion, a hard-core reduction, a Type I and Type II dichotomy, plus new parametric families
+- **[graham-distinct-partial-sums](https://github.com/rajveersinh-is-dev/graham-distinct-partial-sums)**: A width sufficient condition for Graham's distinct partial sums conjecture, with exact arithmetic verification
+- **[ramanujan-signing-cut-vertex-obstruction](https://github.com/rajveersinh-is-dev/ramanujan-signing-cut-vertex-obstruction)**: A cut-vertex obstruction for cubic graphs in the Xu 2026 Ramanujan signing problem
+- **[union-closed-sets-conjecture](https://github.com/rajveersinh-is-dev/union-closed-sets-conjecture)**: Frankl's union-closed sets conjecture: structural bounds, proof attempts, and finite verification
 
 ### Statistics and complex systems
 
-- **[umbra](https://github.com/rajveersinh-is-dev/umbra)** — Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random.
-- **[early-warning-complex-systems](https://github.com/rajveersinh-is-dev/early-warning-complex-systems)** — Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse.
+- **[umbra](https://github.com/rajveersinh-is-dev/umbra)**: Python library for MNAR aware missing data diagnostics, identifiability bounds, and robust imputation when the data is not missing at random.
+- **[early-warning-complex-systems](https://github.com/rajveersinh-is-dev/early-warning-complex-systems)**: Framework for testing whether statistical, physical and information theoretic indicators can anticipate critical transitions and collapse.
+- **[bootstrap-percolation-Qd-r4](https://github.com/rajveersinh-is-dev/bootstrap-percolation-Qd-r4)**: Exact minimum percolating sets in the d-dimensional hypercube under 4-neighbour bootstrap percolation: lower bound, constructions, verified small cases
+- **[sharp-two-point-concentration-bound](https://github.com/rajveersinh-is-dev/sharp-two-point-concentration-bound)**: A sharp two-point moment-generating-function bound for sums of independent bounded random variables, an explicit improvement on Hoeffding
+- **[terrain-erosion-engine](https://github.com/rajveersinh-is-dev/terrain-erosion-engine)**: Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js.
 
 ### Simulation and formal methods
 
-- **[Tokamak-Py](https://github.com/rajveersinh-is-dev/Tokamak-Py)** — Numba accelerated N body electromagnetic plasma confinement engine, using Boris integration for stable particle pushing, with a PyQt6 interface.
-- **[terrain-erosion-engine](https://github.com/rajveersinh-is-dev/terrain-erosion-engine)** — Procedural terrain generator running hydraulic and thermal erosion on the GPU, using WebGPU compute shaders and Three.js.
-- **[certified-dose](https://github.com/rajveersinh-is-dev/certified-dose)** — Package, CLI and dashboard that put automated process control dosing inside a formal reachability analysis safety layer.
+- **[Tokamak-Py](https://github.com/rajveersinh-is-dev/Tokamak-Py)**: Numba accelerated N body electromagnetic plasma confinement engine, using Boris integration for stable particle pushing, with a PyQt6 interface.
+- **[sare](https://github.com/rajveersinh-is-dev/sare)**: SARE: a verified adaptive elimination ordering for sparse fill-in reduction
+- **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)**: Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh.
 
 ### Trust and autonomous agents
 
-- **[docutrust](https://github.com/rajveersinh-is-dev/docutrust)** — Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines.
-- **[autod](https://github.com/rajveersinh-is-dev/autod)** — Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours.
-- **[repo-improver-bot](https://github.com/rajveersinh-is-dev/repo-improver-bot)** — Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests.
-
-### Tools, languages and experiments
-
-- **[numlang](https://github.com/rajveersinh-is-dev/numlang)** — Research programming language with a higher-order supercompiler, a polyhedral recurrence solver, and Lean 4 mechanized correctness proofs.
-- **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)** — Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh.
+- **[docutrust](https://github.com/rajveersinh-is-dev/docutrust)**: Sovereign trust fabric covering verifiable credentials, agent identity federation, mixnets, retrieval provenance and zero knowledge state machines.
+- **[autod](https://github.com/rajveersinh-is-dev/autod)**: Repository synthesizer that uses frontier models to invent, develop, verify and publish a working open source project every 48 hours.
+- **[repo-improver-bot](https://github.com/rajveersinh-is-dev/repo-improver-bot)**: Engineering bot that sorts repositories by domain and upgrades them with tests, docs, benchmarks and CI through automated pull requests.
 
 ---
 
-## Toolbox
+## <img alt="" src="./assets/icons/toolbox.svg" width="18" height="18" align="absmiddle"> Toolbox
 
 **Languages**
 
@@ -143,7 +214,9 @@ Full writeups, including the ones that do not work out.
   <img alt="Python" src="https://img.shields.io/badge/Python-7c3aed?style=flat-square&logo=python&logoColor=white">
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-7c3aed?style=flat-square&logo=typescript&logoColor=white">
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-7c3aed?style=flat-square&logo=javascript&logoColor=white">
+  <img alt="Rust" src="https://img.shields.io/badge/Rust-7c3aed?style=flat-square&logo=rust&logoColor=white">
   <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-7c3aed?style=flat-square&logo=latex&logoColor=white">
+  <img alt="Lean 4" src="https://img.shields.io/badge/Lean%204-7c3aed?style=flat-square&logo=lean&logoColor=white">
   <img alt="WGSL" src="https://img.shields.io/badge/WGSL-7c3aed?style=flat-square&logo=google&logoColor=white">
 </p>
 
@@ -155,15 +228,18 @@ Full writeups, including the ones that do not work out.
   <img alt="Docker" src="https://img.shields.io/badge/Docker-6e7681?style=flat-square&logo=docker&logoColor=white">
   <img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-6e7681?style=flat-square&logo=githubactions&logoColor=white">
   <img alt="Git" src="https://img.shields.io/badge/Git-6e7681?style=flat-square&logo=git&logoColor=white">
+  <img alt="Tectonic" src="https://img.shields.io/badge/Tectonic-6e7681?style=flat-square&logo=latex&logoColor=white">
+  <img alt="CP-SAT" src="https://img.shields.io/badge/CP-SAT-6e7681?style=flat-square&logo=google&logoColor=white">
+  <img alt="PyQt6" src="https://img.shields.io/badge/PyQt6-6e7681?style=flat-square&logo=qt&logoColor=white">
 </p>
 
 **Also working with**
 
-Numba · NumPy · SciPy · Jupyter · WebGPU · PyQt6 · LLM agents · Zero knowledge proofs · Verifiable credentials
+Numba / NumPy / SciPy / Jupyter / WebGPU / PyQt6 / LLM agents / zero knowledge proofs / verifiable credentials
 
 ---
 
-## Contribution activity
+## <img alt="" src="./assets/icons/activity.svg" width="18" height="18" align="absmiddle"> Contribution activity
 
 <p align="center">
   <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-light.svg#gh-light-mode-only" width="100%">
@@ -179,11 +255,13 @@ Numba · NumPy · SciPy · Jupyter · WebGPU · PyQt6 · LLM agents · Zero know
 
 ---
 
-## Reach me
+## <img alt="" src="./assets/icons/reach.svg" width="18" height="18" align="absmiddle"> Reach me
 
 - Email: [daveaddams91@gmail.com](mailto:daveaddams91@gmail.com)
 - GitHub: [@rajveersinh-is-dev](https://github.com/rajveersinh-is-dev)
 - Issues and pull requests are open on all the repositories above.
+
+Open to research collaboration, reproducibility bugs, and pull requests. Based in India, happy to work across time zones.
 
 <p align="center">
   <img alt="gradient footer" src="./assets/footer-light.svg#gh-light-mode-only" width="100%">

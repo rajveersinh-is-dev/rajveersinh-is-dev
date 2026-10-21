@@ -1,0 +1,29 @@
+name: Profile Facts
+
+on: # 18:20 UTC, ten minutes after the 3D contribution graph
+  schedule:
+    - cron: "20 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: rebuild the profile facts strip
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build the facts strip and stamp the footer
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_OWNER: ${{ github.repository_owner }}
+        run: python3 .github/scripts/make-facts-svg.py
+      - name: Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A .
+          if git commit -m "chore: refresh the profile facts strip"; then
+            git push
+          fi

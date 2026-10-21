@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="132" viewBox="0 0 460 132" role="img" aria-label="Reproducible by default: every result reruns from one command">
+<rect x="1" y="1" width="458" height="130" rx="16" fill="#faf8ff" stroke="#e3dcfb"/>
+<circle cx="66" cy="66" r="44" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+<circle cx="66" cy="66" r="36" fill="none" stroke="#7c3aed" stroke-width="0.8" opacity="0.5"/>
+<path d="M 46 66 L 60 80 L 87 50" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="130" y="58" font-weight="700" font-size="15" letter-spacing="0.8" fill="#2e1065">REPRODUCIBLE BY DEFAULT</text>
+<text x="130" y="80" font-size="12" fill="#3b2a63">every published result reruns</text>
+<text x="130" y="97" font-size="12" fill="#3b2a63">from a single command</text>
+</svg>

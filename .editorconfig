@@ -1,6 +1,7 @@
 # Encoding guard. Git has no lever for this: .gitattributes controls line
 # endings only. charset below is what stops a file being read as Windows-1252
-# and turning "·" into "Â·", which is what happened here once already.
+# and turning a two byte UTF-8 sequence into four Latin-1 bytes, which is
+# what happened here once already.
 root = true
 
 [*]

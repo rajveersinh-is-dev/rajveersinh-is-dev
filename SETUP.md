@@ -5,107 +5,173 @@ username**, and only if that repository is **public**. Nothing else about it is 
 
 ---
 
-## 1. Create the repo
+## 1. The repo
 
-Go to <https://github.com/new> and name it:
+It already exists and is live:
 
 ```
-rajveersinh-is-dev
+rajveersinh-is-dev/rajveersinh-is-dev     public, branch main
 ```
 
-- Visibility: **Public** (a private repo will not render on your profile)
-- Leave "Add README", `.gitignore` and license **unchecked**
-- Default branch: `main`
+The name must track the username. When the login changes, rename the repository
+too, or the README stops rendering. GitHub does not do this for you.
 
-## 2. Push
-
-You already have `gh` authenticated as `rajveersinh-is-dev`.
+## 2. Publishing a change
 
 ```powershell
-cd C:\Users\davea\Downloads\Project-Opencode\profile-readme
-
-gh repo create rajveersinh-is-dev `
-  --public `
-  --description "Profile README for Rajveersinh Pardeshi" `
-  --source . `
-  --remote origin `
-  --push `
-  --disable-issues `
-  --disable-wiki
+git clone https://github.com/rajveersinh-is-dev/rajveersinh-is-dev.git
+cd rajveersinh-is-dev
+# edit, then
+git add -A
+git commit -m "docs: ..."
+git push
 ```
 
-Or with plain git:
+Commit as `rajveersinh-is-dev <daveaddams91@gmail.com>`. That email is the one
+verified on the account, which is what makes GitHub attribute the commit to you.
 
-```powershell
-cd C:\Users\davea\Downloads\Project-Opencode\profile-readme
-git init -b main
-git add README.md
-git commit -m "Add profile README"
-git remote add origin https://github.com/rajveersinh-is-dev/rajveersinh-is-dev.git
-git push -u origin main
-```
+## 3. Your profile fields
 
-`SETUP.md` is not listed in the `git add` above because it never appears on your
-profile. Add it if you want to keep these notes in the repo.
+These are already set:
 
-## 3. Update your profile fields
+| Field | Value |
+|:--|:--|
+| Display name | Rajveersinh Pardeshi |
+| Bio | Researcher in computational geometry, plasma physics and formal methods. Building verifiable systems, GPU simulations and autonomous agents. |
+| Location | India |
+| Public email | daveaddams91@gmail.com |
 
-Your display name is still the default `jugwashere` and your bio is empty. Both sit
-above the README, so they are the first thing visitors read.
+The bio is capped at 160 characters. To change any of them:
 
 ```powershell
 gh api --method PATCH user `
   -f name="Rajveersinh Pardeshi" `
-  -f bio="Researcher in computational geometry, plasma physics and formal methods. Building verifiable systems, GPU simulations and autonomous agents." `
+  -f bio="..." `
   -f location="India"
 ```
 
-The bio is capped at **160 characters**. The example above fits.
-
-To also publish `daveaddams91@gmail.com` as your public profile email, do it in the
-browser at <https://github.com/settings/emails>. GitHub's API does not expose this
-field, so it has to be done through the settings page.
+The public email is only editable in the browser at
+<https://github.com/settings/emails>.
 
 ---
 
-## Editing this README
+## The layout
 
-### Adding or replacing a project
+```
+README.md                        the profile README
+SETUP.md                         this file, never shown on your profile
+assets/                          every image the README uses
+  banner-light.svg  banner-dark.svg
+  tagline-light.svg tagline-dark.svg
+  facts-light.svg   facts-dark.svg
+  map-light.svg     map-dark.svg
+  seal-light.svg    seal-dark.svg
+  card-*-light.svg  card-*-dark.svg
+  footer-light.svg  footer-dark.svg
+  icons/                          one line icon per section heading
+profile-3d-contrib/              the 3D contribution images, generated daily
+.github/scripts/
+  make-profile-assets.py         rebuilds everything in assets/
+  make-facts-svg.py              rebuilds the numbers and stamps the footer
+  split-3d-svg.py                splits the 3D graph into separate images
+.github/workflows/
+  profile-3d.yml                 rebuilds the 3D contribution images
+  profile-facts.yml              rebuilds the facts strip and the footer stamp
+```
 
-Each project is one row in a table under `## Projects`. Copy an existing row, change
-the link and the text. Pick the table that fits:
+---
 
-| Table | Goes here |
+## Editing the README
+
+### The artwork is generated, not hand drawn
+
+Everything under `assets/` is produced by one script:
+
+```powershell
+python .github/scripts/make-profile-assets.py
+```
+
+Change the palette, the thrackle geometry, a card, a pill in the research map
+or an icon in that file, then rerun it and commit the result. Do not hand edit
+the SVGs, they will be overwritten.
+
+The numbers in the facts strip and the date in the footer come from a second
+script that talks to the GitHub API:
+
+```powershell
+python .github/scripts/make-facts-svg.py
+```
+
+It uses `GITHUB_TOKEN` if it is set, otherwise it falls back to the token from
+the local `gh` CLI. The `profile-facts` workflow runs it every day at 18:20 UTC.
+
+One trap worth knowing: the script reads the account from `PROFILE_OWNER`, or
+else from the checkout's own remote. It deliberately does not read `USERNAME`,
+because on Windows that environment variable holds the Windows account name, and
+the script once read a completely different GitHub account because of it.
+
+### Sections
+
+| Section | Where the content comes from |
 |:--|:--|
-| Combinatorics and geometry | Graph theory, discrete geometry, exact counts, anything with a theorem attached |
-| Statistics and complex systems | Statistics, missing data, time series, network science |
-| Simulation and formal methods | Physics, numerics, GPU work, formal verification |
-| Trust and autonomous agents | Identity, credentials, cryptography, automation |
+| About | Two paragraphs, then a collapsed block with the longer lists |
+| Results | Three cards, each linking to the repository it came from |
+| Papers | Every manuscript with a public PDF, grouped by theme |
+| Research map | The three strands of the work, drawn in `make-profile-assets.py` |
+| Projects | Everything that is not a published paper |
+| Toolbox | Language and tool badges |
+| Contribution activity | The 3D graph, generated by `profile-3d.yml` |
+| Reach me | Contact details |
 
-**Keeping it uncluttered.** The first table is written as results, one short line each,
-because it holds most of the work. The other three describe software, so they get
-ordinary sentences. If you add a lot more combinatorics repos, keep writing them as
-results rather than growing that table into paragraphs. If a cluster passes about a
-dozen entries, consider giving it its own subsection instead of widening the page.
+### Adding a paper
+
+The Papers section links to `paper/main.pdf` on the default branch, using `HEAD`
+so it works whichever branch the manuscript lives on:
+
+```
+https://github.com/rajveersinh-is-dev/REPO/blob/HEAD/paper/main.pdf
+```
+
+A repository only belongs in that section once its PDF is actually built and
+committed. Until then it belongs under Projects, and a manuscript with no PDF
+is better listed by its subject than by a link that 404s.
+
+### Adding a project
+
+Projects are bullet lists, not tables. GitHub gives no control over table
+column widths, so on a phone the repository names broke across three lines and
+the descriptions were squeezed into a narrow strip.
+
+**Keeping it uncluttered.** The lists are written as results, one short line
+each. If a cluster passes about a dozen entries, give it its own subsection
+rather than widening the page.
 
 ### Changing colours
 
-The purple gradient appears twice, at the top and bottom, as a `customColorList`
-parameter. Search the file for `customColorList` to change both.
+Everything uses one accent, violet `7c3aed`, plus a neutral grey `6e7681`.
+They are defined once, in the `LIGHT` and `DARK` dictionaries at the top of
+`.github/scripts/make-profile-assets.py`, and every badge colour in the README
+matches them.
 
 | Where | Current value |
 |:--|:--|
-| Top banner | `4c1d95,7c3aed,c026d3,2563eb` |
-| Footer | `c026d3,7c3aed,2563eb` |
+| Accent | `7c3aed` |
+| Accent, second stop | `c026d3` |
+| Neutral | `6e7681` |
+| Motif | `8b5cf6` |
 
-Ideas:
+Individual badge colours are the hex at the end of each shields.io URL.
 
-- Teal: `0f172a,0891b2,22d3ee,10b981`
-- India tricolour: `ff9933,ffffff,138808`
-- Ember: `450a0a,dc2626,f59e0b`
+### Light and dark
 
-Individual badge colours are the hex at the end of each shields.io URL. Change the
-badge colour without touching the label.
+Every image has a twin, and the README picks the right one with the
+`#gh-light-mode-only` and `#gh-dark-mode-only` URL fragments. Those fragments
+only work when the two files share a base name, so if you add an image, add
+both.
+
+The section icons are the exception. They are used inside headings, where a
+light and dark pair would need both copies, so they use a single mid violet
+that reads on either background.
 
 ---
 
@@ -115,25 +181,27 @@ Recording these so nobody has to rediscover them.
 
 | Removed | Reason |
 |:--|:--|
-| **Stats cards**, top languages, streak, profile summary cards | `github-readme-stats` is a shared public Vercel instance and gets rate limited, so the cards intermittently render as a red error box. A profile that breaks at random is worse than no stats. |
-| **Animated typing header** (`readme-typing-svg`) | Its `/svg` endpoint returns HTTP 404 now. |
-| **Text inside the gradient banner** (`capsule-render`) | capsule-render gives every text element `animation: fadeIn` from `opacity: 0`. Many renderers never play that animation, so the words stay invisible while the gradient still draws. The banner is now decoration with no text, and your name is a normal Markdown heading. |
+| **Stats cards**, top languages, streak, profile summary cards | `github-readme-stats` is a shared public Vercel instance and gets rate limited, so the cards intermittently render as a red error box. A profile that breaks at random is worse than no stats. The numbers are now built by `make-facts-svg.py` and committed as an SVG, so they cannot break. |
+| **External typing header** (`readme-typing-svg`) | Its endpoint is a third party service and has already broken once. The tagline is now an animated SVG in `assets/`, so the page has no external image dependency other than the badge service. |
+| **Text inside the gradient banner** (`capsule-render`) | capsule-render gives every text element `animation: fadeIn` from `opacity: 0`. Many renderers never play that animation, so the words stay invisible while the gradient still draws. The banner is drawn by hand now. |
 | **Contribution grid snake** | Needed an `output` branch generated by a scheduled workflow, so it showed a broken image until that workflow had run. Removed rather than ship a visible gap. |
 | **Skill icons** (`skillicons.dev`) | Its multi icon SVG only rendered the first icon. Replaced with plain shields.io badges, which are single files and always draw. |
 | **Trophy case** and **activity graph** | Both services return HTTP 402, the hosts are gone. |
 | **Dynamic repo count badge** | `img.shields.io/github/repos/rajveersinh-is-dev` returns a "badge not found" image. |
 | **Emoji section titles and em dashes** | Cosmetic. Kept the headers plain so the page reads like a person wrote it. |
 
-If you want stats back later, the reliable route is to self host
-`github-readme-stats` (follow the "Hosting Locally" section in its README) and point
-the image URLs at your own deployment. The query parameters stay exactly the same.
+If you want a hosted stats card back later, the reliable route is to self host
+`github-readme-stats` and point the image URLs at your own deployment.
 
 ---
 
-## Files here
+## House rules this file follows
 
-```
-profile-readme/
-|-- README.md     the profile README
-`-- SETUP.md      this file, never shown on your profile
-```
+- **Pure ASCII.** The file is written in ASCII so that tools which mangle UTF-8
+  cannot corrupt it. Separators are written as `/`, and the Greek letters are
+  spelled out as `tau` and `kappa`.
+- **No CSS in the markdown.** GitHub strips `<style>` blocks and `style`
+  attributes, so all movement is SMIL animation inside the SVG files.
+- **Every animation degrades.** Each animation is written so that its base
+  attribute values are the finished state. A browser without SMIL shows the
+  complete artwork rather than a blank band.
