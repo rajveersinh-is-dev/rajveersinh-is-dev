@@ -202,6 +202,30 @@ block reads as one palette.
 To change the ramps, edit `RAMPS` in that script and re-run the
 `GitHub-Profile-3D-Contrib` workflow.
 
+### The wave
+
+The graph is not a still picture. The tiles are emitted week by week, seven
+days to a week, so the split script wraps them in one group per week and
+starts the wave off in each group.
+
+| Effect | How | Why |
+|:--|:--|:--|
+| the bars rise and settle in turn | an SMIL transform on the week group | SMIL is certain to run inside a README image, since GitHub renders one in a sandbox with no scripting, and it is what made the previous typing banner move |
+| the week brightens as it goes | a CSS filter on the same group | the two effects use different properties, so they cannot fight |
+
+Each week group carries its own delay, 0.06 seconds after the one before it,
+so the 53 groups read as one wave travelling through the year rather than 53
+loops. The movement is 3 pixels over a 3.5 second cycle, which is slow enough
+to be felt rather than watched.
+
+**Hover is not possible.** GitHub renders a README image in a sandbox where
+the SVG receives no pointer events, so a hover rule inside it can never fire.
+The image is a single element to the page. Continuous animation is the only
+kind that works there.
+
+The generator's own one-shot growth animation is left in place, so the graph
+builds itself when the page opens and the wave then runs through it.
+
 ### The numbers in the facts strip
 
 The strip shows the same number GitHub prints in the profile sidebar, taken
