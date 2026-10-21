@@ -1,8 +1,8 @@
 name: Profile Facts
 
-on: # 18:20 UTC, ten minutes after the 3D contribution graph
+on: # every six hours, at 20 minutes past the hour
   schedule:
-    - cron: "20 18 * * *"
+    - cron: "20 */6 * * *"
   workflow_dispatch:
 
 permissions:
