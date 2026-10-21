@@ -87,6 +87,13 @@ FACE_SHADE = {"top": 1.0, "left": 0.84, "right": 0.70}
 # in groups of seven gives one group per week. Each group bobs and brightens
 # in turn, and the delay between the groups sends a ripple along the time
 # axis.
+#
+# The movement is SMIL and the shimmer is CSS, so the two cannot fight over
+# the same property. SMIL is used for the movement because it is the one that
+# is certain to run inside a README image: GitHub renders an image in a
+# sandbox where scripting is off, and the previous typing banner only moved
+# because it was SMIL. A hover rule cannot work at all, because the image
+# receives no pointer events.
 DAYS_PER_WEEK = 7
 WAVE_CYCLE = 3.5          # seconds for one bob and one shimmer
 WAVE_STEP = 0.06          # seconds between the start of one week and the next
@@ -95,12 +102,7 @@ WAVE_GLOW = 1.3           # how bright a week gets at the top of the wave
 
 WAVE_CSS = """
 .week {
-  animation: week-bob %(cycle)ss ease-in-out infinite,
-             week-glow %(cycle)ss ease-in-out infinite;
-}
-@keyframes week-bob {
-  0%%, 100%% { translate: 0 0; }
-  50%% { translate: 0 -%(rise)spx; }
+  animation: week-glow %(cycle)ss ease-in-out infinite;
 }
 @keyframes week-glow {
   0%%, 100%% { filter: brightness(1); }
@@ -304,21 +306,33 @@ def tidy_style(style_el, theme):
 
 
 def group_into_weeks(calendar):
-    """Wrap the tiles in one group per week and give each a delay.
+    """Wrap the tiles in one group per week and start the wave off in it.
 
     The generator emits the tiles week by week, seven days to a week, so the
-    groups line up with the time axis. The groups carry an animation delay
-    rather than an animation of their own, which is what turns 53 separate
-    loops into a single wave travelling through the graph.
+    groups line up with the time axis. Each group gets an SMIL animation that
+    lifts it and lets it back down, and the delay between the groups is what
+    turns 53 separate loops into one wave travelling through the graph.
     """
     tiles = [c for c in list(calendar) if c.tag.split("}")[-1] == "g"]
     for child in list(calendar):
         calendar.remove(child)
     weeks = 0
     for start in range(0, len(tiles), DAYS_PER_WEEK):
+        delay = weeks * WAVE_STEP
         week = ET.SubElement(calendar, "g", {
             "class": "week",
-            "style": "animation-delay: %.2fs" % (weeks * WAVE_STEP),
+            "style": "animation-delay: %.2fs" % delay,
+        })
+        ET.SubElement(week, "animateTransform", {
+            "attributeName": "transform",
+            "type": "translate",
+            "values": "0 0; 0 %g; 0 0" % (-WAVE_RISE),
+            "keyTimes": "0; 0.5; 1",
+            "keySplines": "0.4 0 0.2 1; 0.4 0 0.2 1",
+            "calcMode": "spline",
+            "dur": "%gs" % WAVE_CYCLE,
+            "begin": "%.2fs" % delay,
+            "repeatCount": "indefinite",
         })
         for tile in tiles[start:start + DAYS_PER_WEEK]:
             calendar.append(tile)
