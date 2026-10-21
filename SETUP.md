@@ -115,7 +115,7 @@ the script once read a completely different GitHub account because of it.
 | Section | Where the content comes from |
 |:--|:--|
 | About | Two paragraphs, then a collapsed block with the longer lists |
-| Results | Three cards, each linking to the repository it came from |
+| Results | Three full width rows, each linking to the repository it came from |
 | Papers | Every manuscript with a public PDF, grouped by theme |
 | Research map | The three strands of the work, drawn in `make-profile-assets.py` |
 | Projects | Everything that is not a published paper |
@@ -161,6 +161,34 @@ matches them.
 | Motif | `8b5cf6` |
 
 Individual badge colours are the hex at the end of each shields.io URL.
+
+### Sizing the artwork
+
+The profile column runs from about 565 pixels on a narrow window to the full
+content width on a wide one. An image is scaled to the column, so an image
+wider than the narrowest column is scaled down and its type gets smaller with
+it.
+
+The result rows are therefore 600 units wide, which is never scaled down, and
+their type is drawn at the size it is read. The claim is split over two lines
+so that it fits at 14 points without shrinking. If you change a claim, keep
+each line under about 55 characters, or it will run into the edge of the panel.
+
+### The numbers in the facts strip
+
+The strip shows the same number GitHub prints in the profile sidebar, taken
+from the contribution calendar:
+
+```
+{ user(login: "...") { contributionsCollection
+    { contributionCalendar { totalContributions } } } }
+```
+
+An earlier version counted the commits on the default branch of each public
+repository instead. That was a true number, but it measured something
+different, and the two numbers sat on the same page looking like a
+contradiction. Counting commits on every branch is not a fix either, because
+the same commit is then counted once per branch that contains it.
 
 ### Checking the artwork
 
