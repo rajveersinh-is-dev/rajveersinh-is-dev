@@ -382,10 +382,15 @@ def icon(name):
     A light and dark pair would need both copies inside the heading, and if the
     theme switching ever failed to hide one of them the heading would show two
     icons. A mid violet reads on both backgrounds, so one file is enough.
+
+    The viewBox is 24 wide for a 20 wide drawing. The spare 4 units are the
+    gap between the icon and the heading text: the heading cannot contain a
+    space, because GitHub turns a leading space into a leading hyphen in the
+    heading slug, and the navigation links are written against that slug.
     """
     body = ICONS_SPEC[name].replace('fill="current" stroke="none"',
                                      f'fill="{ICON_ACCENT}" stroke="none"')
-    return (f'{head(20, 20, name)}'
+    return (f'{head(24, 20, name)}'
             f'<g fill="none" stroke="{ICON_ACCENT}" stroke-width="1.5" '
             f'stroke-linecap="round" stroke-linejoin="round">{body}</g></svg>\n')
 

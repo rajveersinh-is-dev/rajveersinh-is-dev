@@ -60,7 +60,7 @@
 
 ---
 
-## <img alt="" src="./assets/icons/about.svg" width="18" height="18" align="absmiddle"> About
+## <img alt="" src="./assets/icons/about.svg" width="22" align="absmiddle">About
 
 Most of my work is in extremal graph theory and combinatorial geometry, where the aim is to settle small cases exactly rather than bound them loosely. A good share of it starts from somebody else's conjecture and ends in a negative result, which I publish rather than quietly drop. Alongside that: missing data that is not missing at random, plasma confinement, and agents that write and verify their own successors.
 
@@ -93,7 +93,7 @@ I like results I can reproduce from scratch, and proofs that survive someone try
 
 ---
 
-## <img alt="" src="./assets/icons/results.svg" width="18" height="18" align="absmiddle"> Results
+## <img alt="" src="./assets/icons/results.svg" width="22" align="absmiddle">Results
 
 Three results I would defend in a hostile review. Each card opens the repository it came from.
 
@@ -111,7 +111,7 @@ Three results I would defend in a hostile review. Each card opens the repository
 
 ---
 
-## <img alt="" src="./assets/icons/papers.svg" width="18" height="18" align="absmiddle"> Papers
+## <img alt="" src="./assets/icons/papers.svg" width="22" align="absmiddle">Papers
 
 Manuscripts with a published PDF. The title opens the PDF, the name opens the repository with the proofs, the code and the tests.
 
@@ -149,7 +149,7 @@ Manuscripts with a published PDF. The title opens the PDF, the name opens the re
 
 ---
 
-## <img alt="" src="./assets/icons/map.svg" width="18" height="18" align="absmiddle"> Research map
+## <img alt="" src="./assets/icons/map.svg" width="22" align="absmiddle">Research map
 
 The three strands of the work, and how they feed each other. Enumeration produces a number, a proof turns the number into a theorem, and the verification layer checks the theorem and then writes its successor.
 
@@ -160,7 +160,7 @@ The three strands of the work, and how they feed each other. Enumeration produce
 
 ---
 
-## <img alt="" src="./assets/icons/projects.svg" width="18" height="18" align="absmiddle"> Projects
+## <img alt="" src="./assets/icons/projects.svg" width="22" align="absmiddle">Projects
 
 The repositories behind the papers, the investigations that have not concluded, and the software.
 
@@ -206,7 +206,7 @@ Full writeups, including the ones that do not work out.
 
 ---
 
-## <img alt="" src="./assets/icons/toolbox.svg" width="18" height="18" align="absmiddle"> Toolbox
+## <img alt="" src="./assets/icons/toolbox.svg" width="22" align="absmiddle">Toolbox
 
 **Languages**
 
@@ -239,7 +239,7 @@ Numba / NumPy / SciPy / Jupyter / WebGPU / PyQt6 / LLM agents / zero knowledge p
 
 ---
 
-## <img alt="" src="./assets/icons/activity.svg" width="18" height="18" align="absmiddle"> Contribution activity
+## <img alt="" src="./assets/icons/activity.svg" width="22" align="absmiddle">Contribution activity
 
 <p align="center">
   <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-light.svg#gh-light-mode-only" width="100%">
@@ -255,7 +255,7 @@ Numba / NumPy / SciPy / Jupyter / WebGPU / PyQt6 / LLM agents / zero knowledge p
 
 ---
 
-## <img alt="" src="./assets/icons/reach.svg" width="18" height="18" align="absmiddle"> Reach me
+## <img alt="" src="./assets/icons/reach.svg" width="22" align="absmiddle">Reach me
 
 - Email: [daveaddams91@gmail.com](mailto:daveaddams91@gmail.com)
 - GitHub: [@rajveersinh-is-dev](https://github.com/rajveersinh-is-dev)
