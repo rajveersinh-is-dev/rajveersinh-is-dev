@@ -243,15 +243,15 @@ Numba / NumPy / SciPy / Jupyter / WebGPU / PyQt6 / LLM agents / zero knowledge p
 ## <img alt="" src="./assets/icons/activity.svg" width="22" align="absmiddle">Contribution activity
 
 <p align="center">
-  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-light.svg#gh-light-mode-only" width="100%">
-  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-dark.svg#gh-dark-mode-only" width="100%">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-light.svg#gh-light-mode-only" width="80%">
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-3d-calendar-dark.svg#gh-dark-mode-only" width="80%">
 </p>
 
 <p align="center">
-  <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-light.svg#gh-light-mode-only" width="46%">
-  <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-light.svg#gh-light-mode-only" width="46%">
-  <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-dark.svg#gh-dark-mode-only" width="46%">
-  <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-dark.svg#gh-dark-mode-only" width="46%">
+  <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-light.svg#gh-light-mode-only" width="40%">
+  <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-light.svg#gh-light-mode-only" width="40%">
+  <img alt="Contribution breakdown" src="./profile-3d-contrib/profile-3d-radar-dark.svg#gh-dark-mode-only" width="40%">
+  <img alt="Languages" src="./profile-3d-contrib/profile-3d-pie-dark.svg#gh-dark-mode-only" width="40%">
 </p>
 
 ---

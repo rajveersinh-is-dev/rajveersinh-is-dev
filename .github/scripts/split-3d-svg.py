@@ -13,8 +13,16 @@ For each input it writes, next to it:
     profile-3d-radar-<theme>.svg      contribution radar
     profile-3d-pie-<theme>.svg        language donut + legend
 
-It also applies the two clean-ups the profile needs: a transparent background
-and no empty-day tiles.
+It also applies the three clean-ups the profile needs: a transparent background,
+no empty-day tiles, and a palette that matches the page.
+
+The generator paints the contribution tiles with two heat ramps, one for all
+time and one for the current year, and paints the radar in the same green. The
+page is violet, so the ramps are rotated onto violet and magenta and the
+radar takes the accent. Lightness is preserved, so a busier day still reads
+as a busier day. The language colours in the donut are pulled part of the way
+towards the accent, which keeps each language recognisable while the block
+reads as one palette.
 
 Usage: split-3d-svg.py INPUT.svg THEME      (THEME is e.g. light or dark)
 """
@@ -46,6 +54,96 @@ CAL_PAD = 16               # breathing room around the cropped calendar
 
 EMPTY_TILE = re.compile(r"^cont-(top|left|right)-p\d+-0$")
 DATE_RANGE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+# ---- palette ----------------------------------------------------------------
+# The accent of the page, and the hue the two heat ramps are rotated onto.
+ACCENT = (124, 58, 237)          # 7c3aed
+NEUTRAL = {"dark": (169, 163, 196), "light": (110, 118, 129)}
+LANGUAGE_MIX = 0.40              # how far the language colours move to the accent
+
+# The generator paints the tiles with four series: the all-time heat ramp, the
+# current-year ramp, a neutral and a pale one. Each series is repainted from
+# a ramp of its own, so the level of a tile is still readable: on the dark
+# background a busier day is brighter, and on the light one it is deeper, which
+# is the convention GitHub's own contribution graph uses.
+RAMPS = {
+    "dark": {
+        "total":  ["#5b21b6", "#7c3aed", "#a78bfa", "#ddd6fe"],
+        "season": ["#86198f", "#c026d3", "#f0abfc", "#fbcfe8"],
+        "grey":   ["#3b4252", "#57606a", "#8b949e", "#c9d1d9"],
+        "other":  ["#f5f3ff", "#eae4ff", "#dcd6fb", "#bfa9f5"],
+    },
+    "light": {
+        "total":  ["#ddd6fe", "#c4b5fd", "#a78bfa", "#6d28d9"],
+        "season": ["#fce7f3", "#f5d0fe", "#e879f9", "#a21caf"],
+        "grey":   ["#3b4252", "#57606a", "#8b949e", "#c9d1d9"],
+        "other":  ["#f5f3ff", "#eae4ff", "#dcd6fb", "#bfa9f5"],
+    },
+}
+FACE_SHADE = {"top": 1.0, "left": 0.84, "right": 0.70}
+
+
+def _parse_colour(spec):
+    """'rgb(1, 2, 3)' or '#7c3aed' to an (r, g, b) tuple."""
+    spec = spec.strip().rstrip(";").strip()
+    if spec.startswith("#"):
+        h = spec[1:]
+        if len(h) == 3:
+            h = "".join(c * 2 for c in h)
+        return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+    nums = re.findall(r"[\d.]+", spec)
+    return tuple(int(float(n)) for n in nums[:3])
+
+
+def _fmt_colour(rgb):
+    return "rgb(%d, %d, %d)" % tuple(max(0, min(255, int(round(c)))) for c in rgb)
+
+
+def _rgb_to_hsl(r, g, b):
+    r, g, b = r / 255.0, g / 255.0, b / 255.0
+    hi, lo = max(r, g, b), min(r, g, b)
+    light = (hi + lo) / 2
+    if hi == lo:
+        return 0.0, 0.0, light
+    d = hi - lo
+    sat = d / (2 - hi - lo) if light > 0.5 else d / (hi + lo)
+    if hi == r:
+        hue = ((g - b) / d) % 6
+    elif hi == g:
+        hue = (b - r) / d + 2
+    else:
+        hue = (r - g) / d + 4
+    return hue * 60.0, sat, light
+
+
+def classify(spec):
+    """Which of the four series a tile belongs to, read from its original hue."""
+    rgb = _parse_colour(spec)
+    if len(rgb) < 3:
+        return "grey"
+    hue, sat, _ = _rgb_to_hsl(*rgb)
+    if sat < 0.06:
+        return "grey"
+    if hue < 62:
+        return "total"        # the all time ramp, yellow in the original
+    if hue <= 165:
+        return "season"       # the current year ramp, green in the original
+    return "other"            # the pale series
+
+
+def tile_colour(spec, level, face, theme):
+    """The repainted colour for one tile face."""
+    family = classify(spec)
+    ramp = RAMPS.get(theme, RAMPS["dark"])[family]
+    base = _parse_colour(ramp[max(0, min(3, level - 1))])
+    shade = FACE_SHADE.get(face, 1.0)
+    return _fmt_colour(tuple(c * shade for c in base))
+
+
+def blend_to_accent(spec):
+    r, g, b = _parse_colour(spec)
+    return _fmt_colour(tuple(c + (a - c) * LANGUAGE_MIX
+                             for c, a in zip((r, g, b), ACCENT)))
 
 
 # ---- tiny affine matrix helpers -------------------------------------------
@@ -140,8 +238,8 @@ def centre_to_aspect(box, aspect):
 
 
 # ---- document assembly -----------------------------------------------------
-def tidy_style(style_el):
-    """Force the background colour classes transparent."""
+def tidy_style(style_el, theme):
+    """Force the background colour classes transparent and restyle the palette."""
     css = style_el.text or ""
     css = re.sub(r"(\.fill-bg\s*\{ fill: )[^;]*;", r"\1transparent;", css)
     css = re.sub(r"(\.stroke-bg\s*\{ stroke: )[^;]*;", r"\1transparent;", css)
@@ -150,8 +248,42 @@ def tidy_style(style_el):
         r"\1transparent;",
         css,
     )
+
+    # repaint the four tile series from the page palette
+    def repaint(m):
+        face, row, level, colour = m.group(1), m.group(2), int(m.group(3)), m.group(4)
+        if level == 0:
+            return m.group(0)          # an empty day, already transparent
+        return (f".cont-{face}-p{row}-{level} {{ fill: "
+                f"{tile_colour(colour, level, face, theme)};")
+
+    css = re.sub(
+        r"\.cont-(top|left|right)-p(\d+)-(\d+)\s*\{\s*fill:\s*([^;]*);",
+        repaint,
+        css,
+    )
+
+    # the radar takes the accent, the weak lines the neutral of this theme
+    neutral = NEUTRAL.get(theme, NEUTRAL["dark"])
+    css = re.sub(r"(\.radar\s*\{[^}]*?stroke:\s*)[^;]*(;)",
+                 lambda m: m.group(1) + _fmt_colour(ACCENT) + m.group(2), css)
+    css = re.sub(r"(\.radar\s*\{[^}]*?fill:\s*)[^;]*(;)",
+                 lambda m: m.group(1) + _fmt_colour(ACCENT) + m.group(2), css)
+    for sel in (".fill-weak", ".stroke-weak"):
+        css = re.sub(rf"({re.escape(sel)}\s*{{\s*(?:fill|stroke):\s*)[^;]*(;)",
+                     lambda m: m.group(1) + _fmt_colour(neutral) + m.group(2), css)
+
     style_el.text = css
     return style_el
+
+
+def blend_inline_fills(el):
+    """Pull the language colours in the donut part of the way to the accent."""
+    for node in el.iter():
+        fill = node.get("fill")
+        if fill and fill.startswith("#") and len(fill) == 7:
+            node.set("fill", blend_to_accent(fill))
+    return el
 
 
 def build_document(style_el, box, *groups):
@@ -208,9 +340,10 @@ def split(path, theme):
         root = ET.fromstring(fh.read())
 
     style = next(c for c in list(root) if c.tag.split("}")[-1] == "style")
-    tidy_style(style)
+    tidy_style(style, theme)
 
     calendar, radar, pie, totals = pick_groups(root)
+    blend_inline_fills(pie)
     outdir = os.path.dirname(os.path.abspath(path))
 
     # --- calendar: crop tight around the bars, then re-centre the caption ---
