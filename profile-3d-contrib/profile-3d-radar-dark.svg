@@ -313,12 +313,7 @@ fill-opacity: 0.5;
 .cont-left-p19-4 { fill: rgb(211, 174, 195); }
 .cont-right-p19-4 { fill: rgb(176, 145, 162); }
 .week {
-  animation: week-bob 3.5s ease-in-out infinite,
-             week-glow 3.5s ease-in-out infinite;
-}
-@keyframes week-bob {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -3.0px; }
+  animation: week-glow 3.5s ease-in-out infinite;
 }
 @keyframes week-glow {
   0%, 100% { filter: brightness(1); }
