@@ -277,7 +277,8 @@ CARDS = [
         "slug": "card-thrackle",
         "title": "Convex thrackles",
         "formula": "2^(n-1) - n",
-        "claim": "A maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges",
+        "claim": "A maximal convex thrackle on n vertices has",
+        "claim2": "exactly 2^(n-1) - n edges",
         "repo": "convex-thrackle-census",
         "diagram": "thrackle",
     },
@@ -285,7 +286,8 @@ CARDS = [
         "slug": "card-logconcavity",
         "title": "k-regular partitions",
         "formula": "N_k = 26   for k >= 30",
-        "claim": "The log-concavity threshold of p_k(n) stabilises at 26 for every k >= 30",
+        "claim": "The log-concavity threshold of p_k(n) stabilises at 26",
+        "claim2": "for every k >= 30, sharp and formalised in Lean 4",
         "repo": "k-regular-partition-log-concavity",
         "diagram": "bars",
     },
@@ -293,7 +295,8 @@ CARDS = [
         "slug": "card-packing",
         "title": "Polygon triangulations",
         "formula": "tau(n),  kappa(n)",
-        "claim": "Exact packing and covering numbers for polygon triangulations",
+        "claim": "Exact packing and covering numbers for polygon",
+        "claim2": "triangulations, with constructive proofs",
         "repo": "polygon-triangulation-packing",
         "diagram": "polygon",
     },
@@ -338,18 +341,24 @@ def card(c, t):
 
     The cards used to sit three across at 31 percent of the content column,
     which left about 230 pixels for a 380 pixel wide image. The claim text
-    rendered at roughly seven points and was unreadable. A row is the width of
-    the column, so the type is drawn at its natural size.
+    rendered at roughly seven points and was unreadable.
+
+    The row is 600 units wide on purpose. The profile column runs from about
+    565 pixels on a narrow window to the full content width on a wide one, so
+    artwork of that size is never scaled down. The type is therefore drawn at
+    the size it is read, and the claim is split over two lines so that it fits
+    without shrinking.
     """
-    w, h = 760, 150
+    w, h = 600, 180
     return f"""{head(w, h, c['title'])}
 <rect x="0.75" y="0.75" width="{w - 1.5}" height="{h - 1.5}" rx="14" fill="{t['card']}" stroke="{t['card_edge']}"/>
 <rect x="0.75" y="0.75" width="5" height="{h - 1.5}" rx="2.5" fill="{t['accent']}"/>
-<g transform="translate(24, 20)">{diagram(c['diagram'], t)}</g>
-{txt(200, 46, c['title'], 19, t['title'], '700')}
-{txt(200, 84, c['formula'], 23, t['accent'], '700', 'start', MONO)}
-{txt(200, 116, c['claim'], 15, t['text'])}
-{txt(200, 140, c['repo'], 13, t['muted'], '500', 'start', MONO)}
+<g transform="translate(10, 32)">{diagram(c['diagram'], t)}</g>
+{txt(175, 48, c['title'], 19, t['title'], '700')}
+{txt(175, 86, c['formula'], 22, t['accent'], '700', 'start', MONO)}
+{txt(175, 118, c['claim'], 14, t['text'])}
+{txt(175, 138, c['claim2'], 14, t['text'])}
+{txt(175, 164, c['repo'], 12.5, t['muted'], '500', 'start', MONO)}
 </svg>
 """
 

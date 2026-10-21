@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="150" viewBox="0 0 760 150" role="img" aria-label="Convex thrackles">
-<rect x="0.75" y="0.75" width="758.5" height="148.5" rx="14" fill="#ffffff" stroke="#e3dcfb"/>
-<rect x="0.75" y="0.75" width="5" height="148.5" rx="2.5" fill="#7c3aed"/>
-<g transform="translate(24, 20)"><g fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.85"><polygon points="30,86 60,26 104,44 116,96 72,112 30,86" stroke-width="1.8"/><line x1="30" y1="86" x2="60" y2="26"/><line x1="30" y1="86" x2="104" y2="44"/><line x1="30" y1="86" x2="116" y2="96"/><line x1="30" y1="86" x2="72" y2="112"/><line x1="60" y1="26" x2="104" y2="44"/><line x1="60" y1="26" x2="116" y2="96"/><line x1="60" y1="26" x2="72" y2="112"/><line x1="104" y1="44" x2="116" y2="96"/><line x1="104" y1="44" x2="72" y2="112"/><line x1="116" y1="96" x2="72" y2="112"/></g></g>
-<text x="200" y="46" font-weight="700" font-size="19" fill="#2e1065">Convex thrackles</text>
-<text x="200" y="84" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" font-size="23" fill="#7c3aed">2^(n-1) - n</text>
-<text x="200" y="116" font-size="15" fill="#3b2a63">A maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges</text>
-<text x="200" y="140" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="500" font-size="13" fill="#6e7681">convex-thrackle-census</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180" viewBox="0 0 600 180" role="img" aria-label="Convex thrackles">
+<rect x="0.75" y="0.75" width="598.5" height="178.5" rx="14" fill="#ffffff" stroke="#e3dcfb"/>
+<rect x="0.75" y="0.75" width="5" height="178.5" rx="2.5" fill="#7c3aed"/>
+<g transform="translate(10, 32)"><g fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.85"><polygon points="30,86 60,26 104,44 116,96 72,112 30,86" stroke-width="1.8"/><line x1="30" y1="86" x2="60" y2="26"/><line x1="30" y1="86" x2="104" y2="44"/><line x1="30" y1="86" x2="116" y2="96"/><line x1="30" y1="86" x2="72" y2="112"/><line x1="60" y1="26" x2="104" y2="44"/><line x1="60" y1="26" x2="116" y2="96"/><line x1="60" y1="26" x2="72" y2="112"/><line x1="104" y1="44" x2="116" y2="96"/><line x1="104" y1="44" x2="72" y2="112"/><line x1="116" y1="96" x2="72" y2="112"/></g></g>
+<text x="175" y="48" font-weight="700" font-size="19" fill="#2e1065">Convex thrackles</text>
+<text x="175" y="86" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" font-size="22" fill="#7c3aed">2^(n-1) - n</text>
+<text x="175" y="118" font-size="14" fill="#3b2a63">A maximal convex thrackle on n vertices has</text>
+<text x="175" y="138" font-size="14" fill="#3b2a63">exactly 2^(n-1) - n edges</text>
+<text x="175" y="164" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="500" font-size="12.5" fill="#6e7681">convex-thrackle-census</text>
 </svg>
