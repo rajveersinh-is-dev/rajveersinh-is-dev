@@ -174,6 +174,34 @@ their type is drawn at the size it is read. The claim is split over two lines
 so that it fits at 14 points without shrinking. If you change a claim, keep
 each line under about 55 characters, or it will run into the edge of the panel.
 
+### The 3D contribution graph
+
+The graph comes from `yoshi389111/github-profile-3d-contrib`, which paints
+the contribution tiles with its own heat ramps: yellow and orange for all
+time, green for the current year, and the raw GitHub language colours in the
+donut. None of that matches the page.
+
+`.github/scripts/split-3d-svg.py` repaints it on the way through. Each tile
+is classified by the hue of the colour the generator gave it, so the four
+series stay apart, and then repainted from a ramp of its own:
+
+| Series | Meaning | Dark theme | Light theme |
+|:--|:--|:--|:--|
+| all time | every contribution | violet | violet |
+| this year | the current season | magenta | magenta |
+| neutral | unused days | grey | grey |
+| other | a secondary series | pale violet | pale violet |
+
+Lightness is kept per level, so a busier day still reads as a busier day, and
+on the dark background a busier day is brighter, which is the convention
+GitHub's own contribution graph uses. The radar takes the accent, the weak
+lines take the neutral of the theme, and the language colours are pulled 40
+percent towards the accent, which keeps each language recognisable while the
+block reads as one palette.
+
+To change the ramps, edit `RAMPS` in that script and re-run the
+`GitHub-Profile-3D-Contrib` workflow.
+
 ### The numbers in the facts strip
 
 The strip shows the same number GitHub prints in the profile sidebar, taken
