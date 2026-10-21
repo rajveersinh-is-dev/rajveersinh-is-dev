@@ -98,15 +98,16 @@ I like results I can reproduce from scratch, and proofs that survive someone try
 Three results I would defend in a hostile review. Each card opens the repository it came from.
 
 <p align="center">
-  <a href="https://github.com/rajveersinh-is-dev/convex-thrackle-census#gh-light-mode-only"><img alt="Convex thrackles: every maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges" src="./assets/card-thrackle-light.svg#gh-light-mode-only" width="31%"></a>
-  <a href="https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity#gh-light-mode-only"><img alt="k-regular partitions: the log-concavity threshold stabilises at 26 for every k at least 30" src="./assets/card-logconcavity-light.svg#gh-light-mode-only" width="31%"></a>
-  <a href="https://github.com/rajveersinh-is-dev/polygon-triangulation-packing#gh-light-mode-only"><img alt="Polygon triangulations: exact packing and covering numbers" src="./assets/card-packing-light.svg#gh-light-mode-only" width="31%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/convex-thrackle-census#gh-light-mode-only"><img alt="Convex thrackles: a maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges" src="./assets/card-thrackle-light.svg#gh-light-mode-only" width="100%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/convex-thrackle-census#gh-dark-mode-only"><img alt="Convex thrackles: a maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges" src="./assets/card-thrackle-dark.svg#gh-dark-mode-only" width="100%"></a>
 </p>
-
 <p align="center">
-  <a href="https://github.com/rajveersinh-is-dev/convex-thrackle-census#gh-dark-mode-only"><img alt="Convex thrackles: every maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges" src="./assets/card-thrackle-dark.svg#gh-dark-mode-only" width="31%"></a>
-  <a href="https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity#gh-dark-mode-only"><img alt="k-regular partitions: the log-concavity threshold stabilises at 26 for every k at least 30" src="./assets/card-logconcavity-dark.svg#gh-dark-mode-only" width="31%"></a>
-  <a href="https://github.com/rajveersinh-is-dev/polygon-triangulation-packing#gh-dark-mode-only"><img alt="Polygon triangulations: exact packing and covering numbers" src="./assets/card-packing-dark.svg#gh-dark-mode-only" width="31%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity#gh-light-mode-only"><img alt="k-regular partitions: the log-concavity threshold of p_k(n) stabilises at 26 for every k >= 30" src="./assets/card-logconcavity-light.svg#gh-light-mode-only" width="100%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/k-regular-partition-log-concavity#gh-dark-mode-only"><img alt="k-regular partitions: the log-concavity threshold of p_k(n) stabilises at 26 for every k >= 30" src="./assets/card-logconcavity-dark.svg#gh-dark-mode-only" width="100%"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/rajveersinh-is-dev/polygon-triangulation-packing#gh-light-mode-only"><img alt="Polygon triangulations: exact packing and covering numbers" src="./assets/card-packing-light.svg#gh-light-mode-only" width="100%"></a>
+  <a href="https://github.com/rajveersinh-is-dev/polygon-triangulation-packing#gh-dark-mode-only"><img alt="Polygon triangulations: exact packing and covering numbers" src="./assets/card-packing-dark.svg#gh-dark-mode-only" width="100%"></a>
 </p>
 
 ---

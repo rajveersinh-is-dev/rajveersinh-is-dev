@@ -9,11 +9,12 @@ repositories of the account with the workflow token and writes:
                                                      __LAST_UPDATED__ token
                                                      replaced by today's date
 
-Commit counts come from the pagination header rather than from listing every
-commit, so the whole account costs about two API calls per repository instead
-of one per commit. Only the standard library is used, so the workflow needs no
-extra setup. Running it by hand works too: the token falls back to the local
-gh CLI when GITHUB_TOKEN is not set.
+Commit counts come from GitHub's own contribution calendar, the same number the
+profile sidebar prints, so the strip and the sidebar can never disagree. The
+repository list and the manuscript count come from the REST API. Only the
+standard library is used, so the workflow needs no extra setup. Running it by
+hand works too: the token falls back to the local gh CLI when GITHUB_TOKEN is
+not set.
 """
 import datetime
 import importlib.util
@@ -93,7 +94,12 @@ def public_repos():
 
 
 def commit_count(repo):
-    """Total commits on the default branch, read off the pagination header."""
+    """Commits on the default branch, read off the pagination header.
+
+    Kept for reference. The strip shows GitHub's own contribution count, which
+    covers every branch as well as pull requests and issues, because that is
+    the number the profile sidebar prints.
+    """
     body, headers = api(f"/repos/{USER}/{repo}/commits?per_page=1")
     if not isinstance(body, list):
         return 0
@@ -105,6 +111,45 @@ def commit_count(repo):
             link = v
     m = re.search(r"[?&]page=(\d+)>;\s*rel=\"last\"", link)
     return int(m.group(1)) if m else len(body)
+
+
+def graphql(query):
+    """A GraphQL call. Returns the data object, or None."""
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": query}).encode("utf-8"),
+        method="POST",
+        headers={
+            "Authorization": f"Bearer {AUTH}",
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "profile-facts",
+        })
+    try:
+        with urllib.request.urlopen(req, timeout=45) as r:
+            body = json.loads(r.read().decode("utf-8"))
+    except (urllib.error.HTTPError, urllib.error.URLError, ValueError, TimeoutError):
+        return None
+    if body.get("errors"):
+        return None
+    return body.get("data")
+
+
+def contributions():
+    """GitHub's own contribution count for the last twelve months.
+
+    This is the number GitHub prints in the profile sidebar, "N contributions in
+    the last year", and it counts commits on every branch plus pull requests
+    and issues. Counting the default branch alone gave a smaller and
+    different number, which read as a contradiction with the sidebar.
+    """
+    data = graphql('{ user(login: "%s") { contributionsCollection '
+                   '{ contributionCalendar { totalContributions } } } }' % USER)
+    if not data:
+        return None
+    cal = (((data.get("user") or {}).get("contributionsCollection") or {})
+           .get("contributionCalendar") or {})
+    return cal.get("totalContributions")
 
 
 def manuscript_pdf(repo, branch):
@@ -122,11 +167,9 @@ def manuscript_pdf(repo, branch):
 
 def gather():
     repos = public_repos()
-    commits = 0
     manuscripts = 0
     languages = {}
     for r in repos:
-        commits += commit_count(r["name"])
         if manuscript_pdf(r["name"], r["default_branch"]):
             manuscripts += 1
         lang = r.get("language")
@@ -135,7 +178,7 @@ def gather():
     top = sorted(languages.items(), key=lambda kv: (-kv[1], kv[0]))[:3]
     return {
         "repos": len(repos),
-        "commits": commits,
+        "contributions": contributions(),
         "manuscripts": manuscripts,
         "languages": len(languages),
         "top": ", ".join(name for name, _ in top),
@@ -143,9 +186,15 @@ def gather():
 
 
 def facts_svg(t, f):
+    if f.get("contributions"):
+        activity = (f"{f['contributions']:,}", "CONTRIBUTIONS", "in the last year")
+    else:
+        # The contribution calendar was unreachable. Say so rather than show a
+        # number from a different measure.
+        activity = ("-", "CONTRIBUTIONS", "count unavailable")
     cells = [
         (str(f["repos"]), "PUBLIC REPOS", "on GitHub"),
-        (f"{f['commits']:,}", "COMMITS", "on the default branches"),
+        activity,
         (str(f["manuscripts"]), "MANUSCRIPTS", "with a public PDF"),
         (str(f["languages"]), "LANGUAGES", f["top"] or "in use"),
     ]
@@ -189,7 +238,7 @@ def main():
         print(f"WARNING: the token is for {login}, not {USER}. "
               f"The numbers would describe the wrong account.")
     f = gather()
-    print(f"repos={f['repos']} commits={f['commits']} "
+    print(f"repos={f['repos']} contributions={f['contributions']} "
           f"manuscripts={f['manuscripts']} languages={f['languages']} "
           f"top={f['top']}")
     for t in (mpa.LIGHT, mpa.DARK):

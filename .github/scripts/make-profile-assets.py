@@ -277,17 +277,15 @@ CARDS = [
         "slug": "card-thrackle",
         "title": "Convex thrackles",
         "formula": "2^(n-1) - n",
-        "claim": "Every maximal convex thrackle on n vertices has exactly",
-        "claim2": "2^(n-1) - n edges, with a residue bound and a wedge lemma.",
+        "claim": "A maximal convex thrackle on n vertices has exactly 2^(n-1) - n edges",
         "repo": "convex-thrackle-census",
         "diagram": "thrackle",
     },
     {
         "slug": "card-logconcavity",
         "title": "k-regular partitions",
-        "formula": "N_k = 26  for k >= 30",
-        "claim": "The log-concavity threshold of p_k(n) stabilises at 26 for",
-        "claim2": "every k >= 30. Sharp, and formalised in Lean 4.",
+        "formula": "N_k = 26   for k >= 30",
+        "claim": "The log-concavity threshold of p_k(n) stabilises at 26 for every k >= 30",
         "repo": "k-regular-partition-log-concavity",
         "diagram": "bars",
     },
@@ -295,8 +293,7 @@ CARDS = [
         "slug": "card-packing",
         "title": "Polygon triangulations",
         "formula": "tau(n),  kappa(n)",
-        "claim": "Exact packing and covering numbers for polygon",
-        "claim2": "triangulations, with constructive proofs.",
+        "claim": "Exact packing and covering numbers for polygon triangulations",
         "repo": "polygon-triangulation-packing",
         "diagram": "polygon",
     },
@@ -337,16 +334,22 @@ def diagram(kind, t):
 
 
 def card(c, t):
-    return f"""{head(380, 268, c['title'])}
-<rect x="0.75" y="0.75" width="378.5" height="266.5" rx="14" fill="{t['card']}" stroke="{t['card_edge']}"/>
-<rect x="0.75" y="0.75" width="378.5" height="5" rx="2.5" fill="{t['accent']}"/>
-{txt(22, 40, c['title'], 15.5, t['title'], '700')}
-<g transform="translate(8, 58)">{diagram(c['diagram'], t)}</g>
-{txt(172, 84, c['formula'], 20, t['accent'], '700', 'start', MONO)}
-{txt(22, 186, c['claim'], 12, t['text'])}
-{txt(22, 203, c['claim2'], 12, t['text'])}
-<line x1="22" y1="222" x2="358" y2="222" stroke="{t['card_edge']}"/>
-{txt(22, 244, c['repo'], 11, t['muted'], '500', 'start', MONO)}
+    """One result as a full width row.
+
+    The cards used to sit three across at 31 percent of the content column,
+    which left about 230 pixels for a 380 pixel wide image. The claim text
+    rendered at roughly seven points and was unreadable. A row is the width of
+    the column, so the type is drawn at its natural size.
+    """
+    w, h = 760, 150
+    return f"""{head(w, h, c['title'])}
+<rect x="0.75" y="0.75" width="{w - 1.5}" height="{h - 1.5}" rx="14" fill="{t['card']}" stroke="{t['card_edge']}"/>
+<rect x="0.75" y="0.75" width="5" height="{h - 1.5}" rx="2.5" fill="{t['accent']}"/>
+<g transform="translate(24, 20)">{diagram(c['diagram'], t)}</g>
+{txt(200, 46, c['title'], 19, t['title'], '700')}
+{txt(200, 84, c['formula'], 23, t['accent'], '700', 'start', MONO)}
+{txt(200, 116, c['claim'], 15, t['text'])}
+{txt(200, 140, c['repo'], 13, t['muted'], '500', 'start', MONO)}
 </svg>
 """
 

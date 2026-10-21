@@ -1,11 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="380" height="268" viewBox="0 0 380 268" role="img" aria-label="Polygon triangulations">
-<rect x="0.75" y="0.75" width="378.5" height="266.5" rx="14" fill="#ffffff" stroke="#e3dcfb"/>
-<rect x="0.75" y="0.75" width="378.5" height="5" rx="2.5" fill="#7c3aed"/>
-<text x="22" y="40" font-weight="700" font-size="15.5" fill="#2e1065">Polygon triangulations</text>
-<g transform="translate(8, 58)"><g fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.85"><polygon points="72,20 120,48 104,100 40,100 24,48 72,20" stroke-width="1.8"/><line x1="72" y1="20" x2="104" y2="100"/><line x1="72" y1="20" x2="40" y2="100"/><line x1="120" y1="48" x2="40" y2="100"/><line x1="120" y1="48" x2="24" y2="48"/><line x1="104" y1="100" x2="24" y2="48"/></g></g>
-<text x="172" y="84" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" font-size="20" fill="#7c3aed">tau(n),  kappa(n)</text>
-<text x="22" y="186" font-size="12" fill="#3b2a63">Exact packing and covering numbers for polygon</text>
-<text x="22" y="203" font-size="12" fill="#3b2a63">triangulations, with constructive proofs.</text>
-<line x1="22" y1="222" x2="358" y2="222" stroke="#e3dcfb"/>
-<text x="22" y="244" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="500" font-size="11" fill="#6e7681">polygon-triangulation-packing</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="150" viewBox="0 0 760 150" role="img" aria-label="Polygon triangulations">
+<rect x="0.75" y="0.75" width="758.5" height="148.5" rx="14" fill="#ffffff" stroke="#e3dcfb"/>
+<rect x="0.75" y="0.75" width="5" height="148.5" rx="2.5" fill="#7c3aed"/>
+<g transform="translate(24, 20)"><g fill="none" stroke="#7c3aed" stroke-width="1.2" opacity="0.85"><polygon points="72,20 120,48 104,100 40,100 24,48 72,20" stroke-width="1.8"/><line x1="72" y1="20" x2="104" y2="100"/><line x1="72" y1="20" x2="40" y2="100"/><line x1="120" y1="48" x2="40" y2="100"/><line x1="120" y1="48" x2="24" y2="48"/><line x1="104" y1="100" x2="24" y2="48"/></g></g>
+<text x="200" y="46" font-weight="700" font-size="19" fill="#2e1065">Polygon triangulations</text>
+<text x="200" y="84" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" font-size="23" fill="#7c3aed">tau(n),  kappa(n)</text>
+<text x="200" y="116" font-size="15" fill="#3b2a63">Exact packing and covering numbers for polygon triangulations</text>
+<text x="200" y="140" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="500" font-size="13" fill="#6e7681">polygon-triangulation-packing</text>
 </svg>
