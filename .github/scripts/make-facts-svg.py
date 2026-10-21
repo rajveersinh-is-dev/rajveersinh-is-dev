@@ -6,8 +6,8 @@ repositories of the account with the workflow token and writes:
 
   assets/facts-light.svg   assets/facts-dark.svg    the numbers in the header
   assets/footer-light.svg  assets/footer-dark.svg   the same files with the
-                                                     __LAST_UPDATED__ token
-                                                     replaced by today's date
+                                                     refresh date in the footer
+                                                     brought up to date
 
 Commit counts come from GitHub's own contribution calendar, the same number the
 profile sidebar prints, so the strip and the sidebar can never disagree. The

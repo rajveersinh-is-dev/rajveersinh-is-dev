@@ -76,10 +76,20 @@ FOOTER_THRACKLE = [
 # Spokes are drawn from the first vertex to every other one except the two
 # that the closing edge already covers.
 SPOKE_SKIP = {1, 12}
-STAMP_TOKEN = "__LAST_UPDATED__"
 # The section icons are used in headings, where a light and dark pair would
 # need both copies, so they use one mid tone that reads on either background.
 ICON_ACCENT = "#8b5cf6"
+
+
+def stamp_text():
+    """The date shown in the footer.
+
+    It is written here as a real date rather than a placeholder, so the artwork
+    can never be published with the placeholder still showing. The daily facts
+    script refreshes it.
+    """
+    import datetime
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%d %b %Y").upper()
 
 
 def esc(s):
@@ -171,7 +181,7 @@ def footer(t):
 <rect width="1280" height="128" fill="url(#bg)"/>
 {wave(FOOTER_THRACKLE, t)}
 <rect x="470" y="58" width="340" height="4" rx="2" fill="url(#rule)" opacity="0.9"/>
-{txt(470, 104, f"PROFILE REFRESHED {STAMP_TOKEN}", 11.5, t["muted"], "500", "start", SANS, 1.5)}
+{txt(470, 104, f"PROFILE REFRESHED {stamp_text()}", 11.5, t["muted"], "500", "start", SANS, 1.5)}
 </svg>
 """
 
