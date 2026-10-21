@@ -162,6 +162,17 @@ matches them.
 
 Individual badge colours are the hex at the end of each shields.io URL.
 
+### Checking the artwork
+
+`light-preview.html` renders every light asset in a browser, which is the
+quickest way to see a change to the banner, the map, the cards or the seal
+without pushing first:
+
+```powershell
+python -m http.server 8731
+# then open http://127.0.0.1:8731/light-preview.html
+```
+
 ### Light and dark
 
 Every image has a twin, and the README picks the right one with the
