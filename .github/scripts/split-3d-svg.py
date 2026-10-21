@@ -82,6 +82,32 @@ RAMPS = {
 }
 FACE_SHADE = {"top": 1.0, "left": 0.84, "right": 0.70}
 
+# ---- the wave ---------------------------------------------------------------
+# The tiles are emitted week by week, seven days to a week, so wrapping them
+# in groups of seven gives one group per week. Each group bobs and brightens
+# in turn, and the delay between the groups sends a ripple along the time
+# axis.
+DAYS_PER_WEEK = 7
+WAVE_CYCLE = 3.5          # seconds for one bob and one shimmer
+WAVE_STEP = 0.06          # seconds between the start of one week and the next
+WAVE_RISE = 3.0           # pixels a week rises by
+WAVE_GLOW = 1.3           # how bright a week gets at the top of the wave
+
+WAVE_CSS = """
+.week {
+  animation: week-bob %(cycle)ss ease-in-out infinite,
+             week-glow %(cycle)ss ease-in-out infinite;
+}
+@keyframes week-bob {
+  0%%, 100%% { translate: 0 0; }
+  50%% { translate: 0 -%(rise)spx; }
+}
+@keyframes week-glow {
+  0%%, 100%% { filter: brightness(1); }
+  50%% { filter: brightness(%(glow)s); }
+}
+"""
+
 
 def _parse_colour(spec):
     """'rgb(1, 2, 3)' or '#7c3aed' to an (r, g, b) tuple."""
@@ -277,6 +303,29 @@ def tidy_style(style_el, theme):
     return style_el
 
 
+def group_into_weeks(calendar):
+    """Wrap the tiles in one group per week and give each a delay.
+
+    The generator emits the tiles week by week, seven days to a week, so the
+    groups line up with the time axis. The groups carry an animation delay
+    rather than an animation of their own, which is what turns 53 separate
+    loops into a single wave travelling through the graph.
+    """
+    tiles = [c for c in list(calendar) if c.tag.split("}")[-1] == "g"]
+    for child in list(calendar):
+        calendar.remove(child)
+    weeks = 0
+    for start in range(0, len(tiles), DAYS_PER_WEEK):
+        week = ET.SubElement(calendar, "g", {
+            "class": "week",
+            "style": "animation-delay: %.2fs" % (weeks * WAVE_STEP),
+        })
+        for tile in tiles[start:start + DAYS_PER_WEEK]:
+            calendar.append(tile)
+        weeks += 1
+    return weeks
+
+
 def blend_inline_fills(el):
     """Pull the language colours in the donut part of the way to the accent."""
     for node in el.iter():
@@ -344,6 +393,9 @@ def split(path, theme):
 
     calendar, radar, pie, totals = pick_groups(root)
     blend_inline_fills(pie)
+    weeks = group_into_weeks(calendar)
+    style.text = (style.text or "") + (WAVE_CSS % {
+        "cycle": WAVE_CYCLE, "rise": WAVE_RISE, "glow": WAVE_GLOW})
     outdir = os.path.dirname(os.path.abspath(path))
 
     # --- calendar: crop tight around the bars, then re-centre the caption ---
@@ -383,7 +435,8 @@ def split(path, theme):
         print(f"wrote {name}  ({len(doc)} bytes)")
 
     print(f"  calendar: {faces} tile faces, crop "
-          f"({cal_crop[0]:.0f},{cal_crop[1]:.0f})-({cal_crop[2]:.0f},{cal_crop[3]:.0f})")
+          f"({cal_crop[0]:.0f},{cal_crop[1]:.0f})-({cal_crop[2]:.0f},{cal_crop[3]:.0f}), "
+          f"{weeks} weeks in the wave")
 
 
 def main(argv):
