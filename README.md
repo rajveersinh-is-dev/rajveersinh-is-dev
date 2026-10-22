@@ -13,9 +13,10 @@
     with the #gh-light-mode-only / #gh-dark-mode-only URL fragments. Those
     fragments only work when the two files share a base name.
   - The artwork is generated, not hand drawn. Run
-    python .github/scripts/make-profile-assets.py to rebuild it, and
+    python .github/scripts/make-profile-assets.py to rebuild it,
     python .github/scripts/make-facts-svg.py to refresh the numbers and the
-    date in the footer. The daily workflow does the latter.
+    date in the footer, and
+    python .github/scripts/make-map.py to regenerate the research map.
   - Motion is SMIL animation inside the SVG files. GitHub strips CSS and style
     attributes out of README markdown, so an animated image is the only way to
     have any movement. Every animation is written so that a browser without
@@ -152,7 +153,7 @@ Manuscripts with a published PDF. The title opens the PDF, the name opens the re
 
 ## <img alt="" src="./assets/icons/map.svg" width="22" align="absmiddle">Research map
 
-The three strands of the work, and how they feed each other. Enumeration produces a number, a proof turns the number into a theorem, and the verification layer checks the theorem and then writes its successor.
+The three strands of the work, and how they feed each other. Enumeration produces a number, a proof turns the number into a theorem, and the verification layer checks the theorem and then writes its successor. Clusters bob, pills spin inside them, and arrows draw themselves on between the strands.
 
 <p align="center">
   <img alt="Research map: extremal combinatorics, inference and simulation, verification and agents" src="./assets/map-light.svg#gh-light-mode-only" width="100%">
