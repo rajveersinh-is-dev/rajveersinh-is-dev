@@ -97,8 +97,8 @@ FACE_SHADE = {"top": 1.0, "left": 0.84, "right": 0.70}
 DAYS_PER_WEEK = 7
 WAVE_CYCLE = 3.5          # seconds for one bob and one shimmer
 WAVE_STEP = 0.06          # seconds between the start of one week and the next
-WAVE_RISE = 3.0           # pixels a week rises by
-WAVE_GLOW = 1.3           # how bright a week gets at the top of the wave
+WAVE_RISE = 4.0           # pixels a week rises by
+WAVE_GLOW = 1.35          # how bright a week gets at the top of the wave
 
 WAVE_CSS = """
 .week {
@@ -316,9 +316,9 @@ def group_into_weeks(calendar):
     tiles = [c for c in list(calendar) if c.tag.split("}")[-1] == "g"]
     for child in list(calendar):
         calendar.remove(child)
-    weeks = 0
+    weeks = []
     for start in range(0, len(tiles), DAYS_PER_WEEK):
-        delay = weeks * WAVE_STEP
+        delay = len(weeks) * WAVE_STEP
         week = ET.SubElement(calendar, "g", {
             "class": "week",
             "style": "animation-delay: %.2fs" % delay,
@@ -335,9 +335,19 @@ def group_into_weeks(calendar):
             "repeatCount": "indefinite",
         })
         for tile in tiles[start:start + DAYS_PER_WEEK]:
-            calendar.append(tile)
-        weeks += 1
-    return weeks
+            week.append(tile)
+        weeks.append(week)
+
+    # The animation is on the group, so the group has to hold the tiles. An
+    # earlier version appended them to the parent instead, which left every
+    # week empty and the graph completely still.
+    moved = sum(1 for w in weeks for c in w if c.tag.split("}")[-1] == "g")
+    if moved != len(tiles):
+        raise SystemExit(f"the wave groups hold {moved} of {len(tiles)} tiles")
+    if not weeks or any(len([c for c in w if c.tag.split("}")[-1] == "g"]) == 0
+                        for w in weeks):
+        raise SystemExit("a week group is empty")
+    return len(weeks)
 
 
 def blend_inline_fills(el):
