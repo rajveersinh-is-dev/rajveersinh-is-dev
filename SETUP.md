@@ -101,8 +101,10 @@ The research map is its own script:
 python .github/scripts/make-map.py
 ```
 
-It draws the three strands as 3D boxes with floating motion, spinning pills,
-and arrows that draw themselves on between the strands.
+It draws the three strands as three 3D slabs that drift out of phase, with a
+light sweep across each face and a pulse running down the connectors between
+them. The canvas is 640 wide on purpose: the profile column is about 565px at
+its narrowest, so the labels stay legible instead of shrinking to nothing.
 
 The numbers in the facts strip and the date in the footer come from a second
 script that talks to the GitHub API:

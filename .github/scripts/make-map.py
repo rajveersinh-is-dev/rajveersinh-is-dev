@@ -1,264 +1,430 @@
 #!/usr/bin/env python3
-"""Generate the profile README research map.
+"""Generate the research map on the profile README.
 
-The map is a hand-built isometric diagram: three clusters as 3D boxes, each
-with a front face, a top face and two side faces so the whole thing has depth.
-The clusters float up and down in a staggered loop, the pills inside each box
-spin like little coins, and the arrows between clusters draw themselves on and
-pulse their width. Everything is SMIL animation inside standalone SVG files,
-because GitHub strips CSS and style attributes out of README markdown.
+The map is a stack of three 3D slabs, one per strand of the work. Each slab
+has a front face, a top face and a side face, so it reads as a solid object
+floating over a soft shadow. Light sweeps across each slab, the slabs drift
+up and down out of phase, and a pulse runs down the connectors between them.
 
-Everything is pure ASCII. Run:
+Everything is SMIL animation inside the SVG, because GitHub strips CSS and
+style attributes out of README markdown. Every animation is additive on top
+of a finished drawing, so a renderer that ignores SMIL still shows the whole
+map.
+
+The canvas is 640 wide on purpose: the profile column is about 565px at its
+narrowest, so the artwork is only ever scaled a little and the labels stay
+readable.
+
+Run:
 
     python .github/scripts/make-map.py
 
 Outputs assets/map-light.svg and assets/map-dark.svg.
 """
 import pathlib
+import xml.etree.ElementTree as ET
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "assets"
 
 SANS = "Ubuntu, Helvetica, Arial, sans-serif"
-MONO = "JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace"
+
+W = 640
+H = 540
+MARGIN_X = 46
+CARD_W = 540
+CARD_H = 116
+DEPTH_X = 22
+DEPTH_Y = 18
+CARD_TOP = (54, 212, 370)
+
+BADGE_X = 44
+BADGE_Y = 44
+BADGE_R = 20
+TEXT_X = 104
+PILL_GAP = 8
+PILL_H = 22
+PILL_FS = 11
+TITLE_FS = 18
+SUB_FS = 12.5
+WATERMARK_FS = 30
 
 LIGHT = {
     "name": "light",
     "bg": "#ffffff",
-    "bg2": "#f3f0ff",
-    "bg3": "#ddd6fe",
-    "title": "#2e1065",
+    "bg_edge": "#e6e0fb",
+    "card_a": "#ffffff",
+    "card_b": "#faf8ff",
+    "top": "#f1edff",
+    "side": "#e7e2fb",
+    "edge": "#ddd6fe",
+    "highlight": "#ffffff",
+    "title": "#241456",
     "text": "#3b2a63",
     "muted": "#6e7681",
     "accent": "#7c3aed",
     "accent2": "#c026d3",
-    "soft": "#8b5cf6",
-    "card": "#ffffff",
-    "card_edge": "#e3dcfb",
-    "panel": "#faf8ff",
-    "top": "#f8f7ff",
-    "side1": "#efeaff",
-    "side2": "#e7e3fb",
-    "pill": "#f3f0ff",
-    "pill_edge": "#ddd6fe",
-    "pill_text": "#2e1065",
+    "pill": "#f5f2ff",
+    "pill_edge": "#ded6fb",
+    "pill_text": "#3b2a63",
+    "shadow": "#2e1065",
+    "glow": "#7c3aed",
+    "glow_lo": 0.0,
+    "glow_hi": 0.07,
+    "shine": 0.10,
 }
 
 DARK = {
     "name": "dark",
-    "bg": "#140d2b",
-    "bg2": "#2a1057",
-    "bg3": "#4c1d95",
+    "bg": "#120b26",
+    "bg_edge": "#2f2154",
+    "card_a": "#231746",
+    "card_b": "#1a1130",
+    "top": "#332157",
+    "side": "#241645",
+    "edge": "#3d2c68",
+    "highlight": "#a78bfa",
     "title": "#f5f3ff",
-    "text": "#e9e4ff",
+    "text": "#ddd6fe",
     "muted": "#a9a3c4",
     "accent": "#a78bfa",
     "accent2": "#e879f9",
-    "soft": "#c4b5fd",
-    "card": "#1b1231",
-    "card_edge": "#3d2c68",
-    "panel": "#170f2c",
-    "top": "#312052",
-    "side1": "#241645",
-    "side2": "#1e1134",
-    "pill": "#241645",
-    "pill_edge": "#3d2c68",
-    "pill_text": "#c4b5fd",
+    "pill": "#2a1b4d",
+    "pill_edge": "#43307a",
+    "pill_text": "#ddd6fe",
+    "shadow": "#000000",
+    "glow": "#a78bfa",
+    "glow_lo": 0.0,
+    "glow_hi": 0.12,
+    "shine": 0.16,
 }
 
-# Each cluster: position (cx, cy), title, subtitle, pill labels.
 CLUSTERS = [
     {
         "id": "extremal",
+        "num": "01",
+        "mark": "I",
         "title": "Extremal combinatorics",
-        "sub": "exact counts, then a proof of the bound",
+        "sub": "exact counts first, then a proof of the bound",
         "pills": ["Thrackle census", "Triangle packings", "2-adic valuations"],
-        "pos": (260, 300),
     },
     {
         "id": "simulation",
+        "num": "02",
+        "mark": "II",
         "title": "Inference and simulation",
-        "sub": "measurement, dynamics, models around them",
+        "sub": "measurement, dynamics, and the models around them",
         "pills": ["MNAR diagnostics", "Early warning", "Plasma confinement"],
-        "pos": (940, 300),
     },
     {
         "id": "verification",
+        "num": "03",
+        "mark": "III",
         "title": "Verification and agents",
-        "sub": "checks the work and extends it",
-        "pills": ["Verifiable creds", "Agent identity", "Formal safety"],
-        "pos": (600, 150),
+        "sub": "checks the work, then writes its successor",
+        "pills": ["Verifiable credentials", "Agent identity", "Formal safety"],
     },
 ]
-
-# Connections: (from_cluster_index, to_cluster_index)
-LINKS = [(0, 2), (2, 1), (1, 0)]
-
-BOX_W = 250
-BOX_H = 120
-BOX_DX = 46
-BOX_DY = 24
-
-PILL_W = 70
-PILL_H = 15
-PILL_RX = 7.5
-PILL_FS = 8.5
 
 
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def head(w, h, title):
-    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{esc(title)}">'
+def text_width(s, size, weight="400"):
+    """Rough advance width for Helvetica. Good enough to catch overflow."""
+    narrow = "iljtfrI.,:;'|!()[] "
+    wide = "mwMW@%"
+    factor = 0.58 if weight in ("600", "700") else 0.55
+    total = 0.0
+    for ch in s:
+        if ch in narrow:
+            total += 0.31 * size
+        elif ch in wide:
+            total += 0.86 * size
+        else:
+            total += factor * size
+    return total
 
 
-def txt(x, y, s, size=13, fill="#000", weight="400", anchor="start", family=SANS, spacing=None):
-    a = f' text-anchor="{anchor}"' if anchor != "start" else ""
-    f = f' font-family="{family}"' if family != SANS else ""
-    wgt = f' font-weight="{weight}"' if weight != "400" else ""
-    l = f' letter-spacing="{spacing}"' if spacing else ""
-    return f'<text x="{x}" y="{y}"{f}{wgt}{a} font-size="{size}"{l} fill="{fill}">{esc(s)}</text>'
+def text(x, y, s, size, fill, weight="400", anchor="start", spacing=None, opacity=None):
+    attrs = [
+        f'x="{x:.1f}"',
+        f'y="{y:.1f}"',
+        f'font-family="{SANS}"',
+        f'font-size="{size}"',
+        f'fill="{fill}"',
+    ]
+    if weight != "400":
+        attrs.append(f'font-weight="{weight}"')
+    if anchor != "start":
+        attrs.append(f'text-anchor="{anchor}"')
+    if spacing is not None:
+        attrs.append(f'letter-spacing="{spacing}"')
+    if opacity is not None:
+        attrs.append(f'opacity="{opacity}"')
+    return f'<text {" ".join(attrs)}>{esc(s)}</text>'
 
 
-def side_poly(cx, cy, side):
-    """Return the points string for one side face of a box."""
-    if side == "left":
-        return f"{cx - BOX_W / 2},{cy - BOX_H / 2} {cx - BOX_W / 2 - BOX_DX},{cy - BOX_H / 2 - BOX_DY} {cx - BOX_W / 2 - BOX_DX},{cy + BOX_H / 2 - BOX_DY} {cx - BOX_W / 2},{cy + BOX_H / 2}"
-    if side == "right":
-        return f"{cx + BOX_W / 2},{cy - BOX_H / 2} {cx + BOX_W / 2 + BOX_DX},{cy - BOX_H / 2 - BOX_DY} {cx + BOX_W / 2 + BOX_DX},{cy + BOX_H / 2 - BOX_DY} {cx + BOX_W / 2},{cy + BOX_H / 2}"
-    if side == "top":
-        return f"{cx - BOX_W / 2},{cy - BOX_H / 2} {cx - BOX_DX},{cy - BOX_H / 2 - BOX_DY} {cx + BOX_W / 2 - BOX_DX},{cy - BOX_H / 2 - BOX_DY} {cx + BOX_W / 2},{cy - BOX_H / 2}"
-    raise ValueError(side)
+def pill_width(label):
+    return text_width(label, PILL_FS, "500") + 20
 
 
-def box(cx, cy, t, side_colors, text_color, sub_color, pill_fill, pill_edge, pill_text):
-    """One 3D cluster box: left side, right side, top face, front face, pills."""
-    parts = []
-    # side faces first (behind), then top, then front on top
-    parts.append(f'<polygon points="{side_poly(cx, cy, "left")}" fill="{side_colors["left"]}"/>')
-    parts.append(f'<polygon points="{side_poly(cx, cy, "right")}" fill="{side_colors["right"]}"/>')
-    parts.append(f'<polygon points="{side_poly(cx, cy, "top")}" fill="{side_colors["top"]}"/>')
-    parts.append(
-        f'<rect x="{cx - BOX_W / 2}" y="{cy - BOX_H / 2}" width="{BOX_W}" height="{BOX_H}" rx="12" fill="{side_colors["front"]}"/>'
+def defs(t):
+    n = t["name"]
+    return f"""<defs>
+<linearGradient id="card-{n}" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="{t['card_a']}"/>
+<stop offset="1" stop-color="{t['card_b']}"/>
+</linearGradient>
+<linearGradient id="shine-{n}" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="{t['accent']}" stop-opacity="0"/>
+<stop offset="0.5" stop-color="{t['accent']}" stop-opacity="{t['shine']}"/>
+<stop offset="1" stop-color="{t['accent']}" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="glow-{n}" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" stop-color="{t['glow']}" stop-opacity="{t['glow_hi']}"/>
+<stop offset="1" stop-color="{t['glow']}" stop-opacity="{t['glow_lo']}"/>
+</radialGradient>
+<radialGradient id="shadow-{n}" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" stop-color="{t['shadow']}" stop-opacity="0.34"/>
+<stop offset="0.55" stop-color="{t['shadow']}" stop-opacity="0.14"/>
+<stop offset="1" stop-color="{t['shadow']}" stop-opacity="0"/>
+</radialGradient>
+<marker id="tip-{n}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+<path d="M 0 1 L 9 5 L 0 9 z" fill="{t['accent']}"/>
+</marker>
+</defs>"""
+
+
+def card(t, c, index, top):
+    """One 3D slab in local coordinates, plus its grounded shadow."""
+    n = t["name"]
+    x0 = 0.0
+    y0 = 0.0
+    x1 = CARD_W
+    y1 = CARD_H
+
+    front = (
+        f'<rect x="{x0}" y="{y0}" width="{CARD_W}" height="{CARD_H}" rx="14" '
+        f'fill="url(#card-{n})" stroke="{t["edge"]}" stroke-width="1"/>'
     )
-    # Title and subtitle on front face
-    parts.append(txt(cx, cy - BOX_H / 2 + 30, t["title"], 15.5, text_color, "700", "middle", SANS, 0.6))
-    parts.append(txt(cx, cy - BOX_H / 2 + 48, t["sub"], 11, sub_color, "400", "middle", SANS, 0.4))
-    # Pills: two rows centered
-    pills = t["pills"]
-    rows = [pills[:2], pills[2:]] if len(pills) > 2 else [pills]
-    for row_idx, row in enumerate(rows):
-        n = len(row)
-        total_w = n * PILL_W + (n - 1) * 10
-        start_x = cx - total_w / 2
-        for j, label in enumerate(row):
-            px = start_x + j * (PILL_W + 10)
-            py = cy - BOX_H / 2 + 68 + row_idx * 20
-            parts.append(
-                f'<rect x="{px - PILL_W / 2}" y="{py - PILL_H / 2}" width="{PILL_W}" height="{PILL_H}" rx="{PILL_RX}" fill="{pill_fill}" stroke="{pill_edge}"/>'
+    top_face = (
+        f'<polygon points="{x0},{y0} {x0 + DEPTH_X},{y0 - DEPTH_Y} '
+        f'{x1 + DEPTH_X},{y0 - DEPTH_Y} {x1},{y0}" '
+        f'fill="{t["top"]}" stroke="{t["edge"]}" stroke-width="1"/>'
+    )
+    side_face = (
+        f'<polygon points="{x1},{y0} {x1 + DEPTH_X},{y0 - DEPTH_Y} '
+        f'{x1 + DEPTH_X},{y1 - DEPTH_Y} {x1},{y1}" '
+        f'fill="{t["side"]}" stroke="{t["edge"]}" stroke-width="1"/>'
+    )
+    lip = (
+        f'<line x1="14" y1="{y0}" x2="{x1 - 14}" y2="{y0}" '
+        f'stroke="{t["highlight"]}" stroke-width="1" opacity="0.45"/>'
+    )
+
+    parts = [top_face, side_face, front, lip]
+
+    # badge with a roman numeral
+    parts.append(
+        f'<circle cx="{BADGE_X}" cy="{BADGE_Y}" r="{BADGE_R}" '
+        f'fill="{t["accent"]}" fill-opacity="0.10" '
+        f'stroke="{t["accent"]}" stroke-opacity="0.55" stroke-width="1.2"/>'
+    )
+    parts.append(
+        text(BADGE_X, BADGE_Y + 5, c["mark"], 13, t["accent"], "700", "middle", "0.5")
+    )
+
+    # watermark number, top right
+    parts.append(
+        text(
+            x1 - 16,
+            50,
+            c["num"],
+            WATERMARK_FS,
+            t["accent"],
+            "700",
+            "end",
+            "1",
+            0.10,
+        )
+    )
+
+    parts.append(text(TEXT_X, 36, c["title"], TITLE_FS, t["title"], "700", "start", "0.2"))
+    parts.append(text(TEXT_X, 58, c["sub"], SUB_FS, t["muted"], "400", "start", "0.1"))
+
+    # pills, one row
+    widths = [pill_width(p) for p in c["pills"]]
+    total = sum(widths) + PILL_GAP * (len(widths) - 1)
+    available = CARD_W - TEXT_X - 20
+    if total > available:
+        raise SystemExit(
+            f"pills for {c['id']} need {total:.0f}px, only {available}px available"
+        )
+    px = TEXT_X
+    for label, pw in zip(c["pills"], widths):
+        parts.append(
+            f'<rect x="{px:.1f}" y="{77}" width="{pw:.1f}" height="{PILL_H}" rx="11" '
+            f'fill="{t["pill"]}" stroke="{t["pill_edge"]}" stroke-width="1"/>'
+        )
+        parts.append(
+            text(
+                px + pw / 2,
+                77 + PILL_H / 2 + 3.7,
+                label,
+                PILL_FS,
+                t["pill_text"],
+                "500",
+                "middle",
+                "0.1",
             )
-            parts.append(txt(px, py + PILL_H / 2 - 2, label, PILL_FS, pill_text, "500", "middle", SANS))
-    return parts
+        )
+        px += pw + PILL_GAP
+
+    # light sweep clipped to the front face
+    clip_id = f"clip-{n}-{index}"
+    parts.append(
+        f'<clipPath id="{clip_id}"><rect x="0" y="0" width="{CARD_W}" '
+        f'height="{CARD_H}" rx="14"/></clipPath>'
+    )
+    parts.append(
+        f'<g clip-path="url(#{clip_id})">'
+        f'<g transform="skewX(-14)">'
+        f'<rect x="0" y="0" width="120" height="{CARD_H}" fill="url(#shine-{n})">'
+        f'<animateTransform attributeName="transform" type="translate" '
+        f'values="-260 0;760 0" dur="7.5s" begin="{index * 1.7:.1f}s" '
+        f'repeatCount="indefinite"/></rect></g></g>'
+    )
+
+    body = (
+        f'<g transform="translate({MARGIN_X} {top})">'
+        f'<g>'
+        f'<animateTransform attributeName="transform" type="translate" '
+        f'values="0 2;0 -4.5;0 2" dur="5.5s" begin="{index * 0.9:.1f}s" '
+        f'repeatCount="indefinite"/>'
+        f'{"".join(parts)}</g></g>'
+    )
+    return body
+
+
+def shadow(t, index, top):
+    """Soft contact shadow under one slab, drawn behind connectors and cards."""
+    cx = MARGIN_X + CARD_W / 2
+    cy = top + CARD_H + 10
+    begin = index * 0.9
+    return (
+        f'<ellipse cx="{cx:.1f}" cy="{cy:.1f}" rx="230" ry="16" '
+        f'fill="url(#shadow-{t["name"]})">'
+        f'<animate attributeName="ry" values="16;13;16" dur="5.5s" '
+        f'begin="{begin:.1f}s" repeatCount="indefinite"/>'
+        f'<animate attributeName="opacity" values="0.85;0.6;0.85" dur="5.5s" '
+        f'begin="{begin:.1f}s" repeatCount="indefinite"/></ellipse>'
+    )
+
+
+def connector(t, index, y_from, y_to):
+    """Straight pulse channel between two slabs, with a live travelling dot."""
+    n = t["name"]
+    cx = MARGIN_X + CARD_W / 2
+    start = y_from + 3
+    end = y_to - 9
+    path = f"M {cx:.1f} {start:.1f} L {cx:.1f} {end:.1f}"
+    begin = index * 0.8
+    return (
+        f'<path d="{path}" fill="none" stroke="{t["accent"]}" '
+        f'stroke-width="3" stroke-linecap="round" opacity="0.10"/>'
+        f'<path d="{path}" fill="none" stroke="{t["accent"]}" stroke-width="2" '
+        f'stroke-linecap="round" stroke-dasharray="5 7" '
+        f'marker-end="url(#tip-{n})">'
+        f'<animate attributeName="stroke-dashoffset" values="0;-24" dur="1.4s" '
+        f'begin="{begin:.1f}s" repeatCount="indefinite"/></path>'
+        f'<g>'
+        f'<animateMotion dur="2.4s" begin="{begin + 0.2:.1f}s" '
+        f'repeatCount="indefinite" path="{path}"/>'
+        f'<circle r="8" fill="{t["accent2"]}" opacity="0.18"/>'
+        f'<circle r="2.6" fill="{t["accent2"]}"/></g>'
+    )
 
 
 def map_svg(t):
-    boxes = []
-    for c in CLUSTERS:
-        side = {
-            "front": t["card"],
-            "top": t["top"],
-            "left": t["side1"],
-            "right": t["side2"],
-        }
-        cx, cy = c["pos"]
-        parts = box(cx, cy, c, side, t["text"], t["muted"], t["pill"], t["pill_edge"], t["pill_text"])
-        boxes.append((c["pos"], parts))
+    out = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+        f'viewBox="0 0 {W} {H}" role="img" '
+        f'aria-label="Research map: extremal combinatorics, inference and simulation, '
+        f'verification and agents">',
+        defs(t),
+        f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="18" '
+        f'fill="{t["bg"]}" stroke="{t["bg_edge"]}" stroke-width="1"/>',
+        f'<ellipse cx="{W / 2}" cy="{H / 2}" rx="330" ry="280" fill="url(#glow-{t["name"]})"/>',
+    ]
 
-    # Links between clusters: drawn behind boxes
-    links = []
-    pos_map = {c["id"]: c["pos"] for c in CLUSTERS}
-    for a_idx, b_idx in LINKS:
-        a = CLUSTERS[a_idx]
-        b = CLUSTERS[b_idx]
-        ax, ay = a["pos"]
-        bx, by = b["pos"]
-        # Control points for a gentle curve bowing upward
-        mx = (ax + bx) / 2
-        my = min(ay, by) - 110
-        links.append(
-            f'<path d="M {ax},{ay - 40} Q {mx},{my} {bx},{by - 40}" fill="none" stroke="{t["accent"]}" stroke-width="1.6" opacity="0.55"/>'
-        )
-        links.append(
-            f'<path d="M {bx},{by - 40} Q {mx},{my} {ax},{ay - 40}" fill="none" stroke="{t["accent2"]}" stroke-width="1.2" opacity="0.35"/>'
+    # shadows first, so connectors and slabs sit on top of them
+    for i, top in enumerate(CARD_TOP):
+        out.append(shadow(t, i, top))
+
+    # connectors are drawn under the slabs
+    for i in range(len(CARD_TOP) - 1):
+        out.append(
+            connector(t, i, CARD_TOP[i] + CARD_H, CARD_TOP[i + 1])
         )
 
-    box_groups = []
-    for (cx, cy), parts in boxes:
-        group_id = f"cluster-{cx}-{cy}"
-        # Bob animation: translateY 0 to -8 over cycle
-        cycle = 4.0
-        phase = {"extremal": 0.0, "simulation": 1.3, "verification": 2.6}[
-            next(c["id"] for c in CLUSTERS if c["pos"] == (cx, cy))
-        ]
-        bob = f'<animate attributeName="transform" type="translate" values="0 0;0 -8;0 0" dur="{cycle}s" begin="{phase}s" repeatCount="indefinite" additive="sum"/>'
-        inner = f'<g transform="translate({cx} {cy})">{bob}{"".join(parts)}</g>'
-        box_groups.append(f'<g id="cluster-{cx}-{cy}">{inner}</g>')
+    for i, c in enumerate(CLUSTERS):
+        out.append(card(t, c, i, CARD_TOP[i]))
 
-    link_html = ""
-    for l in links:
-        link_html += l
+    out.append("</svg>")
+    return "\n".join(out) + "\n"
 
-    pill_anims = ""
+
+def check_svg(name, body):
+    ET.fromstring(body)
+    try:
+        body.encode("ascii")
+    except UnicodeEncodeError as exc:
+        raise SystemExit(f"{name}: non ASCII byte at {exc.start}")
+    root = ET.fromstring(body)
+    known = set()
+
+    def local(tag):
+        return tag.split("}")[-1]
+
+    for el in root.iter():
+        if local(el.tag) == "marker":
+            known.add(el.get("id"))
+        if el.get("attributeName") == "transform" and local(el.tag) == "animate":
+            raise SystemExit(f"{name}: transform animated with <animate> instead of <animateTransform>")
+    for child in root:
+        if local(child.tag) in ("animate", "animateTransform", "animateMotion"):
+            raise SystemExit(f"{name}: animation directly on the root element")
+    for el in root.iter():
+        for attr in ("marker-start", "marker-end"):
+            ref = el.get(attr)
+            if ref and ref.startswith("url(#"):
+                if ref[5:-1] not in known:
+                    raise SystemExit(f"{name}: dangling {attr} {ref}")
+    if not any(local(el.tag) == "animateTransform" for el in root.iter()):
+        raise SystemExit(f"{name}: no animation found")
+    if body.count("<svg") != 1 or not body.rstrip().endswith("</svg>"):
+        raise SystemExit(f"{name}: malformed document")
+    # every slab must carry a title, subtitle and three pills
     for c in CLUSTERS:
-        cx, cy = c["pos"]
-        for j in range(len(c["pills"])):
-            row = j // 2
-            col = j % 2
-            px = cx - ((len(c["pills"]) + 1) // 2) * PILL_W / 2 + col * (PILL_W + 10) - PILL_W / 4 + 4
-            py = cy - BOX_H / 2 + 68 + row * 20
-            delay = j * 0.15
-            pill_anims += (
-                f'<animateTransform attributeName="transform" type="rotate" values="0 {px} {py};360 {px} {py};360 {px} {py}" '
-                f"dur=\"6s\" begin=\"{delay}s\" repeatCount=\"indefinite\" additive=\"sum\"/>"
-            )
-
-    return f"""{head(1280, 520, "Map of the research: extremal combinatorics, inference and simulation, verification and agents")}
-<defs>
-<marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="{t['accent']}"/></marker>
-<marker id="arrowhead2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="{t['accent2']}"/></marker>
-</defs>
-<rect width="1280" height="520" fill="{t['bg']}"/>
-<g fill="none">
-{"".join(links)}
-</g>
-{"".join(box_groups)}
-{pill_anims}
-</svg>
-"""
+        for piece in (c["title"], c["sub"], *c["pills"]):
+            if piece not in body:
+                raise SystemExit(f"{name}: missing label {piece!r}")
 
 
 def main():
     made = []
     for t in (LIGHT, DARK):
-        made.append(write(f"map-{t['name']}.svg", map_svg(t)))
-    for p in sorted(ASSETS.rglob("*.svg")):
-        if "profile-3d" in str(p):
-            continue
-        data = p.read_bytes()
-        try:
-            data.decode("ascii")
-        except UnicodeDecodeError:
-            raise SystemExit(f"non ASCII byte in {p}")
+        name = f"map-{t['name']}.svg"
+        body = map_svg(t)
+        check_svg(name, body)
+        ASSETS.mkdir(parents=True, exist_ok=True)
+        (ASSETS / name).write_text(body, encoding="ascii", newline="\n")
+        made.append(name)
     print(f"wrote {len(made)} map files")
     for m in made:
-        print("  ", m)
-
-
-def write(name, body):
-    ASSETS.mkdir(parents=True, exist_ok=True)
-    (ASSETS / name).write_text(body, encoding="utf-8", newline="\n")
-    return name
+        print("  ", ASSETS / m)
 
 
 if __name__ == "__main__":

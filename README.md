@@ -153,7 +153,7 @@ Manuscripts with a published PDF. The title opens the PDF, the name opens the re
 
 ## <img alt="" src="./assets/icons/map.svg" width="22" align="absmiddle">Research map
 
-The three strands of the work, and how they feed each other. Enumeration produces a number, a proof turns the number into a theorem, and the verification layer checks the theorem and then writes its successor. Clusters bob, pills spin inside them, and arrows draw themselves on between the strands.
+The three strands of the work, and how they feed each other. Enumeration produces a number, a proof turns the number into a theorem, and the verification layer checks the theorem and then writes its successor. The slabs drift out of phase, light sweeps across each face, and a pulse runs down each connector.
 
 <p align="center">
   <img alt="Research map: extremal combinatorics, inference and simulation, verification and agents" src="./assets/map-light.svg#gh-light-mode-only" width="100%">
