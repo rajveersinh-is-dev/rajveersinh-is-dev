@@ -97,8 +97,8 @@ FACE_SHADE = {"top": 1.0, "left": 0.84, "right": 0.70}
 DAYS_PER_WEEK = 7
 WAVE_CYCLE = 3.5          # seconds for one bob and one shimmer
 WAVE_STEP = 0.06          # seconds between the start of one week and the next
-WAVE_RISE = 4.0           # pixels a week rises by
-WAVE_GLOW = 1.35          # how bright a week gets at the top of the wave
+WAVE_RISE = 6.0           # pixels a week rises by
+WAVE_GLOW = 1.4           # how bright a week gets at the top of the wave
 
 WAVE_CSS = """
 .week {
