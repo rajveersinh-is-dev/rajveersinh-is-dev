@@ -1,8 +1,11 @@
 name: Profile Facts
 
-on: # every six hours, at 20 minutes past the hour
+on: # every hour, at 20 minutes past the hour; also on push so a new commit
+  # refreshes the strip right away instead of waiting for the next tick
   schedule:
-    - cron: "20 */6 * * *"
+    - cron: "20 * * * *"
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

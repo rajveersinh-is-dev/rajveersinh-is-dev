@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build the facts strip and stamp the footer.
 
-Run by .github/workflows/profile-facts.yml once a day. It reads the public
-repositories of the account with the workflow token and writes:
+Run by .github/workflows/profile-facts.yml every hour (and on every push to
+main). It reads the public repositories of the account with the workflow
+token and writes:
 
   assets/facts-light.svg   assets/facts-dark.svg    the numbers in the header
   assets/footer-light.svg  assets/footer-dark.svg   the same files with the
