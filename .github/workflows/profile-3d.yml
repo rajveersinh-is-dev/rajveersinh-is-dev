@@ -1,8 +1,11 @@
 name: GitHub-Profile-3D-Contrib
 
-on: # 03:00 JST == 18:00 UTC
+on: # every hour, at 0 minutes past the hour; also on push so a new commit
+  # refreshes the graph right away instead of waiting for the next tick
   schedule:
-    - cron: "0 18 * * *"
+    - cron: "0 * * * *"
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
