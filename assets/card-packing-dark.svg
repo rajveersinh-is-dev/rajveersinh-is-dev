@@ -7,4 +7,5 @@
 <text x="175" y="118" font-size="14" fill="#e9e4ff">Exact packing and covering numbers for polygon</text>
 <text x="175" y="138" font-size="14" fill="#e9e4ff">triangulations, with constructive proofs</text>
 <text x="175" y="164" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="500" font-size="12.5" fill="#a9a3c4">polygon-triangulation-packing</text>
+<polyline points="430.0,161.1 452.1,143.3 474.3,170.0 496.4,134.4 518.6,152.2 540.7,138.9 562.9,156.7 585.0,130.0" fill="none" stroke="#a78bfa" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/><circle cx="430.0" cy="161.1" r="2" fill="#a78bfa"/><circle cx="452.1" cy="143.3" r="2" fill="#a78bfa"/><circle cx="474.3" cy="170.0" r="2" fill="#a78bfa"/><circle cx="496.4" cy="134.4" r="2" fill="#a78bfa"/><circle cx="518.6" cy="152.2" r="2" fill="#a78bfa"/><circle cx="540.7" cy="138.9" r="2" fill="#a78bfa"/><circle cx="562.9" cy="156.7" r="2" fill="#a78bfa"/><circle cx="585.0" cy="130.0" r="2" fill="#a78bfa"/>
 </svg>

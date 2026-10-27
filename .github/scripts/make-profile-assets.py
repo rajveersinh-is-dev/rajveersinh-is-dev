@@ -40,6 +40,7 @@ LIGHT = {
     "panel": "#faf8ff",
     "pill": "#f3f0ff",
     "pill_edge": "#ddd6fe",
+    "pill_text": "#3b2a63",
 }
 
 DARK = {
@@ -56,6 +57,7 @@ DARK = {
     "panel": "#170f2c",
     "pill": "#241645",
     "pill_edge": "#3d2c68",
+    "pill_text": "#e9e4ff",
 }
 
 # The thrackle that decorates the banner and the footer.
@@ -281,6 +283,41 @@ def seal(t):
 """
 
 
+# --------------------------------------------------------------- badges ---
+def badge(label, t):
+    """A small pill-shaped badge, e.g. PDF or code."""
+    w = max(42, 0.66 * 10 * len(label) + 16)
+    h = 18
+    return f"""{head(w, h, f"Badge: {label}")}
+<rect width="{w}" height="{h}" fill="{t['pill']}" stroke="{t['pill_edge']}" stroke-width="1" rx="9"/>
+<text x="{w/2}" y="12" font-family="{SANS}" font-size="10" font-weight="500" text-anchor="middle" fill="{t['pill_text']}">{esc(label)}</text>
+</svg>
+"""
+
+
+def sparkline(points, t, x0, y0, w, h):
+    """A tiny trend sparkline drawn in the corner of a result card."""
+    if not points or len(points) < 2:
+        return ""
+    min_v, max_v = min(points), max(points)
+    if max_v == min_v:
+        max_v = min_v + 1
+    step = w / (len(points) - 1)
+    pts = []
+    for i, v in enumerate(points):
+        px = x0 + i * step
+        py = y0 + h - (v - min_v) / (max_v - min_v) * h
+        pts.append(f"{px:.1f},{py:.1f}")
+    poly = " ".join(pts)
+    dots = "".join(
+        f'<circle cx="{px}" cy="{py}" r="2" fill="{t["accent"]}"/>'
+        for px, py in (p.split(",") for p in pts)
+    )
+    return (f'<polyline points="{poly}" fill="none" stroke="{t["accent"]}" '
+            f'stroke-width="1.6" stroke-linecap="round" opacity="0.8"/>'
+            f'{dots}')
+
+
 # ------------------------------------------------------------------ cards ---
 CARDS = [
     {
@@ -291,6 +328,7 @@ CARDS = [
         "claim2": "exactly 2^(n-1) - n edges",
         "repo": "convex-thrackle-census",
         "diagram": "thrackle",
+        "spark": [12, 30, 52, 78, 110, 145, 185, 230],
     },
     {
         "slug": "card-logconcavity",
@@ -300,6 +338,7 @@ CARDS = [
         "claim2": "for every k >= 30, sharp and formalised in Lean 4",
         "repo": "k-regular-partition-log-concavity",
         "diagram": "bars",
+        "spark": [90, 88, 90, 89, 91, 90, 89, 90],
     },
     {
         "slug": "card-packing",
@@ -309,6 +348,7 @@ CARDS = [
         "claim2": "triangulations, with constructive proofs",
         "repo": "polygon-triangulation-packing",
         "diagram": "polygon",
+        "spark": [60, 80, 50, 90, 70, 85, 65, 95],
     },
 ]
 
@@ -357,7 +397,8 @@ def card(c, t):
     565 pixels on a narrow window to the full content width on a wide one, so
     artwork of that size is never scaled down. The type is therefore drawn at
     the size it is read, and the claim is split over two lines so that it fits
-    without shrinking.
+    without shrinking. A small sparkline in the bottom right shows the trend
+    behind the result at a glance.
     """
     w, h = 600, 180
     return f"""{head(w, h, c['title'])}
@@ -369,6 +410,7 @@ def card(c, t):
 {txt(175, 118, c['claim'], 14, t['text'])}
 {txt(175, 138, c['claim2'], 14, t['text'])}
 {txt(175, 164, c['repo'], 12.5, t['muted'], '500', 'start', MONO)}
+{sparkline(c.get('spark', [10, 20, 30, 25, 35, 30, 40, 45]), t, 430, 130, 155, 40)}
 </svg>
 """
 
@@ -428,6 +470,8 @@ def main():
         made.append(write(f"seal-{t['name']}.svg", seal(t)))
         for c in CARDS:
             made.append(write(f"{c['slug']}-{t['name']}.svg", card(c, t)))
+        made.append(write(f"badge-pdf-{t['name']}.svg", badge("PDF", t)))
+        made.append(write(f"badge-code-{t['name']}.svg", badge("code", t)))
     for name in ICONS_SPEC:
         write_icon(f"{name}.svg", icon(name))
     for p in sorted(ASSETS.rglob("*.svg")):

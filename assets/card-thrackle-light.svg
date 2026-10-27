@@ -7,4 +7,5 @@
 <text x="175" y="118" font-size="14" fill="#3b2a63">A maximal convex thrackle on n vertices has</text>
 <text x="175" y="138" font-size="14" fill="#3b2a63">exactly 2^(n-1) - n edges</text>
 <text x="175" y="164" font-family="JetBrains Mono, Ubuntu Mono, SFMono-Regular, Menlo, Consolas, monospace" font-weight="500" font-size="12.5" fill="#6e7681">convex-thrackle-census</text>
+<polyline points="430.0,170.0 452.1,166.7 474.3,162.7 496.4,157.9 518.6,152.0 540.7,145.6 562.9,138.3 585.0,130.0" fill="none" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round" opacity="0.8"/><circle cx="430.0" cy="170.0" r="2" fill="#7c3aed"/><circle cx="452.1" cy="166.7" r="2" fill="#7c3aed"/><circle cx="474.3" cy="162.7" r="2" fill="#7c3aed"/><circle cx="496.4" cy="157.9" r="2" fill="#7c3aed"/><circle cx="518.6" cy="152.0" r="2" fill="#7c3aed"/><circle cx="540.7" cy="145.6" r="2" fill="#7c3aed"/><circle cx="562.9" cy="138.3" r="2" fill="#7c3aed"/><circle cx="585.0" cy="130.0" r="2" fill="#7c3aed"/>
 </svg>
