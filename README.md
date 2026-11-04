@@ -17,6 +17,8 @@
     python .github/scripts/make-facts-svg.py to refresh the numbers and the
     date in the footer, and
     python .github/scripts/make-map.py to regenerate the research map.
+    make-profile-assets.py delegates the map to make-map.py, so a single
+    generator owns the animated research map.
   - Motion is SMIL animation inside the SVG files. GitHub strips CSS and style
     attributes out of README markdown, so an animated image is the only way to
     have any movement. Every animation is written so that a browser without
@@ -40,10 +42,8 @@
 </p>
 
 <p align="center">
-  <a href="mailto:daveaddams91@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-daveaddams91@gmail.com-7c3aed?style=flat-square&logo=gmail&logoColor=white"></a>
-  <a href="https://github.com/rajveersinh-is-dev"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-rajveersinh--is--dev-7c3aed?style=flat-square&logo=github&logoColor=white"></a>
-  <img alt="Location" src="https://img.shields.io/badge/Location-India-6e7681?style=flat-square">
-  <img alt="Open to collaboration" src="https://img.shields.io/badge/Open%20to%20collaboration-7c3aed?style=flat-square">
+  <img alt="Contact: Email daveaddams91@gmail.com, GitHub rajveersinh-is-dev, Location India, Open to collaboration" src="./assets/contact-light.svg#gh-light-mode-only">
+  <img alt="Contact: Email daveaddams91@gmail.com, GitHub rajveersinh-is-dev, Location India, Open to collaboration" src="./assets/contact-dark.svg#gh-dark-mode-only">
 </p>
 
 <p align="center">
@@ -202,6 +202,7 @@ Full writeups, including the ones that do not work out.
 - **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)**: Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh. ![updated this week](./assets/badge-fresh-week-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-week-dark.svg#gh-dark-mode-only)
 - **[ascii-motion](https://github.com/rajveersinh-is-dev/ascii-motion)**: ASCII animation experiments built as a self-contained HTML page. ![updated this week](./assets/badge-fresh-week-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-week-dark.svg#gh-dark-mode-only)
 - **[dual-pruned-decoding](https://github.com/rajveersinh-is-dev/dual-pruned-decoding)**: Dual-Pruned Decoding: Lagrangian Hull Pruning for budget-constrained language model generation. ![updated today](./assets/badge-fresh-today-light.svg#gh-light-mode-only) ![updated today](./assets/badge-fresh-today-dark.svg#gh-dark-mode-only)
+- **[oeis-formula-discovery](https://github.com/rajveersinh-is-dev/oeis-formula-discovery)**: A fully local, deterministic mathematical discovery engine for the OEIS. ![updated this week](./assets/badge-fresh-week-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-week-dark.svg#gh-dark-mode-only)
 
 ### Trust and autonomous agents
 

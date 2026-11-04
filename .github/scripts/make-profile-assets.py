@@ -142,6 +142,53 @@ def wave(points, t, opacity=0.45):
             f'<g fill="{t["soft"]}" opacity="0.65">{dots}</g></g>')
 
 
+# -------------------------------------------------------------- contact pills ---
+def contact_pills(t):
+    """Self-hosted contact pills replacing external shields.io badges.
+
+    Four pills: Email (links to mailto), GitHub (links to profile), Location
+    India, Open to collaboration. Pure SVG, no external dependencies, in the
+    same violet/neutral palette as the tech pills. The Email and GitHub pills
+    are wrapped in anchors so they remain clickable on the profile.
+
+    Canvas is 820 wide (not 640) so the row of four pills fits inside the
+    viewBox without overflowing; the previous version computed a negative
+    start_x and clipped the first and last pills off the edges.
+    """
+    items = [
+        ("Email", "daveaddams91@gmail.com", "mailto:daveaddams91@gmail.com"),
+        ("GitHub", "rajveersinh-is-dev", "https://github.com/rajveersinh-is-dev"),
+        ("Location", "India", None),
+        ("Open to", "collaboration", None),
+    ]
+    gap = 10
+    texts = []
+    widths = []
+    for label, value, href in items:
+        display = f"{label}: {value}"
+        w = max(72, 0.62 * 11 * len(display) + 26)
+        widths.append(w)
+        texts.append((display, href))
+    total_w = sum(widths) + gap * (len(widths) - 1)
+    w_total = int(total_w + 32)
+    start_x = (w_total - total_w) / 2
+    x = start_x
+    body = []
+    for (display, href), w in zip(texts, widths):
+        cx = x + w / 2
+        pill = (f'<rect x="{x:.0f}" y="4" width="{w:.0f}" height="20" rx="10" '
+                f'fill="{t["pill"]}" stroke="{t["pill_edge"]}" stroke-width="1"/>'
+                f'<text x="{cx:.0f}" y="17" font-family="{SANS}" font-size="11" '
+                f'font-weight="500" text-anchor="middle" fill="{t["pill_text"]}">{esc(display)}</text>')
+        if href:
+            pill = f'<a href="{esc(href)}">{pill}</a>'
+        body.append(pill)
+        x += w + gap
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w_total}" height="32" '
+            f'viewBox="0 0 {w_total} 32" role="img" aria-label="Contact: Email and GitHub">'
+            f'{"".join(body)}</svg>\n')
+
+
 def banner(t):
     """Banner with the thrackle drawing itself once, then the rule breathing.
 
@@ -232,41 +279,18 @@ MAP_BOXES = [
 
 
 def map_svg(t):
-    boxes = []
-    for x, y, title, sub, pills in MAP_BOXES:
-        w, h = 360, 190
-        p = []
-        for i, label in enumerate(pills):
-            col, row = i % 2, i // 2
-            px = x + 16 + col * 168
-            py = y + 62 + row * 36
-            p.append(f'<rect x="{px}" y="{py}" width="160" height="28" rx="8" '
-                     f'fill="{t["pill"]}" stroke="{t["pill_edge"]}"/>')
-            p.append(txt(px + 80, py + 18, label, 11.5, t["text"], "500", "middle"))
-        boxes.append(f'<g><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" '
-                     f'fill="{t["panel"]}" stroke="{t["card_edge"]}"/>'
-                     f'{txt(x + 18, y + 30, title, 15.5, t["title"], "700")}'
-                     f'{txt(x + 18, y + 48, sub, 11, t["muted"])}'
-                     f'{"".join(p)}</g>')
-
-    def arrow(d, label=None, lx=0, ly=0):
-        a = ""
-        if label:
-            a = txt(lx, ly, label, 10.5, t["muted"], "500", "middle")
-        return (f'<path d="{d}" fill="none" stroke="{t["accent"]}" stroke-width="1.4" '
-                f'marker-end="url(#head)"/>{a}')
-
-    return f"""{head(1280, 486, "Map of the research: extremal combinatorics, inference and simulation, verification and agents")}
-<defs>
-<marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="{t['accent']}"/></marker>
-</defs>
-<rect width="1280" height="486" fill="none"/>
-{"".join(boxes)}
-{arrow("M 390 96 C 430 96 430 300 458 300", "verification", 404, 60)}
-{arrow("M 890 96 C 850 96 850 300 822 300", "verification", 876, 60)}
-{arrow("M 560 268 C 500 236 300 236 226 220", "new problems", 400, 232)}
-</svg>
-"""
+    # Delegates to make-map.py, which is the single source of truth for the
+    # animated 3D research map. make-profile-assets.py no longer builds its
+    # own static copy: two generators produced two different maps and the
+    # published one was the static one, so the drift and pulse in the
+    # README never actually happened. make-map.py has its own LIGHT/DARK
+    # palettes with card_a/glow keys; select by name.
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "make_map", pathlib.Path(__file__).parent / "make-map.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.map_svg(mod.LIGHT if t["name"] == "light" else mod.DARK)
 
 
 # ------------------------------------------------------------------- seal ---
@@ -468,6 +492,7 @@ def main():
         made.append(write(f"tagline-{t['name']}.svg", tagline(t)))
         made.append(write(f"map-{t['name']}.svg", map_svg(t)))
         made.append(write(f"seal-{t['name']}.svg", seal(t)))
+        made.append(write(f"contact-{t['name']}.svg", contact_pills(t)))
         for c in CARDS:
             made.append(write(f"{c['slug']}-{t['name']}.svg", card(c, t)))
         made.append(write(f"badge-pdf-{t['name']}.svg", badge("PDF", t)))

@@ -186,6 +186,24 @@ def gather():
     }
 
 
+def freshness_categories(repos):
+    """Map repo name -> freshness bucket from pushed_at timestamps."""
+    from datetime import datetime, timezone
+    def cat(pushed_at):
+        pushed = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
+        age = (datetime.now(timezone.utc) - pushed).total_seconds()
+        if age < 86400:
+            return "today"
+        if age < 604800:
+            return "week"
+        if age < 2592000:
+            return "month"
+        if age < 31536000:
+            return "year"
+        return "stale"
+    return {r["name"]: cat(r["pushed_at"]) for r in repos if r.get("pushed_at")}
+
+
 def facts_svg(t, f):
     if f.get("contributions"):
         activity = (f"{f['contributions']:,}", "CONTRIBUTIONS", "in the last year")
@@ -226,6 +244,56 @@ def stamp_footer():
         p.write_text(text, encoding="utf-8", newline="\n")
 
 
+def update_readme_freshness(cats):
+    """Rewrite freshness badges in README.md from the freshness map.
+
+    The Projects section embeds a badge on every repo line
+    (badge-fresh-<cat>-light.svg). When a repo ages into the next bucket the
+    badge would be wrong until a human edits it. This keeps README.md and
+    freshness.json in lockstep: the workflow runs every hour and rewrites
+    any stale badge, so the page never shows a freshness SVG that does not
+    match the current pushed_at.
+
+    Falls back to a regex scan for any repo name on a badge line if the
+    github.com/<owner>/<repo> link pattern is not found (handles markdown
+    links split across lines or bare repo names in text).
+    """
+    readme = ROOT / "README.md"
+    if not readme.exists():
+        return
+    text = readme.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    lines_changed = 0
+    for i, line in enumerate(lines):
+        m = re.search(r"github\.com/%s/([A-Za-z0-9._-]+)" % re.escape(USER), line)
+        repo = m.group(1) if m else None
+        # fallback: any known repo name appearing on a badge line
+        if repo is None:
+            for known in cats:
+                if re.search(r"\b%s\b" % re.escape(known), line):
+                    repo = known
+                    break
+        if repo is None:
+            continue
+        line_cats = re.findall(r"badge-fresh-(today|week|month|year|stale)-", line)
+        if not line_cats:
+            continue
+        want = cats.get(repo)
+        if not want:
+            continue
+        if all(c == want for c in line_cats):
+            continue
+        new_line = re.sub(r"badge-fresh-(today|week|month|year|stale)-",
+                          f"badge-fresh-{want}-", line)
+        lines[i] = new_line
+        lines_changed += 1
+    if lines_changed:
+        readme.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+        print(f"updated {lines_changed} freshness badge(s) in README.md")
+    else:
+        print("README.md freshness badges are already current")
+
+
 def main():
     global AUTH
     AUTH = token()
@@ -247,6 +315,15 @@ def main():
             facts_svg(t, f), encoding="utf-8", newline="\n")
     stamp_footer()
     print("wrote assets/facts-light.svg, assets/facts-dark.svg, stamped the footers")
+
+    # Freshness data shared with make-freshness.py (which writes the badge
+    # SVGs). Compute the same categories here so README.md badges stay in
+    # lockstep without requiring a second API round-trip from the workflow.
+    try:
+        cats = freshness_categories(public_repos())
+        update_readme_freshness(cats)
+    except Exception as exc:
+        print(f"freshness README update skipped: {exc}")
     return 0
 
 

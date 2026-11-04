@@ -137,6 +137,18 @@ def main():
         if not pushed:
             continue
         cats[r["name"]] = freshness_category(pushed)
+    # Keep README.md badges in lockstep now, not just when facts runs.
+    try:
+        # Import update_readme_freshness lazily to avoid a cycle with
+        # make-facts-svg.py (which imports make-profile-assets, not this).
+        import importlib.util as _ilu
+        _spec = _ilu.spec_from_file_location(
+            "make_facts", pathlib.Path(__file__).parent / "make-facts-svg.py")
+        _mod = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        _mod.update_readme_freshness(cats)
+    except Exception as exc:
+        print(f"README freshness update skipped: {exc}")
     made = []
     for cat in ("today", "week", "month", "year", "stale"):
         for t in (mpa.LIGHT, mpa.DARK):
