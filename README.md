@@ -202,7 +202,7 @@ Full writeups, including the ones that do not work out.
 - **[Lilium-Mathematical-Art](https://github.com/rajveersinh-is-dev/Lilium-Mathematical-Art)**: Mathematical reconstruction of a white lily bouquet built in the presentation style of Hamid Naderi Yeganeh. ![updated this week](./assets/badge-fresh-month-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-month-dark.svg#gh-dark-mode-only)
 - **[ascii-motion](https://github.com/rajveersinh-is-dev/ascii-motion)**: ASCII animation experiments built as a self-contained HTML page. ![updated this week](./assets/badge-fresh-month-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-month-dark.svg#gh-dark-mode-only)
 - **[dual-pruned-decoding](https://github.com/rajveersinh-is-dev/dual-pruned-decoding)**: Dual-Pruned Decoding: Lagrangian Hull Pruning for budget-constrained language model generation. ![updated today](./assets/badge-fresh-month-light.svg#gh-light-mode-only) ![updated today](./assets/badge-fresh-month-dark.svg#gh-dark-mode-only)
-- **[oeis-formula-discovery](https://github.com/rajveersinh-is-dev/oeis-formula-discovery)**: A fully local, deterministic mathematical discovery engine for the OEIS. ![updated this week](./assets/badge-fresh-week-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-week-dark.svg#gh-dark-mode-only)
+- **[oeis-formula-discovery](https://github.com/rajveersinh-is-dev/oeis-formula-discovery)**: A fully local, deterministic mathematical discovery engine for the OEIS. ![updated this week](./assets/badge-fresh-month-light.svg#gh-light-mode-only) ![updated this week](./assets/badge-fresh-month-dark.svg#gh-dark-mode-only)
 
 ### Trust and autonomous agents
 
